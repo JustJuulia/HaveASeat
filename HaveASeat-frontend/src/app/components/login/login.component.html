@@ -1,1 +1,6 @@
-<p>login works!</p>
+<div>
+    <input type="text" #email placeholder="Login..." />
+    <input type="password" #password placeholder="Password..." /> 
+    <button (click)="SignUp(email.value, password.value)">SIGN UP</button>
+    <button >SIGN IN</button>
+</div>
