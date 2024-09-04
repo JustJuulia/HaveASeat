@@ -14,6 +14,7 @@ import { User } from '../../models/models';
 export class LoginComponent {
 
   private checkuserUrl = "https://localhost:7023/api/Authentication/GetByEmail/";
+  private AddUser = "https://localhost:7023/api/Authentication/register";
 
   constructor(private http: HttpClient) {}
 
@@ -39,13 +40,23 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        if (err.status === 404) {
-          alert('Email jest dostępny do rejestracji.');
-          //rejestracja tutaj
-        } else {
+        if (err.status === 404){
+
+        let userData = { email: email, password: password };
+        this.http.post(this.AddUser, userData).subscribe({
+          next: (response) => {
+            alert('Rejestracja zakończona sukcesem!');
+          },
+          error: (registerErr) => {
+            console.error('Błąd podczas rejestracji użytkownika:', registerErr);
+            alert('Wystąpił błąd podczas rejestracji. Spróbuj ponownie później.');
+          }
+        });
+      } else {
           console.error('Błąd sprawdzania dostępności użytkownika:', err);
         }
       }
     });
+
   }
 }
