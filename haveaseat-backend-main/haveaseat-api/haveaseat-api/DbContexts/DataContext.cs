@@ -6,6 +6,7 @@ namespace haveaseat.DbContexts;
 
 public class DataContext : DbContext
 {
+    public DbSet<ForbiddenDate> ForbiddenDates { get; set; }
     public DbSet<Desk> Desks { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Room> Rooms { get; set; }
@@ -27,6 +28,15 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<ForbiddenDate>()
+            .HasKey(e => e.Id);
+
+        modelBuilder.Entity<ForbiddenDate>()
+            .HasAlternateKey(e => e.Date);
+
+        modelBuilder.Entity<ForbiddenDate>()
+            .HasIndex(e => e.Date);
+
         modelBuilder.Entity<User>()
             .HasMany(e => e.Reservations)
             .WithOne(e => e.User)
