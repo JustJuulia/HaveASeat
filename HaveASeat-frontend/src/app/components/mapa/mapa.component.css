@@ -1,0 +1,70 @@
+* {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.room {
+  display: grid;
+  gap: 0px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #E6EAED;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.place {
+  
+  height: 50px;
+  width: 50px;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background-color: #E6EAED;
+  border-collapse: collapse;
+}
+
+.place:hover {
+  background: rgb(215, 212, 212);
+}
+
+.desk-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.desk-img {
+  width: 50px;
+  height: 56px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  position: absolute;
+}
+
+.rotate-right .desk-img {
+  transform: rotate(90deg);
+}
+
+.rotate-bottom .desk-img {
+  transform: rotate(180deg);
+}
+
+.rotate-left .desk-img {
+  transform: rotate(270deg);
+}
+
+:hover {
+  cursor: var(--cursor);
+}
+
+img[src="/assets/images/zielonegora.png"]:hover
+{
+  fill: black;
+  filter: brightness(0) saturate(100%) invert(77%) sepia(67%) saturate(1264%) hue-rotate(176deg) brightness(104%) contrast(105%);
+}

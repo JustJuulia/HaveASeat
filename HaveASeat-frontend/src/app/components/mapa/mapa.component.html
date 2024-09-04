@@ -1,0 +1,24 @@
+<div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
+  <ng-container *ngFor="let room of rooms; let rowIndex = index" >
+    <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">
+      <div 
+        [ngStyle]="{
+          gridRowStart: cell.positionY,
+          gridColumnStart: cell.positionX,
+          boxShadow: getBorder(room.id, cell.positionY, cell.positionX)
+        }"
+        [ngClass]="{
+          'desk-cell': cell.isDesk,
+          'rotate-right': cell.rotationClass === 'rotate-right',
+          'rotate-bottom': cell.rotationClass === 'rotate-bottom',
+          'rotate-left': cell.rotationClass === 'rotate-left'
+        }"
+        (click)="cell.isDesk && !cell.isReserved && onDeskClick(cell)"
+        class="place">
+        <img *ngIf="cell.isDesk && !cell.isReserved"  [src]="(cell.isClicked || cell.isUsers) ? '/assets/images/niebieskiegora.png' : '/assets/images/zielonegora.png'" alt="Desk Image" class="desk-img"
+        style="--cursor: pointer">
+        <img *ngIf="cell.isReserved" src="/assets/images/czerwonegora.png" alt="" class="desk-img" style="--cursor: not-allowed">
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
