@@ -8,10 +8,11 @@ import { Observable, Subject } from 'rxjs';
 })
 export class UserService {
   private userByIdUrl = "https://localhost:7023/api/Authentication/GetById/"
-
+  
   constructor(private http: HttpClient) {}
 
   getUserById(id :number) :Observable<User> {
+    //id = 6
     return this.http.get<User>(`${this.userByIdUrl}${id}`);
   }
 

@@ -1,42 +1,50 @@
-<div class="header open-sans-font">
-        <div class="image">
-          <img src="assets/images/belmondo.png" alt="Logo" class="logo">
-        </div>
-        <div class="date_with_text">
-          <div class="first_step_text">
-            <p class="number_for_instruction">1</p>
-            <p class="reservation_date ">Wybierz datę rezerwacji  </p>
-            <input type="date"  class=" date_timer open-sans-font" (input)="onDateChange($event)" [value]="today" [min]="today" />
-          </div>
-          <div class="second_step_text">
-            <p class="number_for_instruction">2</p>
-            <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
-          </div>
-        </div>
-        <div class="legends">
-          <p class="legends_text">Legenda</p>
-          <div class="legends_descriptions">
-            <div class="legend-item">
-              <div class="square free"></div>
-              <span> Miejsce wolne</span>
-            </div>
-            <div class="legend-item">
-              <div class="square reserved"></div>
-              <span> Miejsce zajęte</span>
-            </div>
-            <div class="legend-item">
-              <div class="square yours"></div>
-              <span>Twoje miejsce</span>
-            </div>  
-          </div>
-          
-        </div>
-    <div class="right-icon">
-      <p></p>
-    </div>
 
-    <div id="user">
-      <img src="assets/images/avatar.png" alt="User avatar">
-      <p id="username">{{username}}</p>
+<div class="header open-sans-font">
+  <div class="image">
+    <img src="assets/images/belmondo.png" alt="Logo" class="logo">
+  </div>
+  <div class="date_with_text">
+    <div class="first_step_text">
+      <p class="number_for_instruction">1</p>
+      <p class="reservation_date ">Wybierz datę rezerwacji  </p>
+      <input type="date"  class=" date_timer open-sans-font" (input)="onDateChange($event)" [value]="today" [min]="today" />
+    </div>
+    <div class="second_step_text">
+      <p class="number_for_instruction">2</p>
+      <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
     </div>
   </div>
+  <div class="legends">
+    <p class="legends_text">Legenda</p>
+    <div class="legends_descriptions">
+      <div class="legend-item">
+        <div class="square free"></div>
+        <span> Miejsce wolne</span>
+      </div>
+      <div class="legend-item">
+        <div class="square reserved"></div>
+        <span> Miejsce zajęte</span>
+      </div>
+      <div class="legend-item">
+        <div class="square yours"></div>
+        <span>Twoje miejsce</span>
+      </div>  
+    </div>
+    
+  </div>
+<div class="right-icon">
+<p></p>
+</div>
+
+<div id="user">
+<img src="assets/images/avatar.png" alt="User avatar">
+<p id="username">{{username}}</p>
+</div>
+<div class="menu_accordeon">
+  <p class="menu_item">Moje Rezerwacje</p>
+  @if(!checkifAdmin()){
+    <p class="menu_item"> Wszystkie rezerwacje</p>
+    <p class="menu_item"> Edytor biura</p>
+  }
+</div>
+</div>

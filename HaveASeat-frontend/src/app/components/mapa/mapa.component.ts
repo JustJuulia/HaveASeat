@@ -231,5 +231,6 @@ export class MapaComponent implements OnInit, OnChanges {
   getRange(n: number): number[] {
     return Array.from({ length: n }, (_, index) => index);
   }
+  
 
 }
