@@ -1,4 +1,5 @@
 <div>
-    <app-header (dateChanged)="onDateChanged($event)" [userId]="userId"></app-header>
+<app-header [userId]="userId" (dateChanged)="onDateChanged($event)"></app-header>
+
     <app-mapa [selectedDate]="selectedDate" [userId]="userId"></app-mapa>
 </div>

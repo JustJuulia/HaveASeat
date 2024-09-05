@@ -22,9 +22,8 @@ export class MapaComponent implements OnInit, OnChanges {
   rooms: Room[] = [];
   reservations: Reservation[] = [];
   clickedOnce = false;
-  @Input() userId! :number;
-
-  @Input() selectedDate?: string;
+  @Input() selectedDate: string = ''; 
+  @Input() userId: number | null = null;
 
   constructor(private mapaService: MapaService) {}
   ngOnInit(): void {
@@ -72,8 +71,8 @@ export class MapaComponent implements OnInit, OnChanges {
       const desk = this.getCellsDesk(cell);
 
       const newReservation: NewReservation = {
-        date: new Date().toJSON().slice(0, 10),
-        userId: this.userId,
+        date: this.selectedDate || new Date().toJSON().slice(0, 10),
+        userId: this.userId !== null ? this.userId : -1,
         deskId: desk.id
       };
       

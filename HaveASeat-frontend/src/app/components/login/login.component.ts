@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Route } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/models';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,9 +16,24 @@ export class LoginComponent {
 
   private checkuserUrl = "https://localhost:7023/api/Authentication/GetByEmail/";
   private addUserUrl = "https://localhost:7023/api/Authentication/register";
-
-  constructor(private http: HttpClient) {}
-
+  userResponse: User | null = null;
+  constructor(private http: HttpClient, private router: Router) { }
+  LoginSucces(email: string) {
+    this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
+      next: (user) => {
+        console.log('API Response:', user);
+        if (user) {
+          const userId = user.id; 
+          this.router.navigate(['main'], { queryParams: { userId } });
+        }
+      },
+      error: (err) => {
+        console.error('Błąd podczas logowania:', err);
+        alert('Wystąpił błąd podczas logowania. Spróbuj ponownie później.');
+      }
+    });
+  }
+  
   Check_form(email: string, password: string): boolean {
     const regex_email = /^[\w-\.]+@([\w-]+\.)+[a-zA-Z]{2,}$/;
     const regex_passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -51,6 +67,7 @@ export class LoginComponent {
             this.http.post(this.addUserUrl, userData).subscribe({
               next: (response) => {
                 alert('Rejestracja zakończona sukcesem!');
+                  setTimeout(() => this.LoginSucces(email), 1000); 
               },
               error: (registerErr) => {
                 console.error('Błąd podczas rejestracji użytkownika:', registerErr);
@@ -66,21 +83,20 @@ export class LoginComponent {
     }
   }
   SignIn(email: string, password: string): void {
-    if(this.Check_form(email, password))
-    this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
-      next: (user) => {
-        if (user) {
-          alert('Ten email jest już zajęty.');
+    if (this.Check_form(email, password))
+      this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
+        next: (user) => {
+          if (user) {
+            alert('Ten email jest już zajęty.');
+          }
+        },
+        error: (err) => {
+          if (err.status === 404) {
+            alert('Ten email nie został jescze zalogowany');
+          } else {
+            console.error('Błąd sprawdzania dostępności użytkownika:', err);
+          }
         }
-      },
-      error: (err) => {
-        if (err.status === 404){
-          alert('Ten email nie został jescze zalogowany');
-      } else {
-          console.error('Błąd sprawdzania dostępności użytkownika:', err);
-        }
-      }
-    });
-
+      });
   }
 }
