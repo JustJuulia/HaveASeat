@@ -66,7 +66,7 @@ export class MapaComponent implements OnInit, OnChanges {
         });
       });
     }
-    if (cell.isUsers == false && confirm("Book this seat?")) {
+    if (cell.isUsers == false && !cell.isReserved && confirm("Book this seat?")) {
       cell.isClicked = true;
       const desk = this.getCellsDesk(cell);
 
