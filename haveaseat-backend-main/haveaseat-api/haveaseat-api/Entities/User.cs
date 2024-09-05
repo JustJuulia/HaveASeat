@@ -15,7 +15,8 @@ public class User
     
     [MaxLength(255)]
     public string Password { get; set; }
-
+    [Required]
+    public string salt { get; set; }
     public Role Role { get; set; } 
     public ICollection<Reservation> Reservations { get; }
 }
