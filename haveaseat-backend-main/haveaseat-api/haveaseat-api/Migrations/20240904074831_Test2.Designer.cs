@@ -12,8 +12,8 @@ using haveaseat.DbContexts;
 namespace haveaseatapi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240711093256_Initial")]
-    partial class Initial
+    [Migration("20240904074831_Test2")]
+    partial class Test2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,13 +27,29 @@ namespace haveaseatapi.Migrations
 
             modelBuilder.Entity("haveaseat.Entities.Area", b =>
                 {
-                    b.Property<int>("height")
+                    b.Property<short>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("smallint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<short>("Id"));
+
+                    b.Property<int>("Height")
                         .HasColumnType("integer");
 
-                    b.Property<int>("width")
+                    b.Property<int>("Width")
                         .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Area");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = (short)1,
+                            Height = 11,
+                            Width = 15
+                        });
                 });
 
             modelBuilder.Entity("haveaseat.Entities.Cell", b =>
@@ -46,8 +62,8 @@ namespace haveaseatapi.Migrations
 
                     b.Property<string>("Border")
                         .IsRequired()
-                        .HasMaxLength(23)
-                        .HasColumnType("character varying(23)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("PositionX")
                         .HasColumnType("integer");
@@ -90,6 +106,30 @@ namespace haveaseatapi.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Desks");
+                });
+
+            modelBuilder.Entity("haveaseat.Entities.ForbiddenDate", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Date");
+
+                    b.HasIndex("Date");
+
+                    b.ToTable("ForbiddenDates");
                 });
 
             modelBuilder.Entity("haveaseat.Entities.Reservation", b =>

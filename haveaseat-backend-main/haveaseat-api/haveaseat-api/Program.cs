@@ -18,6 +18,7 @@ builder.Services.AddCors(policy =>
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<IMapRepository, MapRepository>();
 builder.Services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+builder.Services.AddScoped<IForbiddenDateRepository, ForbiddenDateRepository>();
 builder.Services.AddScoped<DataContext>(); 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

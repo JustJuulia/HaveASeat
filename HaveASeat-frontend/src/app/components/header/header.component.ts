@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [HttpClientModule, NgIf],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'], // corrected 'styleUrl' to 'styleUrls'
+  styleUrls: ['./header.component.css'], 
   providers: [UserService]
 })
 export class HeaderComponent implements OnChanges, AfterViewInit {

@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUserById(id :number) :Observable<User> {
-    //id = 6
+    id = 6
     return this.http.get<User>(`${this.userByIdUrl}${id}`);
   }
 
