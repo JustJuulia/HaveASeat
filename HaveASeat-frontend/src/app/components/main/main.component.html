@@ -1,5 +1,8 @@
-<div>
-<app-header [userId]="userId" (dateChanged)="onDateChanged($event)"></app-header>
-
+<div *ngIf="userId === null">
+    Log in firstly lol
+  </div>
+  <div *ngIf="userId !== null">
+    <app-header [userId]="userId" (dateChanged)="onDateChanged($event)"></app-header>
     <app-mapa [selectedDate]="selectedDate" [userId]="userId"></app-mapa>
-</div>
+  </div>
+  
