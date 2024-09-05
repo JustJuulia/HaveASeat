@@ -14,8 +14,9 @@ import { NgIf } from '@angular/common';
 })
 export class HeaderComponent implements OnChanges, AfterViewInit {
 
-  @Output() dateChanged: EventEmitter<string> = new EventEmitter<string>();
-  @Input() userId!: number;
+  @Input() userId: number | null = null;
+  @Output() dateChanged = new EventEmitter<string>();
+
 
   today: string;
   username: string = "";
@@ -26,15 +27,23 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
   }
 
   ngOnChanges() {
-    this.userService.getUserById(this.userId).subscribe({
-      next: userData => {
-        this.user = userData;
-      },
-      complete: () => {
-        this.username = this.user.email.split('@')[0];
-      }
-    });
+    if (this.userId !== null) {
+      console.log('Fetching user with ID:', this.userId);
+      this.userService.getUserById(this.userId).subscribe({
+        next: userData => {
+          console.log('Received user data:', userData);
+          this.user = userData;
+          this.username = this.user.email.split('@')[0];
+        },
+        error: err => {
+          console.error('Failed to fetch user data:', err);
+        }
+      });
+    } else {
+      console.warn('userId is null');
+    }
   }
+  
 
   ngAfterViewInit() {
     const acc = document.getElementById("user") as HTMLElement;
