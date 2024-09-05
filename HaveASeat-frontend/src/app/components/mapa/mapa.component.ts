@@ -66,7 +66,7 @@ export class MapaComponent implements OnInit, OnChanges {
         });
       });
     }
-    if (cell.isUsers == false && confirm("Book this seat?")) {
+    if (cell.isUsers == false && !cell.isReserved && confirm("Book this seat?")) {
       cell.isClicked = true;
       const desk = this.getCellsDesk(cell);
 
@@ -114,10 +114,14 @@ export class MapaComponent implements OnInit, OnChanges {
             console.error("delete failed:", deleteError);
           }
         });
-      }
+      }   
+    }
+    else if(cell.isReserved) {
+      const reservation = this.reservations.find(r => r.desk.positionX == cell.positionX && r.desk.positionY == cell.positionY);
+      alert("Desk reserved by " + reservation?.user.email.split('@')[0]);
     }
     else {
-      console.log('No action taken');
+      console.log("No action taken");
     }
 }
 

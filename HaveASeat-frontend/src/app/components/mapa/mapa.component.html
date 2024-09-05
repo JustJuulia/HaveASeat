@@ -13,7 +13,7 @@
           'rotate-bottom': cell.rotationClass === 'rotate-bottom',
           'rotate-left': cell.rotationClass === 'rotate-left'
         }"
-        (click)="cell.isDesk && !cell.isReserved && onDeskClick(cell)"
+        (click)="cell.isDesk && onDeskClick(cell)"
         class="place">
         <img *ngIf="cell.isDesk && !cell.isReserved"  [src]="(cell.isClicked || cell.isUsers) ? '/assets/images/niebieskiegora.png' : '/assets/images/zielonegora.png'" alt="Desk Image" class="desk-img"
         style="--cursor: pointer">
