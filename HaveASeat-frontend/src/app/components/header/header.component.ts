@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnChanges, Output, AfterViewInit } from
 import { UserService } from '../../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../models/models';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule, NgIf],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'], // corrected 'styleUrl' to 'styleUrls'
   providers: [UserService]
@@ -81,5 +82,9 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
       console.log(this.user.role);
       return false;
     }
+  }
+  dropdownVisible: boolean = false;
+  toggleDropdown(state: boolean) {
+    this.dropdownVisible = state;
   }
 }

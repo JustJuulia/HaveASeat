@@ -112,14 +112,34 @@
   .pick_one_seat_text{
     margin-top: 5px;
   }
-  #user {
+  #profile {
     margin-left: auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin-right: 100px;
+    margin-bottom: 0;
+    height:60px;
   }
   #user > img {
     height: 40px;
     width: 40px;
     margin-right: 1rem;
+  }
+  #user {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin:auto;
+  }
+  .menu_list {
+    margin-top:8vh;
+    position: absolute;
+    border:2px solid #BBC1C9;
+    background-color: #F9F9F9;
+    list-style-type:none;
+    border-radius:3px;
+  }
+  
+  .menu_item {
+    margin:10px;
   }

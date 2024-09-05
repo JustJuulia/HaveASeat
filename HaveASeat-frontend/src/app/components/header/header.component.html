@@ -36,15 +36,17 @@
 <p></p>
 </div>
 
-<div id="user">
-<img src="assets/images/avatar.png" alt="User avatar">
-<p id="username">{{username}}</p>
-</div>
-<div class="menu_accordeon">
-  <p class="menu_item">Moje Rezerwacje</p>
-  @if(!checkifAdmin()){
-    <p class="menu_item"> Wszystkie rezerwacje</p>
-    <p class="menu_item"> Edytor biura</p>
-  }
-</div>
+<div id="profile" (mouseenter)="toggleDropdown(true)" (mouseleave)="toggleDropdown(false)">
+  <div id="user">
+    <img src="assets/images/avatar.png" alt="User avatar">
+    <p id="username">{{username}}</p>
+  </div>
+
+  <ul *ngIf="dropdownVisible" class="menu_list">
+    <li class="menu_item">Moje rezerwacje</li>
+    @if(!checkifAdmin()){
+      <li class="menu_item"> Wszystkie rezerwacje</li>
+      <li class="menu_item"> Edytor biura</li>
+    }
+  </ul>
 </div>
