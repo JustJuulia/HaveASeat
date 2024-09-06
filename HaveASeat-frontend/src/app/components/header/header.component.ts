@@ -34,7 +34,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
         next: userData => {
           console.log('Received user data:', userData);
           this.user = userData;
-          this.username = this.user.email.split('@')[0];
+          this.username = this.user.name
         },
         error: err => {
           console.error('Failed to fetch user data:', err);

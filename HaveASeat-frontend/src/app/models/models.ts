@@ -39,6 +39,8 @@ export interface Room {
   export interface User {
     id: number;
     email: string;
+    name: string;
+    surname: string;
     role: number;
   }
 

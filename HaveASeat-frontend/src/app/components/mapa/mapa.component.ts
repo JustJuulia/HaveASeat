@@ -118,7 +118,7 @@ export class MapaComponent implements OnInit, OnChanges {
     }
     else if(cell.isReserved) {
       const reservation = this.reservations.find(r => r.desk.positionX == cell.positionX && r.desk.positionY == cell.positionY);
-      alert("Desk reserved by " + reservation?.user.email.split('@')[0]);
+      alert("Desk reserved by " + reservation?.user.name);
     }
     else {
       console.log("No action taken");

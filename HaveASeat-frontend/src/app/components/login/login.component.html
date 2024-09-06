@@ -1,6 +1,8 @@
 <div>
     <input type="text" #email placeholder="Login..." />
     <input type="password" #password placeholder="Password..." /> 
-    <button (click)="SignUp(email.value, password.value)">SIGN UP</button>
+    <input type="text" #name placeholder="Name..." />
+    <input type="text" #surname placeholder="Name..." />
+    <button (click)="SignUp(email.value, password.value, name.value, surname.value)">SIGN UP</button>
     <button (click)="SignIn(email.value, password.value)">SIGN IN</button>
 </div>

@@ -57,7 +57,7 @@ export class LoginComponent {
     return true;
   }
 
-  SignUp(email: string, password: string): void {
+  SignUp(email: string, password: string, name: string, surname: string): void {
     if (this.Check_form(email, password)) {
       this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
         next: (user) => {
@@ -67,11 +67,11 @@ export class LoginComponent {
         },
         error: (err) => {
           if (err.status === 404) {
-            const userData = { email: email, password: password };
+            const userData = { email: email, password: password, name: name, surname: surname };
             this.http.post(this.addUserUrl, userData).subscribe({
               next: (response) => {
                 alert('Registration was successful!');
-                setTimeout(() => this.LoginSucces(email), 1000);
+                this.LoginSucces(email);
               },
               error: (registerErr) => {
                 console.error('Error registering user:', registerErr);
