@@ -10,10 +10,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [HttpClientModule, NgIf, FormsModule],
   templateUrl: './admin-dates.component.html',
-  styleUrls: ['./admin-dates.component.css'] // Corrected property name
+  styleUrls: ['./admin-dates.component.css']
 })
 export class AdminDatesComponent {
-  private addDate = 'https://localhost:7023/api/ForbiddenDate/AddForbiddenDate';
+  private addDate = 'https://localhost:7023/api/ForbiddenDate/AddForbiddenDate/';
   private deleteDate = 'https://localhost:7023/api/ForbiddenDate/delete/{date}';
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
 
@@ -29,30 +29,22 @@ export class AdminDatesComponent {
   CreateForbiddenDate(): void {
     if (this.pickedDate != null) {
       const dateObj = new Date(this.pickedDate);
-      
-      const day = String(dateObj.getDate()).padStart(2, '0');
-      const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-      const year = dateObj.getFullYear();
-      
-      const forb_date = `${day}.${month}.${year}`;
-      
-      alert(forb_date);
-      
+      const isoDate = dateObj.toISOString().split('T')[0];
       let descr = this.writtendescr;
       if (descr === null) {
         descr = "Dzien wolny";
       }
-
-      const dateData = { description: descr, date: forb_date };
-
+      const dateData = { description: descr, date: isoDate };
       this.http.post(this.addDate, dateData).subscribe({
         next: (response) => {
           alert('Forbidden date added');
         },
-        error: (registerErr) => {
-          console.error('Error adding forbidden date', registerErr);
+        error: (error) => {
+          console.error('Error adding forbidden date:', error);
+          alert(`Error adding forbidden date: ${error.message}`);
         },
       });
     }
   }
+  
 }
