@@ -8,7 +8,8 @@ namespace haveaseat.Entities;
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public long Id { get; set; }
-        [Required]
+
+        [MaxLength(140)]
         public string Description { get; set; }
         public DateOnly Date { get; set; }
 

@@ -10,5 +10,5 @@ public interface IAuthenticationRepository
     Task<UserDTO> GetUserByEmail(string email);
     Task<UserDTO> GetUserById(long id);
 
-    Task<Boolean> LoginUser(NewUserDTO user);
+    Task<Boolean> LoginUser(NewUserLoginDTO user);
 }

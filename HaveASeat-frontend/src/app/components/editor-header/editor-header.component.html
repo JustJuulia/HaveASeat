@@ -1,0 +1,25 @@
+
+<div class="header open-sans-font">
+    <div class="image">
+      <img src="assets/images/belmondo.png" alt="Logo" class="logo">
+    </div>
+      
+    </div>
+  <div class="right-icon">
+  <p></p>
+  </div>
+  
+  <div id="profile" (mouseenter)="toggleDropdown(true)" (mouseleave)="toggleDropdown(false)">
+    <div id="user">
+      <img src="assets/images/avatar.png" alt="User avatar">
+      <p id="username">{{username}}</p>
+    </div>
+  
+    <ul *ngIf="dropdownVisible" class="menu_list">
+      <li class="menu_item">Moje rezerwacje</li>
+      @if(!checkifAdmin()){
+        <li class="menu_item"> Wszystkie rezerwacje</li>
+        <li class="menu_item" style="background-color: red;"> Edytor biura</li>
+      }
+    </ul>
+  </div>

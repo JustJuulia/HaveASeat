@@ -4,16 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../models/models';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { EditorComponent } from '../editor/editor.component';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-editor-header',
   standalone: true,
   imports: [HttpClientModule, NgIf],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'], 
+  templateUrl: './editor-header.component.html',
+  styleUrls: ['./editor-header.component.css'], 
   providers: [UserService]
 })
-export class HeaderComponent implements OnChanges, AfterViewInit {
+export class EditorHeaderComponent implements OnChanges, AfterViewInit {
 
   @Input() userId: number | null = null;
   @Output() dateChanged = new EventEmitter<string>();
@@ -67,21 +68,6 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
       }
     }
   }
-
-  onDateChange(event: any): void {
-    const selectedDate = event.target.value;
-    const day = new Date(selectedDate).getDay();
-    if (day === 6 || day === 0) {
-      alert('W weekendy firma jest zamknieta');
-      event.target.value = this.today;
-      this.dateChanged.emit(this.today);
-    }
-    
-    else if (day != 6 && day != 0) {
-      this.dateChanged.emit(selectedDate);
-    }
-  }
-
   checkifAdmin() {
     if (this.user.role == 1) {
       return true;
@@ -94,15 +80,6 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
       return false;
     }
   }
-  GoToEdition() {
-    if (this.userId !== null) {
-      this.router.navigate(['editor'], { queryParams: { userId: this.userId } });
-    } else {
-      console.warn('User ID is null. Cannot navigate to editor.');
-      alert('User ID is missing. Unable to proceed to the editor.');
-    }
-  }
-  
   dropdownVisible: boolean = false;
   toggleDropdown(state: boolean) {
     this.dropdownVisible = state;

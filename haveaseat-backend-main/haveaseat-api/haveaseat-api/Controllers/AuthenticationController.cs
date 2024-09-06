@@ -57,7 +57,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     [HttpPost("Login")]
     [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> LoginUser(NewUserDTO user)
+    public async Task<IActionResult> LoginUser(NewUserLoginDTO user)
     {
         if (user == null)
         {

@@ -14,6 +14,8 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
         {
             Email = user.Email,
             Password = user.Password,
+            Name = user.Name,
+            Surname = user.Surname,
             Role = Role.EMPLOYEE,
             salt=Salt
         };
@@ -51,7 +53,7 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
         UserDTO userDto = new UserDTO(user);
         return userDto;
     }
-    public async Task<Boolean> LoginUser(NewUserDTO user)
+    public async Task<Boolean> LoginUser(NewUserLoginDTO user)
     {
 
         if (user == null)
