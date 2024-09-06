@@ -3,6 +3,9 @@ import { UserService } from '../../services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { User } from '../../models/models';
 import { NgIf } from '@angular/common';
+import { DateService } from '../../services/date.service';
+import { ForbiddenDate } from '../../models/models';
+import { findIndex } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +13,7 @@ import { NgIf } from '@angular/common';
   imports: [HttpClientModule, NgIf],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'], 
-  providers: [UserService]
+  providers: [UserService, DateService]
 })
 export class HeaderComponent implements OnChanges, AfterViewInit {
 
@@ -21,9 +24,15 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
   today: string;
   username: string = "";
   user: User = <User>{};
+  forbiddenDates: ForbiddenDate[] = []
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private dateService: DateService) {
     this.today = new Date().toISOString().slice(0, 10);
+    dateService.getDates().subscribe({
+      next: dates => {
+        this.forbiddenDates = dates;
+      }
+    })
   }
 
   ngOnChanges() {
@@ -70,7 +79,13 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
   onDateChange(event: any): void {
     const selectedDate = event.target.value;
     const day = new Date(selectedDate).getDay();
-    if (day === 6 || day === 0) {
+    const holiday = this.forbiddenDates.find(h => h.date == selectedDate);
+    if(holiday != undefined) {
+      alert(holiday.description);
+      this.dateChanged.emit(this.today);
+
+    }
+    else if (day === 6 || day === 0) {
       alert('W weekendy firma jest zamknieta');
       event.target.value = this.today;
       this.dateChanged.emit(this.today);
