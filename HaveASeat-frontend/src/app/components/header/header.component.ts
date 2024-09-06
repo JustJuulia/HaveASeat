@@ -119,6 +119,14 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
       alert('User ID is missing. Unable to proceed to the editor.');
     }
   }
+  goToAdminPanel() {
+    if (this.user.role == 0) {
+      this.router.navigate(['admin-panel'], {queryParams: {userId: this.userId}});
+    }
+    else {
+      console.warn('wuad da heallw')
+    }
+  }
   
   dropdownVisible: boolean = false;
   toggleDropdown(state: boolean) {
