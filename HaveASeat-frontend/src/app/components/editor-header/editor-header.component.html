@@ -12,7 +12,7 @@
   <div id="profile" (mouseenter)="toggleDropdown(true)" (mouseleave)="toggleDropdown(false)">
     <div id="user">
       <img src="assets/images/avatar.png" alt="User avatar">
-      <p id="username">{{username}}</p>
+      <p id="username">{{username}}  {{usersurname}}</p>
     </div>
   
     <ul *ngIf="dropdownVisible" class="menu_list">

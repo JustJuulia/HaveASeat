@@ -22,6 +22,7 @@ export class EditorHeaderComponent implements OnChanges, AfterViewInit {
 
   today: string;
   username: string = "";
+  usersurname: string = "Skibidi toilet Rizz";
   user: User = <User>{};
 
   constructor(private userService: UserService, private router: Router) {
@@ -35,7 +36,8 @@ export class EditorHeaderComponent implements OnChanges, AfterViewInit {
         next: userData => {
           console.log('Received user data:', userData);
           this.user = userData;
-          this.username = this.user.email.split('@')[0];
+          this.username = this.user.name;
+          this.usersurname = this.user.surname
         },
         error: err => {
           console.error('Failed to fetch user data:', err);

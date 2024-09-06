@@ -21,6 +21,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
 
   today: string;
   username: string = "";
+  usersurname: string = "Jan Wieprzowina";
   user: User = <User>{};
 
   constructor(private userService: UserService, private router: Router) {
@@ -34,7 +35,8 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
         next: userData => {
           console.log('Received user data:', userData);
           this.user = userData;
-          this.username = this.user.name
+          this.username = this.user.name;
+          this.usersurname = this.user.surname
         },
         error: err => {
           console.error('Failed to fetch user data:', err);
@@ -45,6 +47,18 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
     }
   }
   
+  setCalendarRestrictions(): void {
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    const nextMonth = new Date(today);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    const nextMonthStr = nextMonth.toISOString().split('T')[0];
+    const datePicker = document.getElementById('datecalendar') as HTMLInputElement;
+    if (datePicker) {
+      datePicker.setAttribute('min', todayStr);
+      datePicker.setAttribute('max', nextMonthStr);
+    }
+  }
 
   ngAfterViewInit() {
     const acc = document.getElementById("user") as HTMLElement;
@@ -66,6 +80,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
         });
       }
     }
+    this.setCalendarRestrictions();
   }
 
   onDateChange(event: any): void {
@@ -82,6 +97,8 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
     }
   }
 
+  // ten checkifadmin wiem ze jest dziwinie bo jak admin to false ale musialam tak zrb bo
+  //normalnie nie dzialalo wiec po prostu jak wywoluje to neguje ta funkcje sori
   checkifAdmin() {
     if (this.user.role == 1) {
       return true;
