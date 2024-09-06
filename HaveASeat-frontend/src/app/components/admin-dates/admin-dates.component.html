@@ -1,1 +1,7 @@
-<p>admin-dates works!</p>
+<div id="main_dates_div">
+    <input type="date"  id="datecalendar_admin" class=" date_timer_admin open-sans-font" 
+    [min]="today"  [(ngModel)]="pickedDate"/>
+    <input  type="text" id="ForbiddenDate_desc" placeholder="description" [(ngModel)]="writtendescr">
+    <button (click)="CreateForbiddenDate()">Confirm</button>
+
+</div>

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/models';
-import { HeaderComponent } from '../header/header.component';
 import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MapaComponent } from '../mapa/mapa.component';
 import { CommonModule } from '@angular/common';
-import { EditorHeaderComponent } from '../editor-header/editor-header.component';
+import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 @Component({
   selector: 'app-editor',
   standalone: true,
-  imports: [HeaderComponent, MapaComponent, CommonModule,EditorHeaderComponent, EditorMapComponent],
+  imports: [HeaderComponent, MapaComponent, CommonModule,HeaderComponent, EditorMapComponent],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
