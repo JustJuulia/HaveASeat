@@ -31,4 +31,22 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
         var result = await mapRepository.GetAllDesks();
         return Ok(result);
     }
+    [HttpPost("AddNewDesk")]
+    [ProducesResponseType(typeof(Boolean), 201)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AddNewDesk(NewDeskDTO newDeskDTO)
+    {
+        Cell cell = await mapRepository.GetCellByPosition(newDeskDTO.PositionX, newDeskDTO.PositionY);
+        if (cell == null)
+        {
+
+            return BadRequest("This position doesn't exist");
+        }
+        Boolean result = await mapRepository.AddNewDesk(newDeskDTO,cell);
+        if (result == false)
+        {
+            return BadRequest("This position is already occupied");
+        }
+        return Created("Desk has been succesfully added",result);
+    }
 }

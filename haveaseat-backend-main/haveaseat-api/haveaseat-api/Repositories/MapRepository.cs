@@ -1,5 +1,6 @@
 using haveaseat.DbContexts;
 using haveaseat.DTOs;
+using haveaseat.Models;
 using haveaseat.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,5 +35,38 @@ public class MapRepository(DataContext context) : IMapRepository
 
         List<RoomDTO> roomDtos = rooms.Select(room => new RoomDTO(room)).ToList();
         return roomDtos;
+    }
+    public async Task<Cell> GetCellByPosition(int positionX, int positionY)
+    {
+        Cell cell= await context.Cells.Where(x=> x.PositionX == positionX).Where(x => x.PositionY ==positionY).SingleOrDefaultAsync();
+        if (cell == null)
+        {
+
+            return null;
+
+        }
+        return cell;
+    }
+    public async Task<Boolean> AddNewDesk(NewDeskDTO newDesk, Cell cell)
+    {
+        Desk deskCheck = await context.Desks.Where(x=> x.PositionX == cell.PositionX).Where(x=>x.PositionX == cell.PositionX).SingleOrDefaultAsync();
+        if (deskCheck != null)
+        {
+            return false;
+        }
+        
+        Desk desk= new Desk
+        {
+            PositionX = newDesk.PositionX,
+            PositionY = newDesk.PositionY,
+            ChairPosition = newDesk.ChairPosition,
+            RoomId = cell.RoomId,
+            Room = cell.Room
+        };
+        await context.Desks.AddAsync(desk);
+        
+        await context.SaveChangesAsync();
+
+        return true;
     }
 }

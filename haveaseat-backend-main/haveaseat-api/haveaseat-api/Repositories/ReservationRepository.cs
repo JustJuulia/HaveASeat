@@ -54,4 +54,16 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         await context.SaveChangesAsync();
         return reservationDto;
     }
+    public async Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
+    {
+
+        List<User> users = await context.Reservations.Where(x => x.Date == date).Include(x => x.User).Join(context.Users,  reservation => reservation.UserId, user => user.Id, ( reseevation,user) => user ).ToListAsync();
+        if (users.Count == 0 || users== null)
+        {
+            return null;
+        }
+        List<UserDTO> userDTOs = users.Select(x => new UserDTO(x)).ToList();
+
+        return userDTOs;
+    }
 }

@@ -40,6 +40,18 @@ public class ReservationController(IReservationRepository _reservationRepository
         NewReservationDTO result = await _reservationRepository.InsertReservations(reservation);
         return Created("Reservation added", result);
     }
+    [HttpGet("getAllUsersWithReservationByDay/{date}")]
+    [ProducesResponseType(typeof(List<UserDTO>), 200)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetAllUsersFromReservationsByDate(DateOnly date)
+    {
+        if (date == null)
+        {
+            return BadRequest("Not send!");
+        }
+        List<UserDTO> userDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
+        return Ok(userDTOs);
+    }
 
     [HttpDelete("delete/{id}")]
     [ProducesResponseType(typeof(NewReservationDTO), 202)]
@@ -48,4 +60,5 @@ public class ReservationController(IReservationRepository _reservationRepository
         NewReservationDTO result = await _reservationRepository.DeleteReservationById(id);
         return Accepted(result);
     }
+
 } 
