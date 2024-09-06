@@ -66,4 +66,15 @@ public class ReservationRepository(DataContext context) : IReservationRepository
 
         return userDTOs;
     }
+    public async Task<List<LongTimeReservationToCheckDTQ>> longTimeReservationToCheckDTQByDeskId(long id)
+    {
+        List<Reservation> reservations = await context.Reservations.Where(x => x.DeskId ==id).ToListAsync();
+        if (reservations.Count == 0 || reservations == null)
+        {
+            return null;
+
+        }
+        List<LongTimeReservationToCheckDTQ> longTimeReservationToCheckDTQs = reservations.Select(x=> new LongTimeReservationToCheckDTQ(x)).ToList();
+        return longTimeReservationToCheckDTQs;
+    }
 }
