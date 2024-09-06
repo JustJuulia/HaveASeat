@@ -1,1 +1,28 @@
-<p>editor-map works!</p>
+<div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
+    <ng-container *ngFor="let room of rooms; let rowIndex = index" >
+      <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">
+        <div 
+          [ngStyle]="{
+            gridRowStart: cell.positionY,
+            gridColumnStart: cell.positionX,
+            boxShadow: getBorder(room.id, cell.positionY, cell.positionX)
+          }"
+          [ngClass]="{
+            'desk-cell': cell.isDesk,
+            'rotate-right': cell.rotationClass === 'rotate-right',
+            'rotate-bottom': cell.rotationClass === 'rotate-bottom',
+            'rotate-left': cell.rotationClass === 'rotate-left',
+            'clicked': cell.isClicked
+          }"
+          (click)="onDeskClick(cell)"
+          class="place">
+          <img *ngIf="cell.isDesk"  src="/assets/images/zielonegora.png" alt="Desk Image" class="desk-img" style="--cursor: pointer">
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div id="desk-menu">
+    <p id=current-desk>Aktywna komórka: {{ cellx }}, {{ celly }}</p>
+    <button id="add-desk"></button>
+  </div>
