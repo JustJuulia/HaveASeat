@@ -3,5 +3,12 @@
     [min]="today"  [(ngModel)]="pickedDate"/>
     <input  type="text" id="ForbiddenDate_desc" placeholder="description" [(ngModel)]="writtendescr">
     <button (click)="CreateForbiddenDate()">Confirm</button>
-
+    <div id="forb_dates_list">
+        ADADASDADADADSA
+        <div *ngIf="alldates.length > 0">
+            <ul>
+              <li *ngFor="let date of alldates"> {{ date }} <button >delete</button></li>
+            </ul>
+            </div>
+    </div>
 </div>
