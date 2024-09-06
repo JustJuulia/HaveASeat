@@ -52,7 +52,15 @@ public class ReservationController(IReservationRepository _reservationRepository
         List<UserDTO> userDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
         return Ok(userDTOs);
     }
+    [HttpGet("getAllReservationsByDeskId/{id}")]
+    [ProducesResponseType(typeof(List<LongTimeReservationToCheckDTQ>), 200)]
+    
 
+    public async Task<IActionResult> GetAllReservationsByDeskId(long id)
+    {
+        List<LongTimeReservationToCheckDTQ> longTimeReservationToCheckDTQs = await _reservationRepository.longTimeReservationToCheckDTQByDeskId(id);
+        return Ok(longTimeReservationToCheckDTQs);
+    }
     [HttpDelete("delete/{id}")]
     [ProducesResponseType(typeof(NewReservationDTO), 202)]
     public async Task<IActionResult> DeleteReservation(long id)
