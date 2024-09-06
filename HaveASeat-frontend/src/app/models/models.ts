@@ -41,3 +41,9 @@ export interface Room {
     email: string;
     role: number;
   }
+
+  export interface ForbiddenDate {
+    id: number;
+    description: string;
+    date: Date;
+  }
