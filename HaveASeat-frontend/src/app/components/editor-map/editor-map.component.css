@@ -51,7 +51,6 @@
     transition: transform 0.3s ease;
     position: absolute;
   }
-<<<<<<< Updated upstream
 
   .desk-rotate {
     width: 55px;
@@ -68,14 +67,6 @@
     height: fit-content
   }
   
-=======
-  .rotate-right, .rotate-bottom, .rotate-left {
-    transition: none;
-  }
-  .desk-img {
-    transition: none;
-  }
->>>>>>> Stashed changes
   .rotate-right .desk-img {
     transform: rotate(90deg);
   }

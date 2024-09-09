@@ -26,14 +26,9 @@ export class EditorMapComponent implements OnInit, OnChanges {
   celly: number = 0;
   previousCell: Cell | null = null;
   currentCell: Cell | null = null;
-<<<<<<< Updated upstream
   addedDesks: Desk[] = [];
   removedDesks: Desk[] = [];
   currentRotation: number = 0;
-=======
-  addedDesks: AddDesk[] = [];
-  removedDesks: AddDesk[] = [];
->>>>>>> Stashed changes
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
 
