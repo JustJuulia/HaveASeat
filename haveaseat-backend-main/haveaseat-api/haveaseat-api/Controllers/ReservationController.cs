@@ -62,10 +62,15 @@ public class ReservationController(IReservationRepository _reservationRepository
         return Ok(longTimeReservationToCheckDTQs);
     }
     [HttpDelete("delete/{id}")]
-    [ProducesResponseType(typeof(NewReservationDTO), 202)]
+    [ProducesResponseType(typeof(Boolean), 202)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> DeleteReservation(long id)
     {
-        NewReservationDTO result = await _reservationRepository.DeleteReservationById(id);
+        Boolean result = await _reservationRepository.DeleteReservationById(id);
+        if (!result)
+        {
+            return BadRequest("Something went wrong");
+        }
         return Accepted(result);
     }
 

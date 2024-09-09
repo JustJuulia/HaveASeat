@@ -46,13 +46,16 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         return reservation;
     }
 
-    public async Task<NewReservationDTO> DeleteReservationById(long reservationId)
+    public async Task<Boolean> DeleteReservationById(long reservationId)
     {
-        Reservation? result = await context.Reservations.FirstOrDefaultAsync(reservation => reservation.Id == reservationId);
-        NewReservationDTO reservationDto = new NewReservationDTO(result);
-        context.Reservations.Remove(result);
-        await context.SaveChangesAsync();
-        return reservationDto;
+        if (reservationId > 0)
+        {
+            return false;
+        }
+        if(await context.Reservations.Where(e=>e.Id == reservationId).ExecuteDeleteAsync() > 0){
+            return true;
+        }
+        return false;
     }
     public async Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
     {

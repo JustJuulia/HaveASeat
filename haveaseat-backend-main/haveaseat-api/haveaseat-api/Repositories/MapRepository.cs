@@ -69,4 +69,16 @@ public class MapRepository(DataContext context) : IMapRepository
 
         return true;
     }
+    public async Task<Boolean> EditChairPositionByDeskPosition(int positonX, int positonY, ChairPosition chairPosition)
+    {
+        if(!(chairPosition == ChairPosition.TOP || chairPosition == ChairPosition.RIGHT || chairPosition== ChairPosition.LEFT || chairPosition == ChairPosition.BOTTOM))
+        {
+            return false;
+        }
+        if(await context.Desks.Where(desk => desk.PositionX==positonX).Where(desk=>desk.PositionY==positonY).ExecuteUpdateAsync(desk => desk.SetProperty(e => e.ChairPosition, chairPosition)) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }

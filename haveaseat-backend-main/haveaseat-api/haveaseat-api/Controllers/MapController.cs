@@ -1,4 +1,5 @@
 using haveaseat.DTOs;
+using haveaseat.Models;
 using haveaseat.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,5 +49,17 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
             return BadRequest("This position is already occupied");
         }
         return Created("Desk has been succesfully added",result);
+    }
+    [HttpPost("EditChairPositionByDeskPosition")]
+    [ProducesResponseType(typeof(Boolean), 200)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> EditChairPositionByDeskPosition(int positonX, int positonY, ChairPosition chairPosition)
+    {
+        Boolean result =await mapRepository.EditChairPositionByDeskPosition(positonX, positonY, chairPosition);
+        if (result)
+        {
+            return Ok(result);
+        }
+        return BadRequest("Something went wrong!");
     }
 }

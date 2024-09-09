@@ -1,5 +1,5 @@
 using haveaseat.DTOs;
-
+using haveaseat.Models;
 namespace haveaseat.Repositories.Interfaces;
 
 public interface IMapRepository
@@ -10,6 +10,7 @@ public interface IMapRepository
     Task<Cell> GetCellByPosition(int positionX, int positionY);
     Task<Boolean> AddNewDesk(NewDeskDTO newDesk, Cell cell);
 
+    Task<Boolean> EditChairPositionByDeskPosition(int positonX, int positonY, ChairPosition chairPosition);
     
 
 }

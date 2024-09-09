@@ -21,16 +21,13 @@ public class ForbiddenDateRepository(DataContext context) : IForbiddenDateReposi
         await context.SaveChangesAsync();
         return newForbiddenDate;
     }
-    public async Task<ForbiddenDateDTO> DeleteForbiddenDateByDate(DateOnly date)
+    public async Task<Boolean> DeleteForbiddenDateByDate(DateOnly date)
     {
-        ForbiddenDate? forbiddenDate = await context.ForbiddenDates.Where(forbiddenDate => forbiddenDate.Date == date).SingleOrDefaultAsync();
-        if(forbiddenDate == null)
+        if (await context.ForbiddenDates.Where(forbiddenDate => forbiddenDate.Date == date).ExecuteDeleteAsync() > 0)
         {
-            return null;
+            return true;
         }
-        context.ForbiddenDates.Remove(forbiddenDate);
-        await context.SaveChangesAsync();
-        return new ForbiddenDateDTO(forbiddenDate);
+        return false;
     }
     public async Task<List<ForbiddenDateDTO>> GetAllForbiddenDates()
     {
