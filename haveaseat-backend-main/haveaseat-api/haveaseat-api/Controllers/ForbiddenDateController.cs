@@ -67,6 +67,17 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
 
         return Ok(getForbiddenDateById);
     }
-
+    [HttpPost("EditForbiddenDate")]
+    [ProducesResponseType(typeof(Boolean), 200)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> EditForbiddenDateByDate(DateOnly date, string description)
+    {
+        Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(date, description);
+        if (!updated)
+        {
+            return BadRequest("Something went wrong");
+        }
+        return Ok(updated);
+    }
 
 }

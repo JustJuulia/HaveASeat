@@ -64,4 +64,17 @@ public class ForbiddenDateRepository(DataContext context) : IForbiddenDateReposi
         ForbiddenDateDTO forbiddenDateDTO= new ForbiddenDateDTO(forbiddenDate);
         return forbiddenDateDTO;
     }
+    public async Task<Boolean> EditForbiddenDateByDate(DateOnly date, string description)
+    {
+        if (date == null)
+        {
+            return false;
+        }
+        
+        if(await context.ForbiddenDates.Where(forbiddenDate => forbiddenDate.Date == date).ExecuteUpdateAsync(forbidden => forbidden.SetProperty(y => y.Description, description)) > 0)
+        {
+            return true;
+        }
+        return false;
+    }
 }

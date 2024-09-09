@@ -3,12 +3,15 @@ using haveaseat_api.Seeders;
 using haveaseat.DbContexts;
 using haveaseat.Repositories;
 using haveaseat.Repositories.Interfaces;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 builder.Services.AddCors(policy => 
     policy.AddPolicy("corsapp",builder =>
     {
