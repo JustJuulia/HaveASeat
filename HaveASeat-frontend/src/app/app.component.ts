@@ -5,6 +5,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from "./components/login/login.component";
+import { FormsModule } from '@angular/forms';
+import { AdminDatesComponent } from './components/admin-dates/admin-dates.component';
 @Component({
   selector: 'app-root',
   standalone: true,

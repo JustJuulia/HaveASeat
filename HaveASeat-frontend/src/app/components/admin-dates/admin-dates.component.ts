@@ -18,10 +18,13 @@ export class AdminDatesComponent {
   private addDate = 'https://localhost:7023/api/ForbiddenDate/AddForbiddenDate/';
   private deleteDate = 'https://localhost:7023/api/ForbiddenDate/delete/{date}';
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
+  private updateDate= 'https://localhost:7023/api/ForbiddenDate/EditForbiddenDate';
   alldates: string[] = [];
   today: string;
   pickedDate: string | null = null;
   writtendescr: string | null = null;
+  isEditing = false;
+  newdesc: string = '';
 
   constructor(private http: HttpClient, private router: Router) {
     this.today = new Date().toISOString().split('T')[0];
@@ -29,6 +32,35 @@ export class AdminDatesComponent {
   }
   ngOnInit(): void {
     this.ShowAllForbiddenDates();
+  }
+  Change_date(date : string): void{
+    this.isEditing = true;
+  }
+  Save_date(date : string) {
+      let descrChangeElement = document.getElementById('edited_text') as HTMLInputElement;
+      let descrChange: string;
+  
+      if (descrChangeElement === null) {
+          descrChange = "Wolny dzien";
+      } else {
+          descrChange = descrChangeElement.value || "Wolny dzien";
+      }
+    const [datePart, description] =date.split(' - ');
+    const dateObj = new Date(datePart);
+    const isoDate = dateObj.toISOString().split('T')[0];
+    const dateData = { description: descrChange, date: isoDate };
+    console.log(isoDate, descrChange);
+      this.http.post(this.updateDate, dateData).subscribe({
+        next: (response) => {
+          alert('Forbidden date changed');
+          this.ShowAllForbiddenDates();
+        },
+        error: (error) => {
+          console.error('Error adding forbidden date:', error);
+          alert(`Error adding forbidden date: ${error.message}`);
+        },
+      });
+    this.isEditing = false;
   }
   ShowAllForbiddenDates() :void{
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
@@ -77,4 +109,5 @@ export class AdminDatesComponent {
       },
     });
   }
+  
 }

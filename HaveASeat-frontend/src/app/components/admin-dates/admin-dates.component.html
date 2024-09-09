@@ -7,8 +7,14 @@
         ADADASDADADADSA
         <div *ngIf="alldates.length > 0">
             <ul>
-              <li *ngFor="let date of alldates"> {{ date }} <button (click)="Delete_date(date)" >delete</button></li>
+              <li *ngFor="let date of alldates"> {{ date }} <button (click)="Delete_date(date)" >delete</button> 
+                <button (click)="Change_date(date)">Edit</button>
+                <br>
+                <input type="text" *ngIf="isEditing" id="edited_text">
+                <div *ngIf="isEditing">
+                  <button (click)="Save_date(date)">Save</button>
+                </div>
+              </li>
             </ul>
-            </div>
     </div>
 </div>

@@ -67,10 +67,18 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     const twoWeeksFromToday = new Date(today);
     twoWeeksFromToday.setDate(today.getDate() + 14);
     const twoWeeksFromTodayStr = twoWeeksFromToday.toISOString().split('T')[0];
+    // trzy linijku up zamien na te 3 jezeli trzeba zmienic restrictions na miesiac:
+    /*
+    const nextMonth = new Date(today);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    const nextMonthStr = nextMonth.toISOString().split('T')[0];
+    */
     const datePicker = document.getElementById('datecalendar') as HTMLInputElement;
     if (datePicker) {
       datePicker.setAttribute('min', todayStr);
       datePicker.setAttribute('max', twoWeeksFromTodayStr);
+      // i ta nad zmien na
+      //datePicker.setAttribute('max', nextMonthStr);
     }
   }
   
@@ -102,10 +110,9 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     const selectedDate = new Date(event.target.value);
     const day = selectedDate.getDay();
     const formattedSelectedDate = selectedDate.toISOString().slice(0, 10); 
-
-    const isForbiddenDate = this.alldates.some(date => 
-      date.toISOString().slice(0, 10) === formattedSelectedDate
-    );
+    const isForbiddenDate = this.alldates.some(date => {
+      return date.toISOString().slice(0, 10) === formattedSelectedDate;
+  });
 
     if (isForbiddenDate) {
       alert('Forbidden date');
@@ -153,7 +160,6 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
       console.warn('wuad da heallw')
     }
   }
-  
   dropdownVisible: boolean = false;
   toggleDropdown(state: boolean) {
     this.dropdownVisible = state;
