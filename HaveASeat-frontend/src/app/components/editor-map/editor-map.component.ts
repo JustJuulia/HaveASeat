@@ -28,6 +28,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
   currentCell: Cell | null = null;
   addedDesks: Desk[] = [];
   removedDesks: Desk[] = [];
+  currentRotation: number = 0;
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
 
@@ -70,8 +71,8 @@ export class EditorMapComponent implements OnInit, OnChanges {
       if(!this.currentCell.isDeleted) {
         this.currentCell.isNew = true;
       }
+      this.currentCell.rotationClass = this.getRotationClass(this.currentRotation);
       this.currentCell.isDeleted = false;
-      this.currentCell.rotationClass = '';
     }
   }
 
@@ -84,44 +85,9 @@ export class EditorMapComponent implements OnInit, OnChanges {
     }
   }
 
-  rotateRight () {
-    if(this.currentCell != null && this.currentCell.isDesk) {
-      switch (this.currentCell.rotationClass) {
-        case '':
-          this.currentCell.rotationClass = 'rotate-right';
-          break;
-        case 'rotate-right':
-          this.currentCell.rotationClass = 'rotate-bottom';
-          break;
-        case 'rotate-bottom':
-          this.currentCell.rotationClass = 'rotate-left';
-          break;
-        case 'rotate-left':
-          this.currentCell.rotationClass = '';
-          break;
-      }
-      console.log(this.currentCell.rotationClass);
-    }
-  }
-
-  rotateLeft() {
-    if(this.currentCell != null) {
-      switch (this.currentCell.rotationClass) {
-        case '':
-          this.currentCell.rotationClass = 'rotate-left';
-          break;
-        case 'rotate-right':
-          this.currentCell.rotationClass = '';
-          break;
-        case 'rotate-bottom':
-          this.currentCell.rotationClass = 'rotate-right';
-          break;
-        case 'rotate-left':
-          this.currentCell.rotationClass = 'rotate-bottom';
-          break;
-      }
-      console.log(this.currentCell.rotationClass);
-    }
+  rotate(rotation: number) {
+    this.currentRotation = rotation;
+    console.log(this.currentRotation);
   }
 
   check(desk: Desk, cell: Cell): boolean {

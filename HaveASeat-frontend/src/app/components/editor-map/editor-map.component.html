@@ -27,11 +27,14 @@
 
   <div class="desk-menu">
     <p class=current-desk>Aktywna komórka: {{ cellx }}, {{ celly }}</p>
-    <button class="add-desk" (click)="addDesk()" *ngIf="!currentCell?.isDesk && currentCell != null">Dodaj biurko</button>
-    <div *ngIf="currentCell?.isDesk">
-      <button class="remove-desk" (click)="removeDesk()">Usuń biurko</button>
-      <button class="rotate-left" (click)="rotateLeft()">Obróć w lewo</button>
-      <button class="rotate-right" (click)="rotateRight()">Obróć w prawo</button>
+    <div *ngIf="!currentCell?.isDesk && currentCell != null">
+      <button class="add-desk" (click)="addDesk()">Dodaj biurko</button>
+      <button class="desk-rotate" (click)="rotate(0)"><img src="/assets/images/niebieskiegora.png" alt="Rotate Top Image" class="desk-img" style="--cursor: pointer"></button>
+      <button class="desk-rotate rotate-right" (click)="rotate(1)"><img src="/assets/images/niebieskiegora.png" alt="Rotate Top Image" class="desk-img" style="--cursor: pointer"></button>
+      <button class="desk-rotate rotate-bottom" (click)="rotate(2)"><img src="/assets/images/niebieskiegora.png" alt="Rotate Top Image" class="desk-img" style="--cursor: pointer"></button>
+      <button class="desk-rotate rotate-left" (click)="rotate(3)"><img src="/assets/images/niebieskiegora.png" alt="Rotate Top Image" class="desk-img" style="--cursor: pointer"></button>
     </div>
+    
+    <button *ngIf="currentCell?.isDesk" class="remove-desk" (click)="removeDesk()">Usuń biurko</button>
   </div>
 </div>
