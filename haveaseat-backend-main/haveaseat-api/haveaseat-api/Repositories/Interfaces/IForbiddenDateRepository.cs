@@ -10,5 +10,6 @@ public interface IForbiddenDateRepository
     Task<List<ForbiddenDateDTO>> GetAllForbiddenDates();
     Task<ForbiddenDateDTO> GetForbiddenDateByDate(DateOnly date);
     Task<ForbiddenDateDTO> GetForbiddenDateById(long id);
+    Task<Boolean> EditForbiddenDateByDate(DateOnly date, string description);
 }
 
