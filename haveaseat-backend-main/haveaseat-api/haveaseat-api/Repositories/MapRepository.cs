@@ -81,4 +81,21 @@ public class MapRepository(DataContext context) : IMapRepository
         }
         return false;
     }
+    public async Task<Boolean> DeleteDesk(NewDeskDTO deskDTO)
+    {
+        
+        long id =(await context.Desks.Where(desk => desk.PositionX == deskDTO.PositionX).Where(desk => desk.PositionY == deskDTO.PositionY).SingleOrDefaultAsync()).Id;
+        if (id < 0)
+        {
+            return false;
+        }
+        await context.Desks.Where(e=>e.Id==id).Join(context.Reservations, x=>x.Id, y=>y.DeskId,(x,y)=>y).ExecuteDeleteAsync();
+        if(await context.Desks.Where(x => x.Id == id).ExecuteDeleteAsync() > 0)
+        {
+            return true;
+        }
+        return false; 
+        
+
+    }
 }

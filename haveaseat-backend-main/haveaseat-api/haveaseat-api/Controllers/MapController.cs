@@ -62,4 +62,20 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
         }
         return BadRequest("Something went wrong!");
     }
+    [HttpDelete("DeleteDesk")]
+    [ProducesResponseType(typeof(Boolean), 200)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> DeleteDesk(NewDeskDTO deskDTO)
+    {
+        if(deskDTO == null)
+        {
+            return BadRequest("not send!");
+        }
+        Boolean result= await mapRepository.DeleteDesk(deskDTO);
+        if(result == false)
+        {
+            return BadRequest("something went wrong");
+        }
+        return Ok(result);
+    }
 }

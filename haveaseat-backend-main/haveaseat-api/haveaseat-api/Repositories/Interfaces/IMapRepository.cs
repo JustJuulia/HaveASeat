@@ -11,6 +11,8 @@ public interface IMapRepository
     Task<Boolean> AddNewDesk(NewDeskDTO newDesk, Cell cell);
 
     Task<Boolean> EditChairPositionByDeskPosition(int positonX, int positonY, ChairPosition chairPosition);
+
+    Task<Boolean> DeleteDesk(NewDeskDTO deskDTO);
     
 
 }

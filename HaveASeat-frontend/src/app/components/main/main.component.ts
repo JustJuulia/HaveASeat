@@ -6,6 +6,8 @@ import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MapaComponent } from '../mapa/mapa.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
 
 @Component({
   selector: 'app-main',
