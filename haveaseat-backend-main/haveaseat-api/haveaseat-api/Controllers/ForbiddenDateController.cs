@@ -74,9 +74,13 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     [HttpPost("EditForbiddenDate")]
     [ProducesResponseType(typeof(Boolean), 200)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> EditForbiddenDateByDate(DateOnly date, string description)
+    public async Task<IActionResult> EditForbiddenDateByDate(NewForbiddenDateDTO newForbiddenDate)
     {
-        Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(date, description);
+        if(newForbiddenDate == null)
+        {
+            return BadRequest("not send!");
+        }
+        Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(newForbiddenDate);
         if (!updated)
         {
             return BadRequest("Something went wrong");
