@@ -64,15 +64,16 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   setCalendarRestrictions(): void {
     const today = new Date();
     const todayStr = today.toISOString().split('T')[0];
-    const nextMonth = new Date(today);
-    nextMonth.setMonth(nextMonth.getMonth() + 1);
-    const nextMonthStr = nextMonth.toISOString().split('T')[0];
+    const twoWeeksFromToday = new Date(today);
+    twoWeeksFromToday.setDate(today.getDate() + 14);
+    const twoWeeksFromTodayStr = twoWeeksFromToday.toISOString().split('T')[0];
     const datePicker = document.getElementById('datecalendar') as HTMLInputElement;
     if (datePicker) {
       datePicker.setAttribute('min', todayStr);
-      datePicker.setAttribute('max', nextMonthStr);
+      datePicker.setAttribute('max', twoWeeksFromTodayStr);
     }
   }
+  
 
   ngAfterViewInit() {
     const acc = document.getElementById("user") as HTMLElement;
