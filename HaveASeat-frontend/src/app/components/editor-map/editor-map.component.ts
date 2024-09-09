@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule, CurrencyPipe, NgFor, NgStyle } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Desk, Room, Cell, Reservation } from '../../models/models';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Desk, Room, Cell, Reservation, AddDesk } from '../../models/models';
 import { NgIf } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
@@ -26,13 +26,19 @@ export class EditorMapComponent implements OnInit, OnChanges {
   celly: number = 0;
   previousCell: Cell | null = null;
   currentCell: Cell | null = null;
+<<<<<<< Updated upstream
   addedDesks: Desk[] = [];
   removedDesks: Desk[] = [];
   currentRotation: number = 0;
+=======
+  addedDesks: AddDesk[] = [];
+  removedDesks: AddDesk[] = [];
+>>>>>>> Stashed changes
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
 
-  constructor(private mapaService: MapaService) {}
+  constructor(private mapaService: MapaService, private http: HttpClient) {}
+  private deleteDesk = 'https://localhost:7023/api/Map/DeleteDesk';
   ngOnInit(): void {
     forkJoin({
       rooms: this.mapaService.getRooms(),
@@ -48,11 +54,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
   }
-
-
-
 
   onDeskClick(cell: Cell) {
     if(this.previousCell != null) {
@@ -77,10 +79,33 @@ export class EditorMapComponent implements OnInit, OnChanges {
   }
 
   removeDesk() {
-    if(this.currentCell != null) {
+    if (this.currentCell != null && this.currentCell.isDesk) {
       this.currentCell.isDesk = false;
-      if(!this.currentCell.isNew) {
+      if (!this.currentCell.isNew) {
+        const deleteData = { 
+          positionX: this.currentCell.positionX, 
+          positionY: this.currentCell.positionY, 
+          chairPosition: 0
+        };
+        const httpOptions = {
+          headers: { 'Content-Type': 'application/json' },
+          body: deleteData
+        };
+        this.http.delete(this.deleteDesk, httpOptions).subscribe({
+          next: () => {
+            alert('Desk deleted successfully');
+            if(this.currentCell != null){
+            this.currentCell.isDeleted = true;
+            }
+          },
+          error: (error) => {
+            console.error('Error deleting desk:', error);
+            alert(`Error deleting desk: ${error.message}`);
+          },
+        });
+      } else {
         this.currentCell.isDeleted = true;
+        this.currentCell.isNew = false;
       }
     }
   }

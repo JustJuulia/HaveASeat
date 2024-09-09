@@ -19,6 +19,12 @@ export interface Room {
     isNew?: boolean;
     isDeleted?: boolean;
   }
+  export interface AddDesk {
+    positionX: number;
+    positionY: number;
+    chairPosition: number;
+    rotation?: number;
+  }
   export interface Desk {
     id: number;
     positionX: number;
