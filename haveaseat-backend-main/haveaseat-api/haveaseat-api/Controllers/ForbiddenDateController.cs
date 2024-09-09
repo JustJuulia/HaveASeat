@@ -22,7 +22,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         return Created("Forbidden date added", result);
     }
     [HttpDelete("delete/{date}")]
-    [ProducesResponseType(typeof(List<ForbiddenDateDTO>), 202)]
+    [ProducesResponseType(typeof(ForbiddenDateDTO), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> DeleteForbiddenDateByDate(DateOnly date)
     {
