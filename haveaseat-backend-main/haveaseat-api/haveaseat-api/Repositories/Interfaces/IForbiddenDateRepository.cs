@@ -5,7 +5,7 @@ public interface IForbiddenDateRepository
 {
     Task<NewForbiddenDateDTO> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate);
 
-    Task<ForbiddenDateDTO> DeleteForbiddenDateByDate(DateOnly date);
+    Task<Boolean> DeleteForbiddenDateByDate(DateOnly date);
 
     Task<List<ForbiddenDateDTO>> GetAllForbiddenDates();
     Task<ForbiddenDateDTO> GetForbiddenDateByDate(DateOnly date);

@@ -16,7 +16,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     {
         try
         {
-            String salt = BCrypt.Net.BCrypt.GenerateSalt(15);
+            String salt = BCrypt.Net.BCrypt.GenerateSalt(10);
             newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password, salt);
             string result = await authenticationRepository.RegisterUser(newUser, salt);
             return Created("User registered", newUser);

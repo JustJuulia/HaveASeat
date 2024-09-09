@@ -22,7 +22,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         return Created("Forbidden date added", result);
     }
     [HttpDelete("delete/{date}")]
-    [ProducesResponseType(typeof(ForbiddenDateDTO), 202)]
+    [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> DeleteForbiddenDateByDate(DateOnly date)
     {
@@ -30,7 +30,11 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
             return BadRequest("not send!");
 
         }
-        ForbiddenDateDTO result = await forbiddenDateRepository.DeleteForbiddenDateByDate(date);
+        Boolean result = await forbiddenDateRepository.DeleteForbiddenDateByDate(date);
+        if (!result)
+        {
+            return BadRequest("Something went wrong");
+        }
         return Accepted("delete Forbidden date",result);
     }
     [HttpGet("getAllForbiddenDates")]
