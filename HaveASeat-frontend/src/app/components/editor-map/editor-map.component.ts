@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { CommonModule, NgFor, NgStyle } from '@angular/common';
+import { CommonModule, CurrencyPipe, NgFor, NgStyle } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Desk, Room, Cell, Reservation } from '../../models/models';
 import { NgIf } from '@angular/common';
@@ -25,6 +25,9 @@ export class EditorMapComponent implements OnInit, OnChanges {
   cellx: number = 0;
   celly: number = 0;
   previousCell: Cell | null = null;
+  currentCell: Cell | null = null;
+  addedDesks: Desk[] = [];
+  removedDesks: Desk[] = [];
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
 
@@ -54,10 +57,62 @@ export class EditorMapComponent implements OnInit, OnChanges {
     if(this.previousCell != null) {
       this.previousCell.isClicked = false;
     }
+    this.currentCell = cell;
     this.cellx = cell.positionX; 
     this.celly = cell.positionY;
     cell.isClicked = true;
     this.previousCell = cell;
+  }
+
+  addDesk() {
+    if(this.currentCell != null) {
+      this.currentCell.isDesk = true;
+    }
+  }
+
+  removeDesk() {
+    if(this.currentCell != null) {
+      this.currentCell.isDesk = false;
+    }
+  }
+
+  rotateRight () {
+    if(this.currentCell != null && this.currentCell.isDesk) {
+      switch (this.currentCell.rotationClass) {
+        case '':
+          this.currentCell.rotationClass = 'rotate-right';
+          break;
+        case 'rotate-right':
+          this.currentCell.rotationClass = 'rotate-bottom';
+          break;
+        case 'rotate-bottom':
+          this.currentCell.rotationClass = 'rotate-left';
+          break;
+        case 'rotate-left':
+          this.currentCell.rotationClass = '';
+          break;
+      }
+      console.log(this.currentCell.rotationClass);
+    }
+  }
+
+  rotateLeft() {
+    if(this.currentCell != null && this.currentCell.isDesk) {
+      switch (this.currentCell.rotationClass) {
+        case '':
+          this.currentCell.rotationClass = 'rotate-left';
+          break;
+        case 'rotate-right':
+          this.currentCell.rotationClass = '';
+          break;
+        case 'rotate-bottom':
+          this.currentCell.rotationClass = 'rotate-right';
+          break;
+        case 'rotate-left':
+          this.currentCell.rotationClass = 'rotate-bottom';
+          break;
+      }
+    }
   }
 
   check(desk: Desk, cell: Cell): boolean {

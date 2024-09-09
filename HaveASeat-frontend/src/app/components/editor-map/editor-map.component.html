@@ -1,4 +1,5 @@
-<div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
+<div class="main">
+  <div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
     <ng-container *ngFor="let room of rooms; let rowIndex = index" >
       <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">
         <div 
@@ -22,7 +23,13 @@
     </ng-container>
   </div>
 
-  <div id="desk-menu">
-    <p id=current-desk>Aktywna komórka: {{ cellx }}, {{ celly }}</p>
-    <button id="add-desk"></button>
+  <div class="desk-menu">
+    <p class=current-desk>Aktywna komórka: {{ cellx }}, {{ celly }}</p>
+    <button class="add-desk" (click)="addDesk()" *ngIf="!currentCell?.isDesk && currentCell != null">Dodaj biurko</button>
+    <div *ngIf="currentCell?.isDesk">
+      <button class="remove-desk" (click)="removeDesk()">Usuń biurko</button>
+      <button class="rotate-left" (click)="rotateLeft()">Obróć w lewo</button>
+      <button class="rotate-right" (click)="rotateRight()">Obróć w prawo</button>
+    </div>
   </div>
+</div>
