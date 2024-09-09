@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnChanges, Output, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, AfterViewInit, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { User } from '../../models/models';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { ForbiddenDate } from '../../models/models';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'], 
   providers: [UserService]
 })
-export class HeaderComponent implements OnChanges, AfterViewInit {
+export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
 
   @Input() userId: number | null = null;
   @Output() dateChanged = new EventEmitter<string>();
@@ -23,11 +23,25 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
   username: string = "";
   usersurname: string = "Jan Wieprzowina";
   user: User = <User>{};
+  alldates: Date[] = [];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private http: HttpClient) {
     this.today = new Date().toISOString().slice(0, 10);
   }
+  private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
 
+  ngOnInit(): void {
+    this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
+      next: (dates: ForbiddenDate[]) => {
+        this.alldates = dates.map(date => 
+          new Date(date.date)
+        );
+      },
+      error: (err) => {
+        console.error('Error during dates show', err);
+      },
+    });
+  }
   ngOnChanges() {
     if (this.userId !== null) {
       console.log('Fetching user with ID:', this.userId);
@@ -82,18 +96,29 @@ export class HeaderComponent implements OnChanges, AfterViewInit {
     }
     this.setCalendarRestrictions();
   }
-
+  
   onDateChange(event: any): void {
-    const selectedDate = event.target.value;
-    const day = new Date(selectedDate).getDay();
-    if (day === 6 || day === 0) {
-      alert('W weekendy firma jest zamknieta');
+    const selectedDate = new Date(event.target.value);
+    const day = selectedDate.getDay();
+    const formattedSelectedDate = selectedDate.toISOString().slice(0, 10); 
+
+    const isForbiddenDate = this.alldates.some(date => 
+      date.toISOString().slice(0, 10) === formattedSelectedDate
+    );
+
+    if (isForbiddenDate) {
+      alert('Forbidden date');
       event.target.value = this.today;
       this.dateChanged.emit(this.today);
+      return;
     }
-    
-    else if (day != 6 && day != 0) {
-      this.dateChanged.emit(selectedDate);
+
+    if (day === 6 || day === 0) {
+      alert('The company is closed on weekends');
+      event.target.value = this.today;
+      this.dateChanged.emit(this.today);
+    } else {
+      this.dateChanged.emit(event.target.value);
     }
   }
 
