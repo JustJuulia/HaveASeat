@@ -17,7 +17,9 @@
           }"
           (click)="onDeskClick(cell)"
           class="place">
-          <img *ngIf="cell.isDesk"  src="/assets/images/zielonegora.png" alt="Desk Image" class="desk-img" style="--cursor: pointer">
+          <img *ngIf="cell.isDesk && !cell.isNew"  src="/assets/images/zielonegora.png" alt="Desk Image" class="desk-img" style="--cursor: pointer">
+          <img *ngIf="cell.isDesk && cell.isNew"  src="/assets/images/niebieskiegora.png" alt="New Desk Image" class="desk-img" style="--cursor: pointer">
+          <img *ngIf="cell.isDeleted" src="/assets/images/czerwonegora.png" alt="Deleted Desk image" class="desk-img">
         </div>
       </ng-container>
     </ng-container>

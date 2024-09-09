@@ -67,12 +67,20 @@ export class EditorMapComponent implements OnInit, OnChanges {
   addDesk() {
     if(this.currentCell != null) {
       this.currentCell.isDesk = true;
+      if(!this.currentCell.isDeleted) {
+        this.currentCell.isNew = true;
+      }
+      this.currentCell.isDeleted = false;
+      this.currentCell.rotationClass = '';
     }
   }
 
   removeDesk() {
     if(this.currentCell != null) {
       this.currentCell.isDesk = false;
+      if(!this.currentCell.isNew) {
+        this.currentCell.isDeleted = true;
+      }
     }
   }
 
@@ -97,7 +105,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
   }
 
   rotateLeft() {
-    if(this.currentCell != null && this.currentCell.isDesk) {
+    if(this.currentCell != null) {
       switch (this.currentCell.rotationClass) {
         case '':
           this.currentCell.rotationClass = 'rotate-left';
@@ -112,6 +120,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
           this.currentCell.rotationClass = 'rotate-bottom';
           break;
       }
+      console.log(this.currentCell.rotationClass);
     }
   }
 

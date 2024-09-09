@@ -16,6 +16,8 @@ export interface Room {
     isReserved?: boolean;
     isClicked?: boolean;
     isUsers?: boolean;
+    isNew?: boolean;
+    isDeleted?: boolean;
   }
   export interface Desk {
     id: number;
