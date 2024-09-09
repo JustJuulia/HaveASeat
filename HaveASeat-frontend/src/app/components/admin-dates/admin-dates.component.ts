@@ -38,8 +38,7 @@ export class AdminDatesComponent {
         );
       },
       error: (err) => {
-        console.error('Error during login:', err);
-        alert('There was an error during login. Please try again later.');
+        console.error('Error during dates show', err);
       },
     });
   }
@@ -55,6 +54,7 @@ export class AdminDatesComponent {
       this.http.post(this.addDate, dateData).subscribe({
         next: (response) => {
           alert('Forbidden date added');
+          this.ShowAllForbiddenDates();
         },
         error: (error) => {
           console.error('Error adding forbidden date:', error);
@@ -63,5 +63,18 @@ export class AdminDatesComponent {
       });
     }
   }
-  
+  Delete_date(date : string): void{
+    const [datePart, description] =date.split(' - ');
+    const delete_url = this.deleteDate.replace('{date}', datePart);
+    this.http.delete(delete_url).subscribe({
+      next: () => {
+        alert('Forbidden date deleted');
+        this.ShowAllForbiddenDates();
+      },
+      error: (error) => {
+        console.error('Error deleting forbidden date:', error);
+        alert(`Error deleting forbidden date: ${error.message}`);
+      },
+    });
+  }
 }
