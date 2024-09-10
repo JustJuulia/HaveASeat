@@ -142,7 +142,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     }
     else {
       console.log(this.user.role);
-      return false;
+      return true;
     }
   }
   GoToEdition() {
