@@ -1,0 +1,9 @@
+<div>
+    Lista użytkowników na dzisiejszy dzień:
+    <div *ngIf="users_list.length > 0">
+        <ul>
+          <li *ngFor="let user of users_list"> {{ user }} 
+          </li>
+        </ul>
+      </div>
+</div>
