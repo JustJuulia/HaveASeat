@@ -47,18 +47,24 @@
   position: absolute;
 }
 
-.rotate-right .desk-img {
-  transform: rotate(90deg);
+.rotate-right {
+  .desk-img {
+    transform: rotate(90deg);
+  }
 }
 
-.rotate-bottom .desk-img {
-  transform: rotate(180deg);
+.rotate-bottom {
+  .desk-img {
+    transform: rotate(180deg);
+  }
 }
 
-.rotate-left .desk-img {
-  transform: rotate(270deg);
+.rotate-left {
+  .desk-img {
+    transform: rotate(270deg);
+  }
+  
 }
-
 :hover {
   cursor: var(--cursor);
 }

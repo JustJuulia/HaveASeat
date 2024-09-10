@@ -120,17 +120,17 @@
     margin-bottom: 0;
     height:60px;
   }
-  #user > img {
-    height: 40px;
-    width: 40px;
-    margin-right: 1rem;
-  }
   #user {
     display:flex;
     flex-direction: row;
     align-items: center;
     margin:auto;
-  }
+    img {
+      height: 40px;
+      width: 40px;
+      margin-right: 1rem;
+    }
+  } 
   .menu_list {
     margin-top:8vh;
     position: absolute;
