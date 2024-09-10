@@ -111,7 +111,6 @@ export class EditorMapComponent implements OnInit, OnChanges {
           },
         });
       } else {
-        this.currentCell.isDeleted = true;
         this.currentCell.isNew = false;
       }
     }

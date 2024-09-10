@@ -3,7 +3,7 @@
   <div class="image">
     <img src="assets/images/belmondo.png" alt="Logo" class="logo">
   </div>
-  <div class="date_with_text">
+  <div class="date_with_text" *ngIf="pageSwitch == 0">
     <div class="first_step_text">
       <p class="number_for_instruction">1</p>
       <p class="reservation_date ">Wybierz datę rezerwacji  </p>
@@ -20,15 +20,18 @@
     <div class="legends_descriptions">
       <div class="legend-item">
         <div class="square free"></div>
-        <span> Miejsce wolne</span>
+        <span *ngIf="pageSwitch == 0"> Miejsce wolne</span>
+        <span *ngIf="pageSwitch == 1"> Biurko</span>
       </div>
       <div class="legend-item">
         <div class="square reserved"></div>
-        <span> Miejsce zajęte</span>
+        <span *ngIf="pageSwitch == 0"> Miejsce zajęte</span>
+        <span *ngIf="pageSwitch == 1"> Biurko usunięte</span>
       </div>
       <div class="legend-item">
         <div class="square yours"></div>
-        <span>Twoje miejsce</span>
+        <span *ngIf="pageSwitch == 0"> Twoje miejsce</span>
+        <span *ngIf="pageSwitch == 1"> Nowo dodane biurko</span>
       </div>  
     </div>
     
@@ -44,6 +47,7 @@
   </div>
 
   <ul *ngIf="dropdownVisible" class="menu_list">
+    <li class="menu_item" (click)="goToMap()">Mapa biura</li>
     <li class="menu_item">Moje rezerwacje</li>
     @if(!checkifAdmin()){
       <li class="menu_item" (click)="goToAdminPanel()"> Panel admina</li>

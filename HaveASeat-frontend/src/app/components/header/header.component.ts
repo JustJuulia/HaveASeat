@@ -16,6 +16,7 @@ import { ForbiddenDate } from '../../models/models';
 export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
 
   @Input() userId: number | null = null;
+  @Input() pageSwitch: number = 0;
   @Output() dateChanged = new EventEmitter<string>();
 
 
@@ -159,6 +160,9 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     else {
       console.warn('wuad da heallw')
     }
+  }
+  goToMap() {
+    this.router.navigate(['main'], {queryParams: {userId: this.userId}});
   }
   dropdownVisible: boolean = false;
   toggleDropdown(state: boolean) {
