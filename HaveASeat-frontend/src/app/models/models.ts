@@ -4,7 +4,6 @@ export interface Room {
     cells: Cell[];
     desks: Desk[];
   }
-  
   export interface Cell {
     imagePath: any;
     id: number;
