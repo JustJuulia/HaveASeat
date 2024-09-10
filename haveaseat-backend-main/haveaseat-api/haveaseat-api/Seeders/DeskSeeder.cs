@@ -129,7 +129,7 @@ public static class DeskSeeder
 
                     // room 2.11
                     context.AddRange(
-                        new Desk
+                       /* new Desk
                         {
                             PositionX = 11,
                             PositionY = 1,
@@ -149,7 +149,7 @@ public static class DeskSeeder
                             PositionY = 1,
                             ChairPosition = ChairPosition.RIGHT,
                             RoomId = 5
-                        },
+                       },
                         new Desk
                         {
                             PositionX = 12,
@@ -157,6 +157,7 @@ public static class DeskSeeder
                             ChairPosition = ChairPosition.RIGHT,
                             RoomId = 5
                         },
+                       */
                         new Desk
                         {
                             PositionX = 13,
