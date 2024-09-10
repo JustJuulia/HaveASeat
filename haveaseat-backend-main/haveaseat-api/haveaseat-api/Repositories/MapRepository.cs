@@ -38,18 +38,12 @@ public class MapRepository(DataContext context) : IMapRepository
     }
     public async Task<Cell> GetCellByPosition(int positionX, int positionY)
     {
-        Cell cell= await context.Cells.Where(x=> x.PositionX == positionX).Where(x => x.PositionY ==positionY).SingleOrDefaultAsync();
-        if (cell == null)
-        {
-
-            return null;
-
-        }
+        Cell? cell= await context.Cells.Where(x=> x.PositionX == positionX).Where(y => y.PositionY ==positionY).SingleOrDefaultAsync();
         return cell;
     }
     public async Task<Boolean> AddNewDesk(NewDeskDTO newDesk, Cell cell)
     {
-        Desk deskCheck = await context.Desks.Where(x=> x.PositionX == cell.PositionX).Where(x=>x.PositionX == cell.PositionX).SingleOrDefaultAsync();
+        Desk? deskCheck = await context.Desks.Where(x=> x.PositionX == cell.PositionX).Where(x=>x.PositionY == cell.PositionY).SingleOrDefaultAsync();
         if (deskCheck != null)
         {
             return false;
