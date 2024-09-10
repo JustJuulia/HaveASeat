@@ -48,7 +48,6 @@
 
   <ul *ngIf="dropdownVisible" class="menu_list">
     <li class="menu_item" (click)="goToMap()">Mapa biura</li>
-    <li class="menu_item">Moje rezerwacje</li>
     @if(!checkifAdmin()){
       <li class="menu_item" (click)="goToAdminPanel()"> Panel admina</li>
       <li class="menu_item" (click)="GoToEdition()"> Edytor biura</li>
