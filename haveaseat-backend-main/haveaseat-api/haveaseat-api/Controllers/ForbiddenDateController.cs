@@ -13,33 +13,48 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     [HttpPost("AddForbiddenDate")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate)
     {   if(newForbiddenDate == null)
         {
             return BadRequest("Not send!");
         }
+        if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) != null)
+        {
+            return BadRequest("Date already exist");
+        }
+        
         NewForbiddenDateDTO result = await forbiddenDateRepository.AddForbiddenDate(newForbiddenDate);
+        if (result == null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error with database");
+        }
         return Created("Forbidden date added", result);
     }
     [HttpDelete("delete/{date}")]
     [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteForbiddenDateByDate(DateOnly date)
     {
         if(date == null){
             return BadRequest("not send!");
 
         }
+        if (await forbiddenDateRepository.GetForbiddenDateByDate(date) == null)
+        {
+            return BadRequest("Date doesn't exist!");
+        }
         Boolean result = await forbiddenDateRepository.DeleteForbiddenDateByDate(date);
         if (!result)
         {
-            return BadRequest("Something went wrong");
+            return StatusCode(StatusCodes.Status500InternalServerError,"error with database!");
         }
         return Accepted("delete Forbidden date",result);
     }
     [HttpGet("getAllForbiddenDates")]
     [ProducesResponseType(typeof(List<ForbiddenDateDTO>), 200)]
-    public async Task<IActionResult> GetAllDesks()
+    public async Task<IActionResult> GetAllForbiddenDates()
     {
         var result = await forbiddenDateRepository.GetAllForbiddenDates();
         return Ok(result);
@@ -74,8 +89,13 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     [HttpPost("EditForbiddenDate")]
     [ProducesResponseType(typeof(Boolean), 200)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> EditForbiddenDateByDate(NewForbiddenDateDTO newForbiddenDate)
     {
+        if(await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) == null)
+        {
+            return BadRequest("Date is not forbidden");
+        }
         if(newForbiddenDate == null)
         {
             return BadRequest("not send!");
@@ -83,7 +103,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(newForbiddenDate);
         if (!updated)
         {
-            return BadRequest("Something went wrong");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error with database");
         }
         return Ok(updated);
     }

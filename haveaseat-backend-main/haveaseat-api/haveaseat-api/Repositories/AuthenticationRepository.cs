@@ -35,6 +35,7 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
     public async Task<UserDTO> GetUserByEmail(string email)
     {
         User? user = await context.Users.Where(user => user.Email == email).SingleOrDefaultAsync();
+
         if (user == null)
         {
             return null;

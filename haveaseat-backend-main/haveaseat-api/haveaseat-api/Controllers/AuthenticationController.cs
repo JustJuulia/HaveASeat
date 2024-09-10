@@ -12,17 +12,27 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
 {
     [HttpPost("register")]
     [ProducesResponseType(typeof(NewUserDTO),201)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RegisterUser(NewUserDTO newUser)
     {
+        if (await authenticationRepository.GetUserByEmail(newUser.Email) != null) {
+            return BadRequest("User already exist !"+(authenticationRepository.GetUserByEmail(newUser.Email)));
+        }
         try
         {
             String salt = BCrypt.Net.BCrypt.GenerateSalt(10);
             newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password, salt);
             string result = await authenticationRepository.RegisterUser(newUser, salt);
+            if (result == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error with adding user to database!");
+            }
             return Created("User registered", newUser);
         }
         catch (Exception e)
         {
+            return StatusCode(StatusCodes.Status500InternalServerError, $"An server side error");
             Console.WriteLine(e);
             throw;
         }
@@ -57,6 +67,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     [HttpPost("Login")]
     [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> LoginUser(NewUserLoginDTO user)
     {
         if (user == null)
@@ -65,11 +76,16 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         }
         try
         {
-            String salt = await authenticationRepository.GetSaltByEmail(user.Email);
-            if (salt == null)
+            if(await authenticationRepository.GetUserByEmail(user.Email) == null)
             {
                 return BadRequest("Wrong email or password!");
             }
+            String salt = await authenticationRepository.GetSaltByEmail(user.Email);
+            if (salt == null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error with connecting to database!");
+            }
+           
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
             Boolean result = await authenticationRepository.LoginUser(user);
            
@@ -81,6 +97,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         }
         catch (Exception e)
         {
+            return StatusCode(StatusCodes.Status500InternalServerError, $"An server side error");
             Console.WriteLine(e);
             throw;
         }

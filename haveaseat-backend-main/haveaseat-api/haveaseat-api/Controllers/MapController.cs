@@ -43,6 +43,7 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
 
             return BadRequest("This position doesn't exist");
         }
+        
         Boolean result = await mapRepository.AddNewDesk(newDeskDTO,cell);
         if (result == false)
         {
@@ -56,6 +57,7 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
     public async Task<IActionResult> EditChairPositionByDeskPosition(int positonX, int positonY, ChairPosition chairPosition)
     {
         Boolean result =await mapRepository.EditChairPositionByDeskPosition(positonX, positonY, chairPosition);
+
         if (result)
         {
             return Ok(result);
