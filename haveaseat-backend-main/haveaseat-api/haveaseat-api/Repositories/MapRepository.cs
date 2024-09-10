@@ -43,7 +43,7 @@ public class MapRepository(DataContext context) : IMapRepository
     }
     public async Task<Boolean> AddNewDesk(NewDeskDTO newDesk, Cell cell)
     {
-        Desk? deskCheck = await context.Desks.Where(x=> x.PositionX == cell.PositionX).Where(x=>x.PositionY == cell.PositionY).SingleOrDefaultAsync();
+        Desk? deskCheck = await context.Desks.Where(x=> x.PositionX == cell.PositionX).Where(y=>y.PositionY == cell.PositionY).SingleOrDefaultAsync();
         if (deskCheck != null)
         {
             return false;

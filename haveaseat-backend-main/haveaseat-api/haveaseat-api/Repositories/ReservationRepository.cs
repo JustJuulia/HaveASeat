@@ -48,7 +48,7 @@ public class ReservationRepository(DataContext context) : IReservationRepository
 
     public async Task<Boolean> DeleteReservationById(long reservationId)
     {
-        if (reservationId > 0)
+        if (reservationId < 0)
         {
             return false;
         }
