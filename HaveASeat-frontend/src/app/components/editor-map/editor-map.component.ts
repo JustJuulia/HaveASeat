@@ -7,6 +7,8 @@ import { forkJoin } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PropertyRead } from '@angular/compiler';
 
 @Component({
   selector: 'app-editor-map',
@@ -32,7 +34,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
   @Input() selectedDate: string = '';
   @Input() userId: number | null = null;
 
-  constructor(private mapaService: MapaService, private http: HttpClient) { }
+  constructor(private mapaService: MapaService, private http: HttpClient, private snackBar: MatSnackBar) { }
   private deleteDesk_url = 'https://localhost:7023/api/Map/DeleteDesk';
   private addDesk_url = 'https://localhost:7023/api/Map/AddNewDesk';
   ngOnInit(): void {
@@ -47,6 +49,21 @@ export class EditorMapComponent implements OnInit, OnChanges {
         console.error('Error fetching data:', error);
       }
     );
+  }
+
+  popup(type: number, text: string) {
+    if(type == 0) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['success']
+      });
+    }
+    if(type == 1) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['failure']
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -74,11 +91,11 @@ export class EditorMapComponent implements OnInit, OnChanges {
 
       this.http.post(this.addDesk_url, deskData).subscribe({
         next: (response) => {
-          alert('added desk');
+          this.popup(0, "Dodano stanowisko")
         },
         error: (registerErr) => {
           console.error('Error while adding', registerErr);
-          alert('error while adding desk oopsie');
+          this.popup(1, "Błąd w dodawaniu")
         },
       });
       this.currentCell.isDeleted = false;
@@ -100,14 +117,14 @@ export class EditorMapComponent implements OnInit, OnChanges {
         };
         this.http.delete(this.deleteDesk_url, httpOptions).subscribe({
           next: () => {
-            alert('Desk deleted successfully');
+            this.popup(0, "Usunięto stanowisko")
             if (this.currentCell != null) {
               this.currentCell.isDeleted = true;
             }
           },
           error: (error) => {
             console.error('Error deleting desk:', error);
-            alert(`Error deleting desk: ${error.message}`);
+            this.popup(1, "Błąd w usuwaniu")
           },
         });
       } else {

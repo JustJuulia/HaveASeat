@@ -5,6 +5,7 @@ import { User } from '../../models/models';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ForbiddenDate } from '../../models/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   user: User = <User>{};
   alldates: Date[] = [];
 
-  constructor(private userService: UserService, private router: Router, private http: HttpClient) {
+  constructor(private userService: UserService, private router: Router, private http: HttpClient, private snackBar: MatSnackBar) {
     this.today = new Date().toISOString().slice(0, 10);
   }
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
@@ -59,6 +60,21 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
       });
     } else {
       console.warn('userId is null');
+    }
+  }
+
+  popup(type: number, text: string) {
+    if(type == 0) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['success']
+      });
+    }
+    if(type == 1) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['failure']
+      });
     }
   }
   
@@ -116,14 +132,14 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   });
 
     if (isForbiddenDate) {
-      alert('Forbidden date');
+      this.popup(0, "Dzień wolny od pracy")
       event.target.value = this.today;
       this.dateChanged.emit(this.today);
       return;
     }
 
     if (day === 6 || day === 0) {
-      alert('The company is closed on weekends');
+      this.popup(0, "Weekend")
       event.target.value = this.today;
       this.dateChanged.emit(this.today);
     } else {
@@ -150,7 +166,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
       this.router.navigate(['editor'], { queryParams: { userId: this.userId } });
     } else {
       console.warn('User ID is null. Cannot navigate to editor.');
-      alert('User ID is missing. Unable to proceed to the editor.');
+      this.popup(1, "Użytkownik nie istnieje, nie można przejść do edytora")
     }
   }
   goToAdminPanel() {

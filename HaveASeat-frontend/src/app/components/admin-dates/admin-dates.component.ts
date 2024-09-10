@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-dates',
@@ -26,12 +27,26 @@ export class AdminDatesComponent {
   isEditing = false;
   newdesc: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {
     this.today = new Date().toISOString().split('T')[0];
     this.pickedDate = this.today;
   }
   ngOnInit(): void {
     this.ShowAllForbiddenDates();
+  }
+  popup(type: number, text: string) {
+    if(type == 0) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['success']
+      });
+    }
+    if(type == 1) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['failure']
+      });
+    }
   }
   Change_date(date : string): void{
     this.isEditing = true;
@@ -52,12 +67,12 @@ export class AdminDatesComponent {
     console.log(isoDate, descrChange);
       this.http.post(this.updateDate, dateData).subscribe({
         next: (response) => {
-          alert('Forbidden date changed');
+          this.popup(0, "Dzień wolny zmieniony");
           this.ShowAllForbiddenDates();
         },
         error: (error) => {
-          console.error('Error adding forbidden date:', error);
-          alert(`Error adding forbidden date: ${error.message}`);
+          console.error('Error changing forbidden date:', error);
+          this.popup(1, "Błąd w zmienianiu dnia wolnego");
         },
       });
     this.isEditing = false;
@@ -85,12 +100,12 @@ export class AdminDatesComponent {
       const dateData = { description: descr, date: isoDate };
       this.http.post(this.addDate, dateData).subscribe({
         next: (response) => {
-          alert('Forbidden date added');
+          this.popup(0, "Dzień wolny dodany");
           this.ShowAllForbiddenDates();
         },
         error: (error) => {
           console.error('Error adding forbidden date:', error);
-          alert(`Error adding forbidden date: ${error.message}`);
+          this.popup(1, "Błąd w dodawaniu dnia wolnego");
         },
       });
     }
@@ -100,12 +115,12 @@ export class AdminDatesComponent {
     const delete_url = this.deleteDate.replace('{date}', datePart);
     this.http.delete(delete_url).subscribe({
       next: () => {
-        alert('Forbidden date deleted');
+        this.popup(0, "Dzień wolny usunięty")
         this.ShowAllForbiddenDates();
       },
       error: (error) => {
         console.error('Error deleting forbidden date:', error);
-        alert(`Error deleting forbidden date: ${error.message}`);
+        this.popup(1, "Błąd w usuwaniu dnia wolnego");
       },
     });
   }
