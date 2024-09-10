@@ -11,7 +11,7 @@ import { MapaService } from '../../services/mapa.service';
 @Component({
   selector: 'app-editor-map',
   templateUrl: './editor-map.component.html',
-  styleUrl: './editor-map.component.css',
+  styleUrl: './editor-map.component.scss',
   imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent],
   standalone: true,
   providers: [MapaService, UserService],

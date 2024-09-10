@@ -12,7 +12,7 @@ import { EditorMapComponent} from  '../editor-map/editor-map.component';
   standalone: true,
   imports: [HeaderComponent, MapaComponent, CommonModule,HeaderComponent, EditorMapComponent],
   templateUrl: './editor.component.html',
-  styleUrl: './editor.component.css'
+  styleUrl: './editor.component.scss'
 })
 export class EditorComponent {
   title = 'HaveASeat';

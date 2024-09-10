@@ -15,7 +15,7 @@ import { UserListComponent } from '../user-list/user-list.component';
   standalone: true,
   imports: [HeaderComponent, MapaComponent, CommonModule, UserListComponent],
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
   title = 'HaveASeat';

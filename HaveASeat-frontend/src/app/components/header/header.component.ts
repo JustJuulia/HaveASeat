@@ -10,7 +10,7 @@ import { ForbiddenDate } from '../../models/models';
   standalone: true,
   imports: [HttpClientModule, NgIf],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'], 
+  styleUrls: ['./header.component.scss'], 
   providers: [UserService]
 })
 export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {

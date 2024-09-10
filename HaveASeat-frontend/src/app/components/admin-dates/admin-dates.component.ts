@@ -12,7 +12,7 @@ import { NgFor } from '@angular/common';
   standalone: true,
   imports: [HttpClientModule, NgIf, FormsModule, NgFor],
   templateUrl: './admin-dates.component.html',
-  styleUrls: ['./admin-dates.component.css']
+  styleUrls: ['./admin-dates.component.scss']
 })
 export class AdminDatesComponent {
   private addDate = 'https://localhost:7023/api/ForbiddenDate/AddForbiddenDate/';

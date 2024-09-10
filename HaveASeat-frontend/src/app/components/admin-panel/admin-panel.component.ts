@@ -14,7 +14,7 @@ import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
   standalone: true,
   imports: [HeaderComponent, MapaComponent, CommonModule,HeaderComponent, EditorMapComponent, AdminDatesComponent],
   templateUrl: './admin-panel.component.html',
-  styleUrl: './admin-panel.component.css'
+  styleUrl: './admin-panel.component.scss'
 })
 export class AdminPanelComponent {
   title = 'HaveASeat';

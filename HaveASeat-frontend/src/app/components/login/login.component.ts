@@ -9,7 +9,7 @@ import { User } from '../../models/models';
   standalone: true,
   imports: [HttpClientModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   providers: [UserService],
 })
 export class LoginComponent {

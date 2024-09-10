@@ -12,7 +12,7 @@ import { AdminDatesComponent } from './components/admin-dates/admin-dates.compon
   standalone: true,
   imports: [RouterOutlet, HttpClientModule, MainComponent, RouterLink, RouterLinkActive, LoginComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
   
 })
 export class AppComponent {
