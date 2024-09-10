@@ -29,11 +29,12 @@ export class EditorMapComponent implements OnInit, OnChanges {
   addedDesks: Desk[] = [];
   removedDesks: Desk[] = [];
   currentRotation: number = 0;
-  @Input() selectedDate: string = ''; 
+  @Input() selectedDate: string = '';
   @Input() userId: number | null = null;
 
-  constructor(private mapaService: MapaService, private http: HttpClient) {}
-  private deleteDesk = 'https://localhost:7023/api/Map/DeleteDesk';
+  constructor(private mapaService: MapaService, private http: HttpClient) { }
+  private deleteDesk_url = 'https://localhost:7023/api/Map/DeleteDesk';
+  private addDesk_url = 'https://localhost:7023/api/Map/AddNewDesk';
   ngOnInit(): void {
     forkJoin({
       rooms: this.mapaService.getRooms(),
@@ -52,23 +53,34 @@ export class EditorMapComponent implements OnInit, OnChanges {
   }
 
   onDeskClick(cell: Cell) {
-    if(this.previousCell != null) {
+    if (this.previousCell != null) {
       this.previousCell.isClicked = false;
     }
     this.currentCell = cell;
-    this.cellx = cell.positionX; 
+    this.cellx = cell.positionX;
     this.celly = cell.positionY;
     cell.isClicked = true;
     this.previousCell = cell;
   }
 
   addDesk() {
-    if(this.currentCell != null) {
+    if (this.currentCell != null) {
       this.currentCell.isDesk = true;
-      if(!this.currentCell.isDeleted) {
+      if (!this.currentCell.isDeleted) {
         this.currentCell.isNew = true;
       }
       this.currentCell.rotationClass = this.getRotationClass(this.currentRotation);
+      const deskData = { positionX: this.currentCell.positionX, positionY: this.currentCell.positionY, chairPosition: this.currentRotation };
+
+      this.http.post(this.addDesk_url, deskData).subscribe({
+        next: (response) => {
+          alert('added desk');
+        },
+        error: (registerErr) => {
+          console.error('Error while adding', registerErr);
+          alert('error while adding desk oopsie');
+        },
+      });
       this.currentCell.isDeleted = false;
     }
   }
@@ -77,20 +89,20 @@ export class EditorMapComponent implements OnInit, OnChanges {
     if (this.currentCell != null && this.currentCell.isDesk) {
       this.currentCell.isDesk = false;
       if (!this.currentCell.isNew) {
-        const deleteData = { 
-          positionX: this.currentCell.positionX, 
-          positionY: this.currentCell.positionY, 
+        const deleteData = {
+          positionX: this.currentCell.positionX,
+          positionY: this.currentCell.positionY,
           chairPosition: 0
         };
         const httpOptions = {
           headers: { 'Content-Type': 'application/json' },
           body: deleteData
         };
-        this.http.delete(this.deleteDesk, httpOptions).subscribe({
+        this.http.delete(this.deleteDesk_url, httpOptions).subscribe({
           next: () => {
             alert('Desk deleted successfully');
-            if(this.currentCell != null){
-            this.currentCell.isDeleted = true;
+            if (this.currentCell != null) {
+              this.currentCell.isDeleted = true;
             }
           },
           error: (error) => {
