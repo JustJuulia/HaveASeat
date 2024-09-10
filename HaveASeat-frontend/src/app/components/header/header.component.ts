@@ -31,6 +31,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     this.today = new Date().toISOString().slice(0, 10);
   }
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
+  private getforbDate = 'https://localhost:7023/api/ForbiddenDate/GetByDate';
 
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
@@ -132,7 +133,16 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   });
 
     if (isForbiddenDate) {
-      this.popup(0, "Dzień wolny od pracy")
+      const url = `${this.getforbDate}/${formattedSelectedDate}`; 
+      this.http.get<ForbiddenDate>(url).subscribe({
+        next: (date: ForbiddenDate) => {
+          this.popup(0, date.description);
+        },
+        error: (err) => {
+          console.error('Error during dates show', err);
+        },
+      });
+
       event.target.value = this.today;
       this.dateChanged.emit(this.today);
       return;

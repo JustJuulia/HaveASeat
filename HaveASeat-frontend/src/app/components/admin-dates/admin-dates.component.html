@@ -1,21 +1,22 @@
 <div id="main_dates_div">
-    <input type="date"  id="datecalendar_admin" class=" date_timer_admin open-sans-font" 
-    [min]="today"  [(ngModel)]="pickedDate"/>
-    <input  type="text" id="ForbiddenDate_desc" placeholder="description" [(ngModel)]="writtendescr">
-    <button (click)="CreateForbiddenDate()">Confirm</button>
-    <div id="forb_dates_list">
-        ADADASDADADADSA
-        <div *ngIf="alldates.length > 0">
-            <ul>
-              <li *ngFor="let date of alldates"> {{ date }} <button (click)="Delete_date(date)" >delete</button> 
-                <button (click)="Change_date(date)">Edit</button>
-                <br>
-                <input type="text" *ngIf="isEditing" id="edited_text">
-                <div *ngIf="isEditing">
-                  <button (click)="Save_date(date)">Save</button>
-                </div>
-              </li>
-            </ul>
+  <input type="date" id="datecalendar_admin" class="date_timer_admin open-sans-font" [min]="today"
+    [(ngModel)]="pickedDate" />
+  <input type="text" id="ForbiddenDate_desc" placeholder="description" [(ngModel)]="writtendescr">
+  <button (click)="CreateForbiddenDate()">Confirm</button>
+  <div id="forb_dates_list">
+    <div *ngIf="alldates.length > 0">
+      <ul>
+        <li *ngFor="let date of alldates">
+          {{ date }}
+          <button (click)="Delete_date(date)">delete</button>
+          <button (click)="Change_date(date)">Edit</button>
+          <br>
+          <input type="text" *ngIf="editedDate === date" id="edited_text">
+          <div *ngIf="editedDate === date">
+            <button (click)="Save_date(date)">Save</button>
           </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>

@@ -22,6 +22,7 @@ export class AdminDatesComponent {
   private updateDate= 'https://localhost:7023/api/ForbiddenDate/EditForbiddenDate';
   alldates: string[] = [];
   today: string;
+  editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
   isEditing = false;
@@ -48,35 +49,39 @@ export class AdminDatesComponent {
       });
     }
   }
-  Change_date(date : string): void{
-    this.isEditing = true;
+  Change_date(date: string): void {
+    this.editedDate = date; 
   }
-  Save_date(date : string) {
-      let descrChangeElement = document.getElementById('edited_text') as HTMLInputElement;
-      let descrChange: string;
+  Save_date(date: string) {
+    let descrChangeElement = document.getElementById('edited_text') as HTMLInputElement;
+    let descrChange: string;
   
-      if (descrChangeElement === null) {
-          descrChange = "Wolny dzien";
-      } else {
-          descrChange = descrChangeElement.value || "Wolny dzien";
-      }
-    const [datePart, description] =date.split(' - ');
+    if (descrChangeElement === null) {
+        descrChange = "Wolny dzien";
+    } else {
+        descrChange = descrChangeElement.value || "Dzien wolny";
+    }
+    
+    const [datePart, description] = date.split(' - ');
     const dateObj = new Date(datePart);
     const isoDate = dateObj.toISOString().split('T')[0];
     const dateData = { description: descrChange, date: isoDate };
     console.log(isoDate, descrChange);
-      this.http.post(this.updateDate, dateData).subscribe({
-        next: (response) => {
-          this.popup(0, "Dzień wolny zmieniony");
-          this.ShowAllForbiddenDates();
-        },
-        error: (error) => {
-          console.error('Error changing forbidden date:', error);
-          this.popup(1, "Błąd w zmienianiu dnia wolnego");
-        },
-      });
-    this.isEditing = false;
+    
+    this.http.post(this.updateDate, dateData).subscribe({
+      next: (response) => {
+        this.popup(0, "Dzień wolny zmieniony");
+        this.ShowAllForbiddenDates();
+      },
+      error: (error) => {
+        console.error('Error changing forbidden date:', error);
+        this.popup(1, "Błąd w zmienianiu dnia wolnego");
+      },
+    });
+    
+    this.editedDate = null;
   }
+  
   ShowAllForbiddenDates() :void{
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
       next: (dates: ForbiddenDate[]) => {
