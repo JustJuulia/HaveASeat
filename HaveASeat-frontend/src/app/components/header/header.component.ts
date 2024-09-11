@@ -39,12 +39,16 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
         this.alldates = dates.map(date => 
           new Date(date.date)
         );
+        const emit_date = this.nearestworkday(this.today);
+        this.today = emit_date;
+        this.dateChanged.emit(emit_date);
       },
       error: (err) => {
         console.error('Error during dates show', err);
       },
     });
   }
+  
   ngOnChanges() {
     if (this.userId !== null) {
       console.log('Fetching user with ID:', this.userId);
@@ -76,6 +80,24 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
         duration: 3500,
         panelClass: ['failure']
       });
+    }
+  }
+  nearestworkday(today: string): string {
+    let today_date = new Date(today);
+    while (true) {
+      let day = today_date.getDay();
+      let counter = 0;
+      if (day !== 6 && day !== 0) { 
+        this.alldates.forEach(forb_date => {
+          if (today_date.getTime() === forb_date.getTime()) {
+            counter++;
+          }
+        });
+        if (counter === 0) {
+          return today_date.toISOString().slice(0, 10); 
+        }
+      }
+      today_date.setDate(today_date.getDate() + 1); 
     }
   }
   
@@ -127,13 +149,11 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   onDateChange(event: any): void {
     const selectedDate = new Date(event.target.value);
     const day = selectedDate.getDay();
-    const formattedSelectedDate = selectedDate.toISOString().slice(0, 10); 
-    const isForbiddenDate = this.alldates.some(date => {
-      return date.toISOString().slice(0, 10) === formattedSelectedDate;
-  });
-
+    const formattedSelectedDate = selectedDate.toISOString().slice(0, 10);
+    const isForbiddenDate = this.alldates.some(date => date.toISOString().slice(0, 10) === formattedSelectedDate);
+  
     if (isForbiddenDate) {
-      const url = `${this.getforbDate}/${formattedSelectedDate}`; 
+      const url = `${this.getforbDate}/${formattedSelectedDate}`;
       this.http.get<ForbiddenDate>(url).subscribe({
         next: (date: ForbiddenDate) => {
           this.popup(0, date.description);
@@ -142,20 +162,22 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
           console.error('Error during dates show', err);
         },
       });
-
-      event.target.value = this.today;
-      this.dateChanged.emit(this.today);
+      let emit_date = this.nearestworkday(this.today);
+      event.target.value = emit_date;
+      this.dateChanged.emit(emit_date);
       return;
     }
-
-    if (day === 6 || day === 0) {
-      this.popup(0, "Weekend")
-      event.target.value = this.today;
-      this.dateChanged.emit(this.today);
+  
+    if (day === 6 || day === 0) { // Check if the date is Saturday or Sunday
+      this.popup(0, "Weekend");
+      let emit_date = this.nearestworkday(this.today);
+      event.target.value = emit_date;
+      this.dateChanged.emit(emit_date);
     } else {
       this.dateChanged.emit(event.target.value);
     }
   }
+  
 
   // ten checkifadmin wiem ze jest dziwinie bo jak admin to false ale musialam tak zrb bo
   //normalnie nie dzialalo wiec po prostu jak wywoluje to neguje ta funkcje sori
