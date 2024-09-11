@@ -91,7 +91,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
 
       this.http.post(this.addDesk_url, deskData).subscribe({
         next: (response) => {
-          this.popup(0, "Dodano stanowisko")
+          this.popup(0, "Dodano biurko")
         },
         error: (registerErr) => {
           console.error('Error while adding', registerErr);
@@ -117,7 +117,7 @@ export class EditorMapComponent implements OnInit, OnChanges {
         };
         this.http.delete(this.deleteDesk_url, httpOptions).subscribe({
           next: () => {
-            this.popup(0, "Usunięto stanowisko")
+            this.popup(0, "Usunięto biurko")
             if (this.currentCell != null) {
               this.currentCell.isDeleted = true;
             }

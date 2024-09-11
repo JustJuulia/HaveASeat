@@ -7,6 +7,8 @@ import { forkJoin } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { provideProtractorTestingSupport } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mapa',
@@ -25,7 +27,7 @@ export class MapaComponent implements OnInit, OnChanges {
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
 
-  constructor(private mapaService: MapaService) {}
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar) {}
   ngOnInit(): void {
     forkJoin({
       rooms: this.mapaService.getRooms(),
@@ -46,6 +48,21 @@ export class MapaComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedDate']) {
       this.markReserved(changes['selectedDate'].currentValue);
+    }
+  }
+
+  popup(type: number, text: string) {
+    if(type == 0) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['success']
+      });
+    }
+    if(type == 1) {
+      this.snackBar.open(text, "Zamknij", {
+        duration: 3500,
+        panelClass: ['failure']
+      });
     }
   }
 
@@ -84,6 +101,7 @@ export class MapaComponent implements OnInit, OnChanges {
         next: response => {},
         complete: () => {
           this.markReserved(newReservation.date);
+          this.popup(0, "Zarezerwowano");
           var usersReservations = this.reservations.filter(r => r.user.id == this.userId);
           if (usersReservations.length) {
             usersReservations.forEach(reservation => {
@@ -109,6 +127,7 @@ export class MapaComponent implements OnInit, OnChanges {
         this.mapaService.deleteReservationsById(reservation.id).subscribe({
           complete: () => {
             this.markReserved(reservation.date);
+            this.popup(0, "Anulowano rezerwację");
           },
           error: deleteError => {
             console.error("delete failed:", deleteError);
@@ -118,7 +137,7 @@ export class MapaComponent implements OnInit, OnChanges {
     }
     else if(cell.isReserved) {
       const reservation = this.reservations.find(r => r.desk.positionX == cell.positionX && r.desk.positionY == cell.positionY);
-      alert("Desk reserved by " + reservation?.user.name);
+      this.popup(0, `Biurko zarezerwowane przez ${reservation?.user.name}`);
     }
     else {
       console.log("No action taken");

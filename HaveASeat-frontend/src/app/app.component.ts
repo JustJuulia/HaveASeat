@@ -7,7 +7,6 @@ import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from "./components/login/login.component";
 import { FormsModule } from '@angular/forms';
 import { AdminDatesComponent } from './components/admin-dates/admin-dates.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-root',
   standalone: true,
