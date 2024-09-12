@@ -61,11 +61,6 @@ export class UserListComponent implements OnInit {
       },
     });
   }
-  openDialog(): void {
-    this.dialog.open(MyDialogComponent, {
-      data: { mycontent: 'Super test!!!!' } 
-    });
-  }
   getUsers(date: string): void {
     const checked_today = this.find_today(date);
     const url = `${this.getAllUsersUrl}${checked_today}`;

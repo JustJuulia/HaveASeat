@@ -1,19 +1,26 @@
-
 import { Component, Inject } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { OnInit } from '@angular/core';
+import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-my-dialog',
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [MatDialogModule, MatButtonModule, NgIf],
   templateUrl: './mydialog.component.html',
   styleUrls: ['./mydialog.component.scss']
 })
 export class MyDialogComponent {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: { mycontent: string }) {}
+  constructor(
+    public dialogRef: MatDialogRef<MyDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { mycontent: string, buttonamount: number }
+  ) {}
+
+  onConfirm() {
+    this.dialogRef.close('confirmed');
+  }
+
+  onClose() {
+    this.dialogRef.close('cancelled');
+  }
 }
-
-
-

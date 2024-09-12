@@ -11,12 +11,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ForbiddenDate } from '../../models/models';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MyDialogComponent } from '../mydialog/mydialog.component';
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
   standalone: true,
   providers: [MapaService, UserService],
 })
@@ -32,7 +35,7 @@ export class MapaComponent implements OnInit, OnChanges {
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
   alldates: Date[] = [];
 
-  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient) {}
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog) {}
 
   find_today(today: string): string {
     let today_date = new Date(today);
@@ -111,8 +114,22 @@ export class MapaComponent implements OnInit, OnChanges {
   checkIfBelongsToUser(reservation: Reservation, cell: Cell): boolean {
     return (reservation.desk.positionX == cell.positionX && reservation.desk.positionY == cell.positionY) && reservation.user.id == this.userId;
   }
-
-  onDeskClick(cell: Cell) {
+  dialogopen(content: string, buttons: number): Promise<boolean>{
+    const dialogRef = this.dialog.open(MyDialogComponent, {
+      data: {buttonamount:buttons,  mycontent: `${content}` } 
+    });
+    return dialogRef.afterClosed().toPromise().then(result => {
+      if (result === 'confirmed') {
+        return true
+      } else if (result === 'cancelled') {
+        return false
+      }
+      else{
+        return false
+      }
+    });
+  }
+  async onDeskClick(cell: Cell) {
     if (cell.isDesk && !cell.isReserved) {
       this.rooms.forEach(room => {
         room.cells.forEach(c => {
@@ -120,7 +137,7 @@ export class MapaComponent implements OnInit, OnChanges {
         });
       });
     }
-    if (cell.isUsers == false && !cell.isReserved && confirm("Book this seat?")) {
+    if (cell.isUsers == false && !cell.isReserved && await this.dialogopen("Book this seat?", 2)) {
       cell.isClicked = true;
       const desk = this.getCellsDesk(cell);
 
@@ -158,7 +175,7 @@ export class MapaComponent implements OnInit, OnChanges {
         }
       });
     } 
-    else if (cell.isUsers && confirm("Cancel reservation?")) {
+    else if (cell.isUsers && await this.dialogopen("Cancel this reservation?", 2)) {
       const reservation = this.reservations.find(r => r.user.id == this.userId);
       if (reservation) {
         this.mapaService.deleteReservationsById(reservation.id).subscribe({
@@ -174,7 +191,8 @@ export class MapaComponent implements OnInit, OnChanges {
     }
     else if(cell.isReserved) {
       const reservation = this.reservations.find(r => r.desk.positionX == cell.positionX && r.desk.positionY == cell.positionY);
-      this.popup(0, `Biurko zarezerwowane przez ${reservation?.user.name}`);
+      let text = `miejsce zajęte przez: ${reservation?.user.name}`
+      this.dialogopen(text, 1)
     }
     else {
       console.log("No action taken");
