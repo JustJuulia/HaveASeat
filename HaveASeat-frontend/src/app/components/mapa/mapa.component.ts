@@ -293,3 +293,5 @@ export class MapaComponent implements OnInit, OnChanges {
   
 
 }
+
+//𝓯𝓻𝓮𝓪𝓴𝔂 
