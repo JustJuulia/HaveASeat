@@ -2,7 +2,7 @@ using haveaseat.DbContexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace haveaseat_api.Controllers;
+namespace haveaseat.Controllers;
 
 
 /// <summary>

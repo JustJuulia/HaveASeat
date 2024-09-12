@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.Runtime.InteropServices;
 
-namespace haveaseat_api.Controllers;
+namespace haveaseat.Controllers;
 
 /// <summary>
 /// This controller handles user-related operations such as registration, login and retrieving user informations.

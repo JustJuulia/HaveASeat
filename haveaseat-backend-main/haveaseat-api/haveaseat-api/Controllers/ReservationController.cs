@@ -3,7 +3,7 @@ using haveaseat.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace haveaseat_api.Controllers;
+namespace haveaseat.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
