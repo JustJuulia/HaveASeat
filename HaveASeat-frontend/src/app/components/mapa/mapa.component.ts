@@ -90,14 +90,16 @@ export class MapaComponent implements OnInit, OnChanges {
   popup(type: number, text: string) {
     if(type == 0) {
       this.snackBar.open(text, "Zamknij", {
-        duration: 3500,
-        panelClass: ['success']
+        //duration: 3500,
+        panelClass: ['snackbar'],
+        verticalPosition: 'top',
       });
     }
     if(type == 1) {
       this.snackBar.open(text, "Zamknij", {
         duration: 3500,
-        panelClass: ['failure']
+        panelClass: ['snackbar'],
+        verticalPosition: 'top',
       });
     }
   }
