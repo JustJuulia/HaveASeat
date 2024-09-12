@@ -3,26 +3,23 @@ import { CommonModule, NgFor, NgStyle } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Desk, Room, Cell, Reservation, User, NewReservation } from '../../models/models';
 import { NgIf } from '@angular/common';
-import { DialogComponent } from '../dialogue-component/dialogue-component.component';
 import { forkJoin } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
-import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, DialogComponent],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent],
   standalone: true,
   providers: [MapaService, UserService],
 })
 export class MapaComponent implements OnInit, OnChanges {
 
-  @ViewChild('dialog') dialogComponent!: DialogComponent;
   roomWidth = 20;
   roomHeight = 13;
   rooms: Room[] = [];
@@ -32,36 +29,6 @@ export class MapaComponent implements OnInit, OnChanges {
   @Input() userId: number | null = null;
 
   constructor(private mapaService: MapaService, private snackBar: MatSnackBar) {}
-
-  showDialog = false;
-  actionSeat = 0;
-
-  async openDialog(type: number): Promise<boolean> {
-    let message = '';
-    if (type === 1) {
-      message = 'Book this seat?';
-    } else if (type === 0) {
-      message = 'Cancel this seat?';
-    }
-  
-    try {
-      const result = await this.dialogComponent.openDialog(message);
-      return result;
-    } catch (error) {
-      console.error('Dialog error:', error);
-      return false;
-    }
-  }
-
-  handleConfirm() {
-    console.log('Confirmed');
-    this.showDialog = false;
-  }
-
-  handleClose() {
-    console.log('Closed');
-    this.showDialog = false;
-  }
 
   ngOnInit(): void {
     forkJoin({
@@ -109,7 +76,7 @@ export class MapaComponent implements OnInit, OnChanges {
     return (reservation.desk.positionX == cell.positionX && reservation.desk.positionY == cell.positionY) && reservation.user.id == this.userId;
   }
 
-  async onDeskClick(cell: Cell) {
+  onDeskClick(cell: Cell) {
     if (cell.isDesk && !cell.isReserved) {
       this.rooms.forEach(room => {
         room.cells.forEach(c => {
@@ -117,7 +84,7 @@ export class MapaComponent implements OnInit, OnChanges {
         });
       });
     }
-    if (cell.isUsers == false && !cell.isReserved && await this.openDialog(1)) {
+    if (cell.isUsers == false && !cell.isReserved && confirm("Book this seat?")) {
       cell.isClicked = true;
       const desk = this.getCellsDesk(cell);
 
@@ -155,7 +122,7 @@ export class MapaComponent implements OnInit, OnChanges {
         }
       });
     } 
-    else if (cell.isUsers && await this.openDialog(0)) {
+    else if (cell.isUsers && confirm("Cancel reservation?")) {
       const reservation = this.reservations.find(r => r.user.id == this.userId);
       if (reservation) {
         this.mapaService.deleteReservationsById(reservation.id).subscribe({
