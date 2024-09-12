@@ -213,7 +213,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
     this.router.navigate(['main'], {queryParams: {userId: this.userId}});
   }
   dropdownVisible: boolean = false;
-  toggleDropdown(state: boolean) {
-    this.dropdownVisible = state;
+  toggleDropdown() {
+    this.dropdownVisible = !this.dropdownVisible;
   }
 }
