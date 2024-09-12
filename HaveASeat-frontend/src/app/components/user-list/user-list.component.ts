@@ -4,11 +4,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../../models/models';
 import { ForbiddenDate } from '../../models/models';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MyDialogComponent } from '../mydialog/mydialog.component';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [HttpClientModule, NgIf, NgFor],
+  imports: [HttpClientModule, NgIf, NgFor, MatDialogModule, MatButtonModule],
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
@@ -20,7 +23,7 @@ export class UserListComponent implements OnInit {
   private getAllUsersUrl = 'https://localhost:7023/api/Reservation/getAllUsersWithReservationByDay/';
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {
     this.today = new Date().toISOString().split('T')[0];
   }
 
@@ -58,7 +61,11 @@ export class UserListComponent implements OnInit {
       },
     });
   }
-
+  openDialog(): void {
+    this.dialog.open(MyDialogComponent, {
+      data: { mycontent: 'Super test!!!!' } 
+    });
+  }
   getUsers(date: string): void {
     const checked_today = this.find_today(date);
     const url = `${this.getAllUsersUrl}${checked_today}`;
