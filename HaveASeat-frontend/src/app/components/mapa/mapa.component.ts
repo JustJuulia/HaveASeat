@@ -8,6 +8,8 @@ import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { ForbiddenDate } from '../../models/models';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 
 @Component({
@@ -27,18 +29,50 @@ export class MapaComponent implements OnInit, OnChanges {
   clickedOnce = false;
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
+  private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
+  alldates: Date[] = [];
 
-  constructor(private mapaService: MapaService, private snackBar: MatSnackBar) {}
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient) {}
+
+  find_today(today: string): string {
+    let today_date = new Date(today);
+    while (true) {
+      let day = today_date.getDay();
+      let counter = 0;
+      if (day !== 6 && day !== 0) { 
+        this.alldates.forEach((forb_date: { getTime: () => number; }) => {
+          if (today_date.getTime() === forb_date.getTime()) {
+            counter++;
+          }
+        });
+        if (counter === 0) {
+          return today_date.toISOString().slice(0, 10); 
+        }
+      }
+      today_date.setDate(today_date.getDate() + 1); 
+    }
+  }
 
   ngOnInit(): void {
+    this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
+      next: (dates: ForbiddenDate[]) => {
+        this.alldates = dates.map(date => 
+          new Date(date.date)
+        );
+      },
+      error: (err: any) => {
+        console.error('Error during dates show', err);
+      },
+    });
     forkJoin({
       rooms: this.mapaService.getRooms(),
     }).subscribe(
       ({ rooms }) => {
         this.rooms = rooms;
         this.markDeskCells();
-        const today = new Date();
-        const date = today.toJSON().slice(0, 10);
+        const today = new Date().toISOString().slice(0, 10);
+        const checked_today = this.find_today(today);
+        const date = checked_today;
         this.markReserved(date);
       },
       (error: any) => {
