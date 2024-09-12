@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat_api.Controllers
+  commentId: N:haveaseat_api.Controllers
+  id: haveaseat_api.Controllers
+  children:
+  - haveaseat_api.Controllers.AreaController
+  - haveaseat_api.Controllers.AuthenticationController
+  - haveaseat_api.Controllers.MapController
+  - haveaseat_api.Controllers.ReservationController
+  langs:
+  - csharp
+  - vb
+  name: haveaseat_api.Controllers
+  nameWithType: haveaseat_api.Controllers
+  fullName: haveaseat_api.Controllers
+  type: Namespace
+  assemblies:
+  - haveaseat-api
+references:
+- uid: haveaseat_api.Controllers.AreaController
+  commentId: T:haveaseat_api.Controllers.AreaController
+  href: haveaseat_api.Controllers.AreaController.html
+  name: AreaController
+  nameWithType: AreaController
+  fullName: haveaseat_api.Controllers.AreaController
+- uid: haveaseat_api.Controllers.AuthenticationController
+  commentId: T:haveaseat_api.Controllers.AuthenticationController
+  href: haveaseat_api.Controllers.AuthenticationController.html
+  name: AuthenticationController
+  nameWithType: AuthenticationController
+  fullName: haveaseat_api.Controllers.AuthenticationController
+- uid: haveaseat_api.Controllers.MapController
+  commentId: T:haveaseat_api.Controllers.MapController
+  href: haveaseat_api.Controllers.MapController.html
+  name: MapController
+  nameWithType: MapController
+  fullName: haveaseat_api.Controllers.MapController
+- uid: haveaseat_api.Controllers.ReservationController
+  commentId: T:haveaseat_api.Controllers.ReservationController
+  href: haveaseat_api.Controllers.ReservationController.html
+  name: ReservationController
+  nameWithType: ReservationController
+  fullName: haveaseat_api.Controllers.ReservationController

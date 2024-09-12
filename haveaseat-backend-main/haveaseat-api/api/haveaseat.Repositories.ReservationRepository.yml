@@ -1,0 +1,1138 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.Repositories.ReservationRepository
+  commentId: T:haveaseat.Repositories.ReservationRepository
+  id: ReservationRepository
+  parent: haveaseat.Repositories
+  children:
+  - haveaseat.Repositories.ReservationRepository.#ctor(haveaseat.DbContexts.DataContext)
+  - haveaseat.Repositories.ReservationRepository.DeleteReservationById(System.Int64)
+  - haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  - haveaseat.Repositories.ReservationRepository.GetReservationsByDay(System.DateOnly)
+  - haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail(System.String)
+  - haveaseat.Repositories.ReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  - haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  langs:
+  - csharp
+  - vb
+  name: ReservationRepository
+  nameWithType: ReservationRepository
+  fullName: haveaseat.Repositories.ReservationRepository
+  type: Class
+  source:
+    id: ReservationRepository
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 7
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  syntax:
+    content: 'public class ReservationRepository : IReservationRepository'
+    content.vb: Public Class ReservationRepository Implements IReservationRepository
+  inheritance:
+  - System.Object
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: haveaseat.Repositories.ReservationRepository.#ctor(haveaseat.DbContexts.DataContext)
+  commentId: M:haveaseat.Repositories.ReservationRepository.#ctor(haveaseat.DbContexts.DataContext)
+  id: '#ctor(haveaseat.DbContexts.DataContext)'
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: ReservationRepository(DataContext)
+  nameWithType: ReservationRepository.ReservationRepository(DataContext)
+  fullName: haveaseat.Repositories.ReservationRepository.ReservationRepository(haveaseat.DbContexts.DataContext)
+  type: Constructor
+  source:
+    id: .ctor
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 7
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  syntax:
+    content: public ReservationRepository(DataContext context)
+    parameters:
+    - id: context
+      type: haveaseat.DbContexts.DataContext
+    content.vb: Public Sub New(context As DataContext)
+  overload: haveaseat.Repositories.ReservationRepository.#ctor*
+  nameWithType.vb: ReservationRepository.New(DataContext)
+  fullName.vb: haveaseat.Repositories.ReservationRepository.New(haveaseat.DbContexts.DataContext)
+  name.vb: New(DataContext)
+- uid: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail(System.String)
+  commentId: M:haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail(System.String)
+  id: GetReservationsByUserEmail(System.String)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsByUserEmail(string)
+  nameWithType: ReservationRepository.GetReservationsByUserEmail(string)
+  fullName: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail(string)
+  type: Method
+  source:
+    id: GetReservationsByUserEmail
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 9
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<List<ReservationDTO>> GetReservationsByUserEmail(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ReservationDTO}}
+    content.vb: Public Function GetReservationsByUserEmail(email As String) As Task(Of List(Of ReservationDTO))
+  overload: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(System.String)
+  nameWithType.vb: ReservationRepository.GetReservationsByUserEmail(String)
+  fullName.vb: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail(String)
+  name.vb: GetReservationsByUserEmail(String)
+- uid: haveaseat.Repositories.ReservationRepository.GetReservationsByDay(System.DateOnly)
+  commentId: M:haveaseat.Repositories.ReservationRepository.GetReservationsByDay(System.DateOnly)
+  id: GetReservationsByDay(System.DateOnly)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetReservationsByDay(DateOnly)
+  nameWithType: ReservationRepository.GetReservationsByDay(DateOnly)
+  fullName: haveaseat.Repositories.ReservationRepository.GetReservationsByDay(System.DateOnly)
+  type: Method
+  source:
+    id: GetReservationsByDay
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 21
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<List<ReservationDTO>> GetReservationsByDay(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ReservationDTO}}
+    content.vb: Public Function GetReservationsByDay([date] As DateOnly) As Task(Of List(Of ReservationDTO))
+  overload: haveaseat.Repositories.ReservationRepository.GetReservationsByDay*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+- uid: haveaseat.Repositories.ReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  commentId: M:haveaseat.Repositories.ReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  id: InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: InsertReservations(NewReservationDTO)
+  nameWithType: ReservationRepository.InsertReservations(NewReservationDTO)
+  fullName: haveaseat.Repositories.ReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  type: Method
+  source:
+    id: InsertReservations
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 35
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<NewReservationDTO> InsertReservations(NewReservationDTO reservation)
+    parameters:
+    - id: reservation
+      type: haveaseat.DTOs.NewReservationDTO
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.NewReservationDTO}
+    content.vb: Public Function InsertReservations(reservation As NewReservationDTO) As Task(Of NewReservationDTO)
+  overload: haveaseat.Repositories.ReservationRepository.InsertReservations*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+- uid: haveaseat.Repositories.ReservationRepository.DeleteReservationById(System.Int64)
+  commentId: M:haveaseat.Repositories.ReservationRepository.DeleteReservationById(System.Int64)
+  id: DeleteReservationById(System.Int64)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: DeleteReservationById(long)
+  nameWithType: ReservationRepository.DeleteReservationById(long)
+  fullName: haveaseat.Repositories.ReservationRepository.DeleteReservationById(long)
+  type: Method
+  source:
+    id: DeleteReservationById
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 48
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<bool> DeleteReservationById(long reservationId)
+    parameters:
+    - id: reservationId
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteReservationById(reservationId As Long) As Task(Of Boolean)
+  overload: haveaseat.Repositories.ReservationRepository.DeleteReservationById*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(System.Int64)
+  nameWithType.vb: ReservationRepository.DeleteReservationById(Long)
+  fullName.vb: haveaseat.Repositories.ReservationRepository.DeleteReservationById(Long)
+  name.vb: DeleteReservationById(Long)
+- uid: haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  id: GetAllUsersFromReservationsByDate(System.DateOnly)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllUsersFromReservationsByDate(DateOnly)
+  nameWithType: ReservationRepository.GetAllUsersFromReservationsByDate(DateOnly)
+  fullName: haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  type: Method
+  source:
+    id: GetAllUsersFromReservationsByDate
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 59
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.UserDTO}}
+    content.vb: Public Function GetAllUsersFromReservationsByDate([date] As DateOnly) As Task(Of List(Of UserDTO))
+  overload: haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+- uid: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  commentId: M:haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  id: longTimeReservationToCheckDTQByDeskId(System.Int64)
+  parent: haveaseat.Repositories.ReservationRepository
+  langs:
+  - csharp
+  - vb
+  name: longTimeReservationToCheckDTQByDeskId(long)
+  nameWithType: ReservationRepository.longTimeReservationToCheckDTQByDeskId(long)
+  fullName: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId(long)
+  type: Method
+  source:
+    id: longTimeReservationToCheckDTQByDeskId
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ReservationRepository.cs
+    startLine: 71
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<List<LongTimeReservationToCheckDTQ>> longTimeReservationToCheckDTQByDeskId(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.LongTimeReservationToCheckDTQ}}
+    content.vb: Public Function longTimeReservationToCheckDTQByDeskId(id As Long) As Task(Of List(Of LongTimeReservationToCheckDTQ))
+  overload: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId*
+  implements:
+  - haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  nameWithType.vb: ReservationRepository.longTimeReservationToCheckDTQByDeskId(Long)
+  fullName.vb: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId(Long)
+  name.vb: longTimeReservationToCheckDTQByDeskId(Long)
+references:
+- uid: haveaseat.Repositories
+  commentId: N:haveaseat.Repositories
+  href: haveaseat.html
+  name: haveaseat.Repositories
+  nameWithType: haveaseat.Repositories
+  fullName: haveaseat.Repositories
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository
+  commentId: T:haveaseat.Repositories.Interfaces.IReservationRepository
+  parent: haveaseat.Repositories.Interfaces
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html
+  name: IReservationRepository
+  nameWithType: IReservationRepository
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: haveaseat.Repositories.Interfaces
+  commentId: N:haveaseat.Repositories.Interfaces
+  href: haveaseat.html
+  name: haveaseat.Repositories.Interfaces
+  nameWithType: haveaseat.Repositories.Interfaces
+  fullName: haveaseat.Repositories.Interfaces
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+- uid: haveaseat.Repositories.ReservationRepository.#ctor*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.#ctor
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository__ctor_haveaseat_DbContexts_DataContext_
+  name: ReservationRepository
+  nameWithType: ReservationRepository.ReservationRepository
+  fullName: haveaseat.Repositories.ReservationRepository.ReservationRepository
+  nameWithType.vb: ReservationRepository.New
+  fullName.vb: haveaseat.Repositories.ReservationRepository.New
+  name.vb: New
+- uid: haveaseat.DbContexts.DataContext
+  commentId: T:haveaseat.DbContexts.DataContext
+  parent: haveaseat.DbContexts
+  href: haveaseat.DbContexts.DataContext.html
+  name: DataContext
+  nameWithType: DataContext
+  fullName: haveaseat.DbContexts.DataContext
+- uid: haveaseat.DbContexts
+  commentId: N:haveaseat.DbContexts
+  href: haveaseat.html
+  name: haveaseat.DbContexts
+  nameWithType: haveaseat.DbContexts
+  fullName: haveaseat.DbContexts
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html
+- uid: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_GetReservationsByUserEmail_System_String_
+  name: GetReservationsByUserEmail
+  nameWithType: ReservationRepository.GetReservationsByUserEmail
+  fullName: haveaseat.Repositories.ReservationRepository.GetReservationsByUserEmail
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(System.String)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(System.String)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByUserEmail_System_String_
+  name: GetReservationsByUserEmail(string)
+  nameWithType: IReservationRepository.GetReservationsByUserEmail(string)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(string)
+  nameWithType.vb: IReservationRepository.GetReservationsByUserEmail(String)
+  fullName.vb: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(String)
+  name.vb: GetReservationsByUserEmail(String)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(System.String)
+    name: GetReservationsByUserEmail
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByUserEmail_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByUserEmail(System.String)
+    name: GetReservationsByUserEmail
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByUserEmail_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ReservationDTO}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ReservationDTO}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<ReservationDTO>>
+  nameWithType: Task<List<ReservationDTO>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<haveaseat.DTOs.ReservationDTO>>
+  nameWithType.vb: Task(Of List(Of ReservationDTO))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of haveaseat.DTOs.ReservationDTO))
+  name.vb: Task(Of List(Of ReservationDTO))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: haveaseat.DTOs.ReservationDTO
+    name: ReservationDTO
+    href: haveaseat.DTOs.ReservationDTO.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.ReservationDTO
+    name: ReservationDTO
+    href: haveaseat.DTOs.ReservationDTO.html
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: haveaseat.Repositories.ReservationRepository.GetReservationsByDay*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.GetReservationsByDay
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_GetReservationsByDay_System_DateOnly_
+  name: GetReservationsByDay
+  nameWithType: ReservationRepository.GetReservationsByDay
+  fullName: haveaseat.Repositories.ReservationRepository.GetReservationsByDay
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByDay_System_DateOnly_
+  name: GetReservationsByDay(DateOnly)
+  nameWithType: IReservationRepository.GetReservationsByDay(DateOnly)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+    name: GetReservationsByDay
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByDay_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetReservationsByDay(System.DateOnly)
+    name: GetReservationsByDay
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetReservationsByDay_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: haveaseat.Repositories.ReservationRepository.InsertReservations*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.InsertReservations
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_InsertReservations_haveaseat_DTOs_NewReservationDTO_
+  name: InsertReservations
+  nameWithType: ReservationRepository.InsertReservations
+  fullName: haveaseat.Repositories.ReservationRepository.InsertReservations
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_InsertReservations_haveaseat_DTOs_NewReservationDTO_
+  name: InsertReservations(NewReservationDTO)
+  nameWithType: IReservationRepository.InsertReservations(NewReservationDTO)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+    name: InsertReservations
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_InsertReservations_haveaseat_DTOs_NewReservationDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewReservationDTO
+    name: NewReservationDTO
+    href: haveaseat.DTOs.NewReservationDTO.html
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.InsertReservations(haveaseat.DTOs.NewReservationDTO)
+    name: InsertReservations
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_InsertReservations_haveaseat_DTOs_NewReservationDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewReservationDTO
+    name: NewReservationDTO
+    href: haveaseat.DTOs.NewReservationDTO.html
+  - name: )
+- uid: haveaseat.DTOs.NewReservationDTO
+  commentId: T:haveaseat.DTOs.NewReservationDTO
+  parent: haveaseat.DTOs
+  href: haveaseat.DTOs.NewReservationDTO.html
+  name: NewReservationDTO
+  nameWithType: NewReservationDTO
+  fullName: haveaseat.DTOs.NewReservationDTO
+- uid: System.Threading.Tasks.Task{haveaseat.DTOs.NewReservationDTO}
+  commentId: T:System.Threading.Tasks.Task{haveaseat.DTOs.NewReservationDTO}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<NewReservationDTO>
+  nameWithType: Task<NewReservationDTO>
+  fullName: System.Threading.Tasks.Task<haveaseat.DTOs.NewReservationDTO>
+  nameWithType.vb: Task(Of NewReservationDTO)
+  fullName.vb: System.Threading.Tasks.Task(Of haveaseat.DTOs.NewReservationDTO)
+  name.vb: Task(Of NewReservationDTO)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: haveaseat.DTOs.NewReservationDTO
+    name: NewReservationDTO
+    href: haveaseat.DTOs.NewReservationDTO.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.NewReservationDTO
+    name: NewReservationDTO
+    href: haveaseat.DTOs.NewReservationDTO.html
+  - name: )
+- uid: haveaseat.DTOs
+  commentId: N:haveaseat.DTOs
+  href: haveaseat.html
+  name: haveaseat.DTOs
+  nameWithType: haveaseat.DTOs
+  fullName: haveaseat.DTOs
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+- uid: haveaseat.Repositories.ReservationRepository.DeleteReservationById*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.DeleteReservationById
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_DeleteReservationById_System_Int64_
+  name: DeleteReservationById
+  nameWithType: ReservationRepository.DeleteReservationById
+  fullName: haveaseat.Repositories.ReservationRepository.DeleteReservationById
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(System.Int64)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(System.Int64)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_DeleteReservationById_System_Int64_
+  name: DeleteReservationById(long)
+  nameWithType: IReservationRepository.DeleteReservationById(long)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(long)
+  nameWithType.vb: IReservationRepository.DeleteReservationById(Long)
+  fullName.vb: haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(Long)
+  name.vb: DeleteReservationById(Long)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(System.Int64)
+    name: DeleteReservationById
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_DeleteReservationById_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.DeleteReservationById(System.Int64)
+    name: DeleteReservationById
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_DeleteReservationById_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_GetAllUsersFromReservationsByDate_System_DateOnly_
+  name: GetAllUsersFromReservationsByDate
+  nameWithType: ReservationRepository.GetAllUsersFromReservationsByDate
+  fullName: haveaseat.Repositories.ReservationRepository.GetAllUsersFromReservationsByDate
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetAllUsersFromReservationsByDate_System_DateOnly_
+  name: GetAllUsersFromReservationsByDate(DateOnly)
+  nameWithType: IReservationRepository.GetAllUsersFromReservationsByDate(DateOnly)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+    name: GetAllUsersFromReservationsByDate
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetAllUsersFromReservationsByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.GetAllUsersFromReservationsByDate(System.DateOnly)
+    name: GetAllUsersFromReservationsByDate
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_GetAllUsersFromReservationsByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.UserDTO}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.UserDTO}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<UserDTO>>
+  nameWithType: Task<List<UserDTO>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<haveaseat.DTOs.UserDTO>>
+  nameWithType.vb: Task(Of List(Of UserDTO))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of haveaseat.DTOs.UserDTO))
+  name.vb: Task(Of List(Of UserDTO))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: haveaseat.DTOs.UserDTO
+    name: UserDTO
+    href: haveaseat.DTOs.UserDTO.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.UserDTO
+    name: UserDTO
+    href: haveaseat.DTOs.UserDTO.html
+  - name: )
+  - name: )
+- uid: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId*
+  commentId: Overload:haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId
+  href: haveaseat.Repositories.ReservationRepository.html#haveaseat_Repositories_ReservationRepository_longTimeReservationToCheckDTQByDeskId_System_Int64_
+  name: longTimeReservationToCheckDTQByDeskId
+  nameWithType: ReservationRepository.longTimeReservationToCheckDTQByDeskId
+  fullName: haveaseat.Repositories.ReservationRepository.longTimeReservationToCheckDTQByDeskId
+- uid: haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  commentId: M:haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+  parent: haveaseat.Repositories.Interfaces.IReservationRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_longTimeReservationToCheckDTQByDeskId_System_Int64_
+  name: longTimeReservationToCheckDTQByDeskId(long)
+  nameWithType: IReservationRepository.longTimeReservationToCheckDTQByDeskId(long)
+  fullName: haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(long)
+  nameWithType.vb: IReservationRepository.longTimeReservationToCheckDTQByDeskId(Long)
+  fullName.vb: haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(Long)
+  name.vb: longTimeReservationToCheckDTQByDeskId(Long)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+    name: longTimeReservationToCheckDTQByDeskId
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_longTimeReservationToCheckDTQByDeskId_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository.longTimeReservationToCheckDTQByDeskId(System.Int64)
+    name: longTimeReservationToCheckDTQByDeskId
+    href: haveaseat.Repositories.Interfaces.IReservationRepository.html#haveaseat_Repositories_Interfaces_IReservationRepository_longTimeReservationToCheckDTQByDeskId_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.LongTimeReservationToCheckDTQ}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.LongTimeReservationToCheckDTQ}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<LongTimeReservationToCheckDTQ>>
+  nameWithType: Task<List<LongTimeReservationToCheckDTQ>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<haveaseat.DTOs.LongTimeReservationToCheckDTQ>>
+  nameWithType.vb: Task(Of List(Of LongTimeReservationToCheckDTQ))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of haveaseat.DTOs.LongTimeReservationToCheckDTQ))
+  name.vb: Task(Of List(Of LongTimeReservationToCheckDTQ))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: haveaseat.DTOs.LongTimeReservationToCheckDTQ
+    name: LongTimeReservationToCheckDTQ
+    href: haveaseat.DTOs.LongTimeReservationToCheckDTQ.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.LongTimeReservationToCheckDTQ
+    name: LongTimeReservationToCheckDTQ
+    href: haveaseat.DTOs.LongTimeReservationToCheckDTQ.html
+  - name: )
+  - name: )

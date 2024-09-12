@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.Models
+  commentId: N:haveaseat.Models
+  id: haveaseat.Models
+  children:
+  - haveaseat.Models.ChairPosition
+  - haveaseat.Models.Role
+  langs:
+  - csharp
+  - vb
+  name: haveaseat.Models
+  nameWithType: haveaseat.Models
+  fullName: haveaseat.Models
+  type: Namespace
+  assemblies:
+  - haveaseat-api
+references:
+- uid: haveaseat.Models.ChairPosition
+  commentId: T:haveaseat.Models.ChairPosition
+  parent: haveaseat.Models
+  href: haveaseat.Models.ChairPosition.html
+  name: ChairPosition
+  nameWithType: ChairPosition
+  fullName: haveaseat.Models.ChairPosition
+- uid: haveaseat.Models.Role
+  commentId: T:haveaseat.Models.Role
+  parent: haveaseat.Models
+  href: haveaseat.Models.Role.html
+  name: Role
+  nameWithType: Role
+  fullName: haveaseat.Models.Role
+- uid: haveaseat.Models
+  commentId: N:haveaseat.Models
+  href: haveaseat.html
+  name: haveaseat.Models
+  nameWithType: haveaseat.Models
+  fullName: haveaseat.Models
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Models
+    name: Models
+    href: haveaseat.Models.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Models
+    name: Models
+    href: haveaseat.Models.html

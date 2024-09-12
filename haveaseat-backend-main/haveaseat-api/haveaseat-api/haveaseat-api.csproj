@@ -6,6 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>haveaseat_api</RootNamespace>
         <LangVersion>12</LangVersion>
+        <OutputType>Exe</OutputType>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,0 +1,472 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  commentId: T:haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  id: IAuthenticationRepository
+  parent: haveaseat.Repositories.Interfaces
+  children:
+  - haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail(System.String)
+  - haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail(System.String)
+  - haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById(System.Int64)
+  - haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser(haveaseat.DTOs.NewUserLoginDTO)
+  - haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser(haveaseat.DTOs.NewUserDTO,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IAuthenticationRepository
+  nameWithType: IAuthenticationRepository
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  type: Interface
+  source:
+    id: IAuthenticationRepository
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 4
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: public interface IAuthenticationRepository
+    content.vb: Public Interface IAuthenticationRepository
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser(haveaseat.DTOs.NewUserDTO,System.String)
+  commentId: M:haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser(haveaseat.DTOs.NewUserDTO,System.String)
+  id: RegisterUser(haveaseat.DTOs.NewUserDTO,System.String)
+  parent: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  langs:
+  - csharp
+  - vb
+  name: RegisterUser(NewUserDTO, string)
+  nameWithType: IAuthenticationRepository.RegisterUser(NewUserDTO, string)
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser(haveaseat.DTOs.NewUserDTO, string)
+  type: Method
+  source:
+    id: RegisterUser
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 6
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: Task<string> RegisterUser(NewUserDTO user, string Salt)
+    parameters:
+    - id: user
+      type: haveaseat.DTOs.NewUserDTO
+    - id: Salt
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Function RegisterUser(user As NewUserDTO, Salt As String) As Task(Of String)
+  overload: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser*
+  nameWithType.vb: IAuthenticationRepository.RegisterUser(NewUserDTO, String)
+  fullName.vb: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser(haveaseat.DTOs.NewUserDTO, String)
+  name.vb: RegisterUser(NewUserDTO, String)
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail(System.String)
+  commentId: M:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail(System.String)
+  id: GetSaltByEmail(System.String)
+  parent: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetSaltByEmail(string)
+  nameWithType: IAuthenticationRepository.GetSaltByEmail(string)
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail(string)
+  type: Method
+  source:
+    id: GetSaltByEmail
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 8
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: Task<string> GetSaltByEmail(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Function GetSaltByEmail(email As String) As Task(Of String)
+  overload: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail*
+  nameWithType.vb: IAuthenticationRepository.GetSaltByEmail(String)
+  fullName.vb: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail(String)
+  name.vb: GetSaltByEmail(String)
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail(System.String)
+  commentId: M:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail(System.String)
+  id: GetUserByEmail(System.String)
+  parent: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetUserByEmail(string)
+  nameWithType: IAuthenticationRepository.GetUserByEmail(string)
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail(string)
+  type: Method
+  source:
+    id: GetUserByEmail
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 9
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: Task<UserDTO> GetUserByEmail(string email)
+    parameters:
+    - id: email
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.UserDTO}
+    content.vb: Function GetUserByEmail(email As String) As Task(Of UserDTO)
+  overload: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail*
+  nameWithType.vb: IAuthenticationRepository.GetUserByEmail(String)
+  fullName.vb: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail(String)
+  name.vb: GetUserByEmail(String)
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById(System.Int64)
+  commentId: M:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById(System.Int64)
+  id: GetUserById(System.Int64)
+  parent: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  langs:
+  - csharp
+  - vb
+  name: GetUserById(long)
+  nameWithType: IAuthenticationRepository.GetUserById(long)
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById(long)
+  type: Method
+  source:
+    id: GetUserById
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 10
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: Task<UserDTO> GetUserById(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.UserDTO}
+    content.vb: Function GetUserById(id As Long) As Task(Of UserDTO)
+  overload: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById*
+  nameWithType.vb: IAuthenticationRepository.GetUserById(Long)
+  fullName.vb: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById(Long)
+  name.vb: GetUserById(Long)
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser(haveaseat.DTOs.NewUserLoginDTO)
+  commentId: M:haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser(haveaseat.DTOs.NewUserLoginDTO)
+  id: LoginUser(haveaseat.DTOs.NewUserLoginDTO)
+  parent: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+  langs:
+  - csharp
+  - vb
+  name: LoginUser(NewUserLoginDTO)
+  nameWithType: IAuthenticationRepository.LoginUser(NewUserLoginDTO)
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser(haveaseat.DTOs.NewUserLoginDTO)
+  type: Method
+  source:
+    id: LoginUser
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\Interfaces\IAuthenticationRepository.cs
+    startLine: 12
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories.Interfaces
+  syntax:
+    content: Task<bool> LoginUser(NewUserLoginDTO user)
+    parameters:
+    - id: user
+      type: haveaseat.DTOs.NewUserLoginDTO
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function LoginUser(user As NewUserLoginDTO) As Task(Of Boolean)
+  overload: haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser*
+references:
+- uid: haveaseat.Repositories.Interfaces
+  commentId: N:haveaseat.Repositories.Interfaces
+  href: haveaseat.html
+  name: haveaseat.Repositories.Interfaces
+  nameWithType: haveaseat.Repositories.Interfaces
+  fullName: haveaseat.Repositories.Interfaces
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser*
+  commentId: Overload:haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser
+  href: haveaseat.Repositories.Interfaces.IAuthenticationRepository.html#haveaseat_Repositories_Interfaces_IAuthenticationRepository_RegisterUser_haveaseat_DTOs_NewUserDTO_System_String_
+  name: RegisterUser
+  nameWithType: IAuthenticationRepository.RegisterUser
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.RegisterUser
+- uid: haveaseat.DTOs.NewUserDTO
+  commentId: T:haveaseat.DTOs.NewUserDTO
+  parent: haveaseat.DTOs
+  href: haveaseat.DTOs.NewUserDTO.html
+  name: NewUserDTO
+  nameWithType: NewUserDTO
+  fullName: haveaseat.DTOs.NewUserDTO
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: haveaseat.DTOs
+  commentId: N:haveaseat.DTOs
+  href: haveaseat.html
+  name: haveaseat.DTOs
+  nameWithType: haveaseat.DTOs
+  fullName: haveaseat.DTOs
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail*
+  commentId: Overload:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail
+  href: haveaseat.Repositories.Interfaces.IAuthenticationRepository.html#haveaseat_Repositories_Interfaces_IAuthenticationRepository_GetSaltByEmail_System_String_
+  name: GetSaltByEmail
+  nameWithType: IAuthenticationRepository.GetSaltByEmail
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetSaltByEmail
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail*
+  commentId: Overload:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail
+  href: haveaseat.Repositories.Interfaces.IAuthenticationRepository.html#haveaseat_Repositories_Interfaces_IAuthenticationRepository_GetUserByEmail_System_String_
+  name: GetUserByEmail
+  nameWithType: IAuthenticationRepository.GetUserByEmail
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserByEmail
+- uid: System.Threading.Tasks.Task{haveaseat.DTOs.UserDTO}
+  commentId: T:System.Threading.Tasks.Task{haveaseat.DTOs.UserDTO}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<UserDTO>
+  nameWithType: Task<UserDTO>
+  fullName: System.Threading.Tasks.Task<haveaseat.DTOs.UserDTO>
+  nameWithType.vb: Task(Of UserDTO)
+  fullName.vb: System.Threading.Tasks.Task(Of haveaseat.DTOs.UserDTO)
+  name.vb: Task(Of UserDTO)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: haveaseat.DTOs.UserDTO
+    name: UserDTO
+    href: haveaseat.DTOs.UserDTO.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.UserDTO
+    name: UserDTO
+    href: haveaseat.DTOs.UserDTO.html
+  - name: )
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById*
+  commentId: Overload:haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById
+  href: haveaseat.Repositories.Interfaces.IAuthenticationRepository.html#haveaseat_Repositories_Interfaces_IAuthenticationRepository_GetUserById_System_Int64_
+  name: GetUserById
+  nameWithType: IAuthenticationRepository.GetUserById
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.GetUserById
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser*
+  commentId: Overload:haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser
+  href: haveaseat.Repositories.Interfaces.IAuthenticationRepository.html#haveaseat_Repositories_Interfaces_IAuthenticationRepository_LoginUser_haveaseat_DTOs_NewUserLoginDTO_
+  name: LoginUser
+  nameWithType: IAuthenticationRepository.LoginUser
+  fullName: haveaseat.Repositories.Interfaces.IAuthenticationRepository.LoginUser
+- uid: haveaseat.DTOs.NewUserLoginDTO
+  commentId: T:haveaseat.DTOs.NewUserLoginDTO
+  parent: haveaseat.DTOs
+  href: haveaseat.DTOs.NewUserLoginDTO.html
+  name: NewUserLoginDTO
+  nameWithType: NewUserLoginDTO
+  fullName: haveaseat.DTOs.NewUserLoginDTO
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )

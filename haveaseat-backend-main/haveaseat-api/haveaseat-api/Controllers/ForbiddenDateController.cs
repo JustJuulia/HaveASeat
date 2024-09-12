@@ -4,12 +4,27 @@ using haveaseat.Repositories;
 using haveaseat.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-
-
+/// <summary>
+/// This controller handles forbidden date related operations such as adding, editing, deleting and retrieving forbidden date information.
+/// </summary>
+/// <seealso cref="ForbiddenDate"/>
+/// <seealso cref="ForbiddenDateRepository"/>
+/// <param name="forbiddenDateRepository">The IForbiddenDateRepository instance used for accessing methods to manipulate forbidden date data.</param>
 [ApiController]
 [Route("api/[controller]")]
 public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepository) : ControllerBase
 {
+    /// <summary>
+    /// This task adds a forbidden date with the data provided from the HTTP POST request.
+    /// </summary>
+    /// <seealso cref="NewForbiddenDateDTO"/>
+    /// <param name="newForbiddenDate">The ForbiddenDate object containing the details of the forbidden date to be added.</param>
+    /// <returns>
+    /// Returns a Created status if all requiments are met,
+    /// a BadRequest status if NewForbiddenDateDTO wasn't send,
+    /// a BadRequest status if forbidden date already exist,
+    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met,
+    /// </returns>
     [HttpPost("AddForbiddenDate")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -31,6 +46,16 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         return Created("Forbidden date added", result);
     }
+    /// <summary>
+    /// This task deletes forbidden date based on the provided date from the HTTP Delete request.
+    /// </summary>
+    /// <param name="date">The date to be deleted.</param>
+    /// <returns>
+    /// Returns status Accepted and true if all requirements are met,
+    /// a BadRequest if date wasn't send,
+    /// a BadRequest if date isn't forbidden,
+    /// an InternalServerError 
+    /// </returns>
     [HttpDelete("delete/{date}")]
     [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -43,7 +68,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(date) == null)
         {
-            return BadRequest("Date doesn't exist!");
+            return BadRequest("This date is not forbidden!");
         }
         Boolean result = await forbiddenDateRepository.DeleteForbiddenDateByDate(date);
         if (!result)
@@ -52,6 +77,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         return Accepted("delete Forbidden date",result);
     }
+    
     [HttpGet("getAllForbiddenDates")]
     [ProducesResponseType(typeof(List<ForbiddenDateDTO>), 200)]
     public async Task<IActionResult> GetAllForbiddenDates()

@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.DbContexts
+  commentId: N:haveaseat.DbContexts
+  id: haveaseat.DbContexts
+  children:
+  - haveaseat.DbContexts.DataContext
+  langs:
+  - csharp
+  - vb
+  name: haveaseat.DbContexts
+  nameWithType: haveaseat.DbContexts
+  fullName: haveaseat.DbContexts
+  type: Namespace
+  assemblies:
+  - haveaseat-api
+references:
+- uid: haveaseat.DbContexts.DataContext
+  commentId: T:haveaseat.DbContexts.DataContext
+  parent: haveaseat.DbContexts
+  href: haveaseat.DbContexts.DataContext.html
+  name: DataContext
+  nameWithType: DataContext
+  fullName: haveaseat.DbContexts.DataContext
+- uid: haveaseat.DbContexts
+  commentId: N:haveaseat.DbContexts
+  href: haveaseat.html
+  name: haveaseat.DbContexts
+  nameWithType: haveaseat.DbContexts
+  fullName: haveaseat.DbContexts
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html

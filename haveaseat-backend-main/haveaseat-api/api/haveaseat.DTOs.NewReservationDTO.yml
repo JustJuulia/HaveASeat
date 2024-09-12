@@ -1,0 +1,512 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.DTOs.NewReservationDTO
+  commentId: T:haveaseat.DTOs.NewReservationDTO
+  id: NewReservationDTO
+  parent: haveaseat.DTOs
+  children:
+  - haveaseat.DTOs.NewReservationDTO.#ctor
+  - haveaseat.DTOs.NewReservationDTO.#ctor(haveaseat.Entities.Reservation)
+  - haveaseat.DTOs.NewReservationDTO.Date
+  - haveaseat.DTOs.NewReservationDTO.DeskId
+  - haveaseat.DTOs.NewReservationDTO.UserId
+  langs:
+  - csharp
+  - vb
+  name: NewReservationDTO
+  nameWithType: NewReservationDTO
+  fullName: haveaseat.DTOs.NewReservationDTO
+  type: Class
+  source:
+    id: NewReservationDTO
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 4
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: public class NewReservationDTO
+    content.vb: Public Class NewReservationDTO
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: haveaseat.DTOs.NewReservationDTO.#ctor
+  commentId: M:haveaseat.DTOs.NewReservationDTO.#ctor
+  id: '#ctor'
+  parent: haveaseat.DTOs.NewReservationDTO
+  langs:
+  - csharp
+  - vb
+  name: NewReservationDTO()
+  nameWithType: NewReservationDTO.NewReservationDTO()
+  fullName: haveaseat.DTOs.NewReservationDTO.NewReservationDTO()
+  type: Constructor
+  source:
+    id: .ctor
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 6
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: >-
+      [JsonConstructor]
+
+      public NewReservationDTO()
+    content.vb: >-
+      <JsonConstructor>
+
+      Public Sub New()
+  overload: haveaseat.DTOs.NewReservationDTO.#ctor*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConstructorAttribute
+    ctor: System.Text.Json.Serialization.JsonConstructorAttribute.#ctor
+    arguments: []
+  nameWithType.vb: NewReservationDTO.New()
+  fullName.vb: haveaseat.DTOs.NewReservationDTO.New()
+  name.vb: New()
+- uid: haveaseat.DTOs.NewReservationDTO.#ctor(haveaseat.Entities.Reservation)
+  commentId: M:haveaseat.DTOs.NewReservationDTO.#ctor(haveaseat.Entities.Reservation)
+  id: '#ctor(haveaseat.Entities.Reservation)'
+  parent: haveaseat.DTOs.NewReservationDTO
+  langs:
+  - csharp
+  - vb
+  name: NewReservationDTO(Reservation)
+  nameWithType: NewReservationDTO.NewReservationDTO(Reservation)
+  fullName: haveaseat.DTOs.NewReservationDTO.NewReservationDTO(haveaseat.Entities.Reservation)
+  type: Constructor
+  source:
+    id: .ctor
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 8
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: public NewReservationDTO(Reservation reservation)
+    parameters:
+    - id: reservation
+      type: haveaseat.Entities.Reservation
+    content.vb: Public Sub New(reservation As Reservation)
+  overload: haveaseat.DTOs.NewReservationDTO.#ctor*
+  nameWithType.vb: NewReservationDTO.New(Reservation)
+  fullName.vb: haveaseat.DTOs.NewReservationDTO.New(haveaseat.Entities.Reservation)
+  name.vb: New(Reservation)
+- uid: haveaseat.DTOs.NewReservationDTO.Date
+  commentId: P:haveaseat.DTOs.NewReservationDTO.Date
+  id: Date
+  parent: haveaseat.DTOs.NewReservationDTO
+  langs:
+  - csharp
+  - vb
+  name: Date
+  nameWithType: NewReservationDTO.Date
+  fullName: haveaseat.DTOs.NewReservationDTO.Date
+  type: Property
+  source:
+    id: Date
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 14
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: public DateOnly Date { get; set; }
+    parameters: []
+    return:
+      type: System.DateOnly
+    content.vb: Public Property [Date] As DateOnly
+  overload: haveaseat.DTOs.NewReservationDTO.Date*
+- uid: haveaseat.DTOs.NewReservationDTO.DeskId
+  commentId: P:haveaseat.DTOs.NewReservationDTO.DeskId
+  id: DeskId
+  parent: haveaseat.DTOs.NewReservationDTO
+  langs:
+  - csharp
+  - vb
+  name: DeskId
+  nameWithType: NewReservationDTO.DeskId
+  fullName: haveaseat.DTOs.NewReservationDTO.DeskId
+  type: Property
+  source:
+    id: DeskId
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 15
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: public long DeskId { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property DeskId As Long
+  overload: haveaseat.DTOs.NewReservationDTO.DeskId*
+- uid: haveaseat.DTOs.NewReservationDTO.UserId
+  commentId: P:haveaseat.DTOs.NewReservationDTO.UserId
+  id: UserId
+  parent: haveaseat.DTOs.NewReservationDTO
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: NewReservationDTO.UserId
+  fullName: haveaseat.DTOs.NewReservationDTO.UserId
+  type: Property
+  source:
+    id: UserId
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\DTOs\NewReservationDTO.cs
+    startLine: 16
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.DTOs
+  syntax:
+    content: public long UserId { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public Property UserId As Long
+  overload: haveaseat.DTOs.NewReservationDTO.UserId*
+references:
+- uid: haveaseat.DTOs
+  commentId: N:haveaseat.DTOs
+  href: haveaseat.html
+  name: haveaseat.DTOs
+  nameWithType: haveaseat.DTOs
+  fullName: haveaseat.DTOs
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: haveaseat.DTOs.NewReservationDTO.#ctor*
+  commentId: Overload:haveaseat.DTOs.NewReservationDTO.#ctor
+  href: haveaseat.DTOs.NewReservationDTO.html#haveaseat_DTOs_NewReservationDTO__ctor
+  name: NewReservationDTO
+  nameWithType: NewReservationDTO.NewReservationDTO
+  fullName: haveaseat.DTOs.NewReservationDTO.NewReservationDTO
+  nameWithType.vb: NewReservationDTO.New
+  fullName.vb: haveaseat.DTOs.NewReservationDTO.New
+  name.vb: New
+- uid: haveaseat.Entities.Reservation
+  commentId: T:haveaseat.Entities.Reservation
+  parent: haveaseat.Entities
+  href: haveaseat.Entities.Reservation.html
+  name: Reservation
+  nameWithType: Reservation
+  fullName: haveaseat.Entities.Reservation
+- uid: haveaseat.Entities
+  commentId: N:haveaseat.Entities
+  href: haveaseat.html
+  name: haveaseat.Entities
+  nameWithType: haveaseat.Entities
+  fullName: haveaseat.Entities
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Entities
+    name: Entities
+    href: haveaseat.Entities.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Entities
+    name: Entities
+    href: haveaseat.Entities.html
+- uid: haveaseat.DTOs.NewReservationDTO.Date*
+  commentId: Overload:haveaseat.DTOs.NewReservationDTO.Date
+  href: haveaseat.DTOs.NewReservationDTO.html#haveaseat_DTOs_NewReservationDTO_Date
+  name: Date
+  nameWithType: NewReservationDTO.Date
+  fullName: haveaseat.DTOs.NewReservationDTO.Date
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: haveaseat.DTOs.NewReservationDTO.DeskId*
+  commentId: Overload:haveaseat.DTOs.NewReservationDTO.DeskId
+  href: haveaseat.DTOs.NewReservationDTO.html#haveaseat_DTOs_NewReservationDTO_DeskId
+  name: DeskId
+  nameWithType: NewReservationDTO.DeskId
+  fullName: haveaseat.DTOs.NewReservationDTO.DeskId
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: haveaseat.DTOs.NewReservationDTO.UserId*
+  commentId: Overload:haveaseat.DTOs.NewReservationDTO.UserId
+  href: haveaseat.DTOs.NewReservationDTO.html#haveaseat_DTOs_NewReservationDTO_UserId
+  name: UserId
+  nameWithType: NewReservationDTO.UserId
+  fullName: haveaseat.DTOs.NewReservationDTO.UserId

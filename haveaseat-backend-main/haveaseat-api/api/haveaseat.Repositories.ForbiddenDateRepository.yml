@@ -1,0 +1,1039 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.Repositories.ForbiddenDateRepository
+  commentId: T:haveaseat.Repositories.ForbiddenDateRepository
+  id: ForbiddenDateRepository
+  parent: haveaseat.Repositories
+  children:
+  - haveaseat.Repositories.ForbiddenDateRepository.#ctor(haveaseat.DbContexts.DataContext)
+  - haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  - haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  - haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  - haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates
+  - haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  - haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  langs:
+  - csharp
+  - vb
+  name: ForbiddenDateRepository
+  nameWithType: ForbiddenDateRepository
+  fullName: haveaseat.Repositories.ForbiddenDateRepository
+  type: Class
+  source:
+    id: ForbiddenDateRepository
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 9
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  syntax:
+    content: 'public class ForbiddenDateRepository : IForbiddenDateRepository'
+    content.vb: Public Class ForbiddenDateRepository Implements IForbiddenDateRepository
+  inheritance:
+  - System.Object
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: haveaseat.Repositories.ForbiddenDateRepository.#ctor(haveaseat.DbContexts.DataContext)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.#ctor(haveaseat.DbContexts.DataContext)
+  id: '#ctor(haveaseat.DbContexts.DataContext)'
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: ForbiddenDateRepository(DataContext)
+  nameWithType: ForbiddenDateRepository.ForbiddenDateRepository(DataContext)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.ForbiddenDateRepository(haveaseat.DbContexts.DataContext)
+  type: Constructor
+  source:
+    id: .ctor
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 9
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  syntax:
+    content: public ForbiddenDateRepository(DataContext context)
+    parameters:
+    - id: context
+      type: haveaseat.DbContexts.DataContext
+    content.vb: Public Sub New(context As DataContext)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.#ctor*
+  nameWithType.vb: ForbiddenDateRepository.New(DataContext)
+  fullName.vb: haveaseat.Repositories.ForbiddenDateRepository.New(haveaseat.DbContexts.DataContext)
+  name.vb: New(DataContext)
+- uid: haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  id: AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: AddForbiddenDate(NewForbiddenDateDTO)
+  nameWithType: ForbiddenDateRepository.AddForbiddenDate(NewForbiddenDateDTO)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  type: Method
+  source:
+    id: AddForbiddenDate
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 11
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<NewForbiddenDateDTO> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate)
+    parameters:
+    - id: newForbiddenDate
+      type: haveaseat.DTOs.NewForbiddenDateDTO
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.NewForbiddenDateDTO}
+    content.vb: Public Function AddForbiddenDate(newForbiddenDate As NewForbiddenDateDTO) As Task(Of NewForbiddenDateDTO)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+- uid: haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  id: DeleteForbiddenDateByDate(System.DateOnly)
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: DeleteForbiddenDateByDate(DateOnly)
+  nameWithType: ForbiddenDateRepository.DeleteForbiddenDateByDate(DateOnly)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  type: Method
+  source:
+    id: DeleteForbiddenDateByDate
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 23
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<bool> DeleteForbiddenDateByDate(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteForbiddenDateByDate([date] As DateOnly) As Task(Of Boolean)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates
+  id: GetAllForbiddenDates
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: GetAllForbiddenDates()
+  nameWithType: ForbiddenDateRepository.GetAllForbiddenDates()
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates()
+  type: Method
+  source:
+    id: GetAllForbiddenDates
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 31
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<List<ForbiddenDateDTO>> GetAllForbiddenDates()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ForbiddenDateDTO}}
+    content.vb: Public Function GetAllForbiddenDates() As Task(Of List(Of ForbiddenDateDTO))
+  overload: haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  id: GetForbiddenDateByDate(System.DateOnly)
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: GetForbiddenDateByDate(DateOnly)
+  nameWithType: ForbiddenDateRepository.GetForbiddenDateByDate(DateOnly)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  type: Method
+  source:
+    id: GetForbiddenDateByDate
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 43
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<ForbiddenDateDTO> GetForbiddenDateByDate(DateOnly date)
+    parameters:
+    - id: date
+      type: System.DateOnly
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.ForbiddenDateDTO}
+    content.vb: Public Function GetForbiddenDateByDate([date] As DateOnly) As Task(Of ForbiddenDateDTO)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  id: GetForbiddenDateById(System.Int64)
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: GetForbiddenDateById(long)
+  nameWithType: ForbiddenDateRepository.GetForbiddenDateById(long)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById(long)
+  type: Method
+  source:
+    id: GetForbiddenDateById
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 53
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<ForbiddenDateDTO> GetForbiddenDateById(long id)
+    parameters:
+    - id: id
+      type: System.Int64
+    return:
+      type: System.Threading.Tasks.Task{haveaseat.DTOs.ForbiddenDateDTO}
+    content.vb: Public Function GetForbiddenDateById(id As Long) As Task(Of ForbiddenDateDTO)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  nameWithType.vb: ForbiddenDateRepository.GetForbiddenDateById(Long)
+  fullName.vb: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById(Long)
+  name.vb: GetForbiddenDateById(Long)
+- uid: haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  commentId: M:haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  id: EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  parent: haveaseat.Repositories.ForbiddenDateRepository
+  langs:
+  - csharp
+  - vb
+  name: EditForbiddenDateByDate(NewForbiddenDateDTO)
+  nameWithType: ForbiddenDateRepository.EditForbiddenDateByDate(NewForbiddenDateDTO)
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  type: Method
+  source:
+    id: EditForbiddenDateByDate
+    path: C:\Users\Praktyka\Downloads\haveaseat-backend-main\haveaseat-backend-main\haveaseat-api\haveaseat-api\Repositories\ForbiddenDateRepository.cs
+    startLine: 63
+  assemblies:
+  - haveaseat-api
+  namespace: haveaseat.Repositories
+  example: []
+  syntax:
+    content: public Task<bool> EditForbiddenDateByDate(NewForbiddenDateDTO newForbiddenDate)
+    parameters:
+    - id: newForbiddenDate
+      type: haveaseat.DTOs.NewForbiddenDateDTO
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function EditForbiddenDateByDate(newForbiddenDate As NewForbiddenDateDTO) As Task(Of Boolean)
+  overload: haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate*
+  implements:
+  - haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+references:
+- uid: haveaseat.Repositories
+  commentId: N:haveaseat.Repositories
+  href: haveaseat.html
+  name: haveaseat.Repositories
+  nameWithType: haveaseat.Repositories
+  fullName: haveaseat.Repositories
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  commentId: T:haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  parent: haveaseat.Repositories.Interfaces
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html
+  name: IForbiddenDateRepository
+  nameWithType: IForbiddenDateRepository
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: haveaseat.Repositories.Interfaces
+  commentId: N:haveaseat.Repositories.Interfaces
+  href: haveaseat.html
+  name: haveaseat.Repositories.Interfaces
+  nameWithType: haveaseat.Repositories.Interfaces
+  fullName: haveaseat.Repositories.Interfaces
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.Repositories
+    name: Repositories
+    href: haveaseat.Repositories.html
+  - name: .
+  - uid: haveaseat.Repositories.Interfaces
+    name: Interfaces
+    href: haveaseat.Repositories.Interfaces.html
+- uid: haveaseat.Repositories.ForbiddenDateRepository.#ctor*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.#ctor
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository__ctor_haveaseat_DbContexts_DataContext_
+  name: ForbiddenDateRepository
+  nameWithType: ForbiddenDateRepository.ForbiddenDateRepository
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.ForbiddenDateRepository
+  nameWithType.vb: ForbiddenDateRepository.New
+  fullName.vb: haveaseat.Repositories.ForbiddenDateRepository.New
+  name.vb: New
+- uid: haveaseat.DbContexts.DataContext
+  commentId: T:haveaseat.DbContexts.DataContext
+  parent: haveaseat.DbContexts
+  href: haveaseat.DbContexts.DataContext.html
+  name: DataContext
+  nameWithType: DataContext
+  fullName: haveaseat.DbContexts.DataContext
+- uid: haveaseat.DbContexts
+  commentId: N:haveaseat.DbContexts
+  href: haveaseat.html
+  name: haveaseat.DbContexts
+  nameWithType: haveaseat.DbContexts
+  fullName: haveaseat.DbContexts
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DbContexts
+    name: DbContexts
+    href: haveaseat.DbContexts.html
+- uid: haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_AddForbiddenDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  name: AddForbiddenDate
+  nameWithType: ForbiddenDateRepository.AddForbiddenDate
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.AddForbiddenDate
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_AddForbiddenDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  name: AddForbiddenDate(NewForbiddenDateDTO)
+  nameWithType: IForbiddenDateRepository.AddForbiddenDate(NewForbiddenDateDTO)
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+    name: AddForbiddenDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_AddForbiddenDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.AddForbiddenDate(haveaseat.DTOs.NewForbiddenDateDTO)
+    name: AddForbiddenDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_AddForbiddenDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: )
+- uid: haveaseat.DTOs.NewForbiddenDateDTO
+  commentId: T:haveaseat.DTOs.NewForbiddenDateDTO
+  parent: haveaseat.DTOs
+  href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  name: NewForbiddenDateDTO
+  nameWithType: NewForbiddenDateDTO
+  fullName: haveaseat.DTOs.NewForbiddenDateDTO
+- uid: System.Threading.Tasks.Task{haveaseat.DTOs.NewForbiddenDateDTO}
+  commentId: T:System.Threading.Tasks.Task{haveaseat.DTOs.NewForbiddenDateDTO}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<NewForbiddenDateDTO>
+  nameWithType: Task<NewForbiddenDateDTO>
+  fullName: System.Threading.Tasks.Task<haveaseat.DTOs.NewForbiddenDateDTO>
+  nameWithType.vb: Task(Of NewForbiddenDateDTO)
+  fullName.vb: System.Threading.Tasks.Task(Of haveaseat.DTOs.NewForbiddenDateDTO)
+  name.vb: Task(Of NewForbiddenDateDTO)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: )
+- uid: haveaseat.DTOs
+  commentId: N:haveaseat.DTOs
+  href: haveaseat.html
+  name: haveaseat.DTOs
+  nameWithType: haveaseat.DTOs
+  fullName: haveaseat.DTOs
+  spec.csharp:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+  spec.vb:
+  - uid: haveaseat
+    name: haveaseat
+    href: haveaseat.html
+  - name: .
+  - uid: haveaseat.DTOs
+    name: DTOs
+    href: haveaseat.DTOs.html
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_DeleteForbiddenDateByDate_System_DateOnly_
+  name: DeleteForbiddenDateByDate
+  nameWithType: ForbiddenDateRepository.DeleteForbiddenDateByDate
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.DeleteForbiddenDateByDate
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_DeleteForbiddenDateByDate_System_DateOnly_
+  name: DeleteForbiddenDateByDate(DateOnly)
+  nameWithType: IForbiddenDateRepository.DeleteForbiddenDateByDate(DateOnly)
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+    name: DeleteForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_DeleteForbiddenDateByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.DeleteForbiddenDateByDate(System.DateOnly)
+    name: DeleteForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_DeleteForbiddenDateByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+- uid: System.DateOnly
+  commentId: T:System.DateOnly
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  name: DateOnly
+  nameWithType: DateOnly
+  fullName: System.DateOnly
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_GetAllForbiddenDates
+  name: GetAllForbiddenDates
+  nameWithType: ForbiddenDateRepository.GetAllForbiddenDates
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetAllForbiddenDates
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetAllForbiddenDates
+  name: GetAllForbiddenDates()
+  nameWithType: IForbiddenDateRepository.GetAllForbiddenDates()
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates()
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates
+    name: GetAllForbiddenDates
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetAllForbiddenDates
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetAllForbiddenDates
+    name: GetAllForbiddenDates
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetAllForbiddenDates
+  - name: (
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ForbiddenDateDTO}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{haveaseat.DTOs.ForbiddenDateDTO}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<ForbiddenDateDTO>>
+  nameWithType: Task<List<ForbiddenDateDTO>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<haveaseat.DTOs.ForbiddenDateDTO>>
+  nameWithType.vb: Task(Of List(Of ForbiddenDateDTO))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of haveaseat.DTOs.ForbiddenDateDTO))
+  name.vb: Task(Of List(Of ForbiddenDateDTO))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: haveaseat.DTOs.ForbiddenDateDTO
+    name: ForbiddenDateDTO
+    href: haveaseat.DTOs.ForbiddenDateDTO.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.ForbiddenDateDTO
+    name: ForbiddenDateDTO
+    href: haveaseat.DTOs.ForbiddenDateDTO.html
+  - name: )
+  - name: )
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_GetForbiddenDateByDate_System_DateOnly_
+  name: GetForbiddenDateByDate
+  nameWithType: ForbiddenDateRepository.GetForbiddenDateByDate
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateByDate
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateByDate_System_DateOnly_
+  name: GetForbiddenDateByDate(DateOnly)
+  nameWithType: IForbiddenDateRepository.GetForbiddenDateByDate(DateOnly)
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+    name: GetForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateByDate(System.DateOnly)
+    name: GetForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateByDate_System_DateOnly_
+  - name: (
+  - uid: System.DateOnly
+    name: DateOnly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.dateonly
+  - name: )
+- uid: System.Threading.Tasks.Task{haveaseat.DTOs.ForbiddenDateDTO}
+  commentId: T:System.Threading.Tasks.Task{haveaseat.DTOs.ForbiddenDateDTO}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ForbiddenDateDTO>
+  nameWithType: Task<ForbiddenDateDTO>
+  fullName: System.Threading.Tasks.Task<haveaseat.DTOs.ForbiddenDateDTO>
+  nameWithType.vb: Task(Of ForbiddenDateDTO)
+  fullName.vb: System.Threading.Tasks.Task(Of haveaseat.DTOs.ForbiddenDateDTO)
+  name.vb: Task(Of ForbiddenDateDTO)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: haveaseat.DTOs.ForbiddenDateDTO
+    name: ForbiddenDateDTO
+    href: haveaseat.DTOs.ForbiddenDateDTO.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: haveaseat.DTOs.ForbiddenDateDTO
+    name: ForbiddenDateDTO
+    href: haveaseat.DTOs.ForbiddenDateDTO.html
+  - name: )
+- uid: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_GetForbiddenDateById_System_Int64_
+  name: GetForbiddenDateById
+  nameWithType: ForbiddenDateRepository.GetForbiddenDateById
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.GetForbiddenDateById
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  isExternal: true
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateById_System_Int64_
+  name: GetForbiddenDateById(long)
+  nameWithType: IForbiddenDateRepository.GetForbiddenDateById(long)
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(long)
+  nameWithType.vb: IForbiddenDateRepository.GetForbiddenDateById(Long)
+  fullName.vb: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(Long)
+  name.vb: GetForbiddenDateById(Long)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+    name: GetForbiddenDateById
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateById_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.GetForbiddenDateById(System.Int64)
+    name: GetForbiddenDateById
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_GetForbiddenDateById_System_Int64_
+  - name: (
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate*
+  commentId: Overload:haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate
+  href: haveaseat.Repositories.ForbiddenDateRepository.html#haveaseat_Repositories_ForbiddenDateRepository_EditForbiddenDateByDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  name: EditForbiddenDateByDate
+  nameWithType: ForbiddenDateRepository.EditForbiddenDateByDate
+  fullName: haveaseat.Repositories.ForbiddenDateRepository.EditForbiddenDateByDate
+- uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  commentId: M:haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  parent: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+  href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_EditForbiddenDateByDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  name: EditForbiddenDateByDate(NewForbiddenDateDTO)
+  nameWithType: IForbiddenDateRepository.EditForbiddenDateByDate(NewForbiddenDateDTO)
+  fullName: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+  spec.csharp:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+    name: EditForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_EditForbiddenDateByDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: )
+  spec.vb:
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.EditForbiddenDateByDate(haveaseat.DTOs.NewForbiddenDateDTO)
+    name: EditForbiddenDateByDate
+    href: haveaseat.Repositories.Interfaces.IForbiddenDateRepository.html#haveaseat_Repositories_Interfaces_IForbiddenDateRepository_EditForbiddenDateByDate_haveaseat_DTOs_NewForbiddenDateDTO_
+  - name: (
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+    href: haveaseat.DTOs.NewForbiddenDateDTO.html
+  - name: )

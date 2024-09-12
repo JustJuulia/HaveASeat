@@ -6,10 +6,26 @@ using System.Runtime.InteropServices;
 
 namespace haveaseat_api.Controllers;
 
+/// <summary>
+/// This controller handles user-related operations such as registration, login and retrieving user informations.
+/// </summary>
+/// <seealso cref="User"/>
+/// <seealso cref="IAuthenticationRepository"/>
+/// <param name="authenticationRepository">The IAuthenticationRepository instance used for accessing methods to manipulate user data.</param>
 [ApiController]
 [Route("api/[controller]")]
 public class AuthenticationController(IAuthenticationRepository authenticationRepository) : ControllerBase
 {
+    /// <summary>
+    /// This tasks registers a user with the data provided from the HTTP POST request.
+    /// </summary>
+    /// <seealso cref="NewUserDTO"/>
+    /// <param name="newUser">The NewUserDTO object containing the user's registration details.</param>
+    /// <returns>
+    /// Returns a Created status and NewUserDTO object if all requirements are met,
+    /// a BadRequest status if the user already exists,
+    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met,
+    /// </returns>
     [HttpPost("register")]
     [ProducesResponseType(typeof(NewUserDTO),201)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -19,8 +35,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         if (await authenticationRepository.GetUserByEmail(newUser.Email) != null) {
             return BadRequest("User already exist !"+(authenticationRepository.GetUserByEmail(newUser.Email)));
         }
-        try
-        {
+
             String salt = BCrypt.Net.BCrypt.GenerateSalt(10);
             newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password, salt);
             string result = await authenticationRepository.RegisterUser(newUser, salt);
@@ -29,15 +44,17 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
                 return StatusCode(StatusCodes.Status500InternalServerError, $"An error with adding user to database!");
             }
             return Created("User registered", newUser);
-        }
-        catch (Exception e)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, $"An server side error");
-            Console.WriteLine(e);
-            throw;
-        }
+        
     }
-
+    /// <summary>
+    /// This task retrieves user information based on the provided email from the HTTP GET request.
+    /// </summary>
+    /// <seealso cref="UserDTO"/>
+    /// <param name="email">The email address of the user to retrieve.</param>
+    /// <returns>
+    /// Returns a OK status and UserDTO object if the user exist in the database,
+    /// a NotFound status if user doesn't exist in database.
+    /// </returns>
     [HttpGet("GetByEmail/{email}")]
     [ProducesResponseType(typeof(UserDTO), 200)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -50,7 +67,15 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         }
         return Ok(userByEmail);
     }
-
+    /// <summary>
+    /// This task retrives user information based on the provided id from the HTTP GET request.
+    /// </summary>
+    /// <seealso cref="UserDTO"/>
+    /// <param name="id">The id of the user to retrieve.</param>
+    /// <returns>
+    /// Returns an Ok status and UserDTO object if the user exists in the database,
+    /// a NotFound status if the user doesn't exist in the database.
+    /// </returns>
     [HttpGet("GetById/{id}")]
     [ProducesResponseType(typeof(UserDTO), 200)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -64,6 +89,16 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
 
         return Ok(userById);
     }
+    /// <summary>
+    /// This tasks logins a user with the data provided from the HTTP POST request.
+    /// </summary>
+    /// <seealso cref="NewUserLoginDTO"/>
+    /// <param name="user">The NewUserLoginDTO object containing the user's login details.</param>
+    /// <returns>
+    /// Returns a Accepted status and true if all requirements are met,
+    /// a BadRequest status if the user already exists,
+    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met.
+    /// </returns>
     [HttpPost("Login")]
     [ProducesResponseType(typeof(Boolean), 202)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -74,9 +109,9 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         {
             return BadRequest("Not send!");
         }
-        try
-        {
-            if(await authenticationRepository.GetUserByEmail(user.Email) == null)
+      
+        
+           if(await authenticationRepository.GetUserByEmail(user.Email) == null)
             {
                 return BadRequest("Wrong email or password!");
             }
@@ -94,13 +129,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
                 return BadRequest("Wrong email or password!");
             }
             return Accepted("Login successful", true);
-        }
-        catch (Exception e)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, $"An server side error");
-            Console.WriteLine(e);
-            throw;
-        }
+        
         
     }
 }

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: haveaseat.Controllers
+  commentId: N:haveaseat.Controllers
+  id: haveaseat.Controllers
+  children:
+  - haveaseat.Controllers.ForbiddenDateController
+  langs:
+  - csharp
+  - vb
+  name: haveaseat.Controllers
+  nameWithType: haveaseat.Controllers
+  fullName: haveaseat.Controllers
+  type: Namespace
+  assemblies:
+  - haveaseat-api
+references:
+- uid: haveaseat.Controllers.ForbiddenDateController
+  commentId: T:haveaseat.Controllers.ForbiddenDateController
+  href: haveaseat.Controllers.ForbiddenDateController.html
+  name: ForbiddenDateController
+  nameWithType: ForbiddenDateController
+  fullName: haveaseat.Controllers.ForbiddenDateController
