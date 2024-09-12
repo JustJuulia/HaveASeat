@@ -1,8 +1,4 @@
-<app-dialog
-  *ngIf="showDialog"
-  (confirm)="handleConfirm()"
-  (close)="handleClose()"
-></app-dialog>
+
 <div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
   <ng-container *ngFor="let room of rooms; let rowIndex = index" >
     <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">

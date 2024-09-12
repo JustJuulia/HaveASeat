@@ -3,26 +3,28 @@ import { CommonModule, NgFor, NgStyle } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Desk, Room, Cell, Reservation, User, NewReservation } from '../../models/models';
 import { NgIf } from '@angular/common';
-import { DialogComponent } from '../dialogue-component/dialogue-component.component';
 import { forkJoin } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+import { ForbiddenDate } from '../../models/models';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
-import { ViewChild } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MyDialogComponent } from '../mydialog/mydialog.component';
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, DialogComponent],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
   standalone: true,
   providers: [MapaService, UserService],
 })
 export class MapaComponent implements OnInit, OnChanges {
 
-  @ViewChild('dialog') dialogComponent!: DialogComponent;
   roomWidth = 20;
   roomHeight = 13;
   rooms: Room[] = [];
@@ -30,48 +32,50 @@ export class MapaComponent implements OnInit, OnChanges {
   clickedOnce = false;
   @Input() selectedDate: string = ''; 
   @Input() userId: number | null = null;
+  private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
+  alldates: Date[] = [];
 
-  constructor(private mapaService: MapaService, private snackBar: MatSnackBar) {}
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog) {}
 
-  showDialog = false;
-  actionSeat = 0;
-
-  async openDialog(type: number): Promise<boolean> {
-    let message = '';
-    if (type === 1) {
-      message = 'Book this seat?';
-    } else if (type === 0) {
-      message = 'Cancel this seat?';
+  find_today(today: string): string {
+    let today_date = new Date(today);
+    while (true) {
+      let day = today_date.getDay();
+      let counter = 0;
+      if (day !== 6 && day !== 0) { 
+        this.alldates.forEach((forb_date: { getTime: () => number; }) => {
+          if (today_date.getTime() === forb_date.getTime()) {
+            counter++;
+          }
+        });
+        if (counter === 0) {
+          return today_date.toISOString().slice(0, 10); 
+        }
+      }
+      today_date.setDate(today_date.getDate() + 1); 
     }
-  
-    try {
-      const result = await this.dialogComponent.openDialog(message);
-      return result;
-    } catch (error) {
-      console.error('Dialog error:', error);
-      return false;
-    }
-  }
-
-  handleConfirm() {
-    console.log('Confirmed');
-    this.showDialog = false;
-  }
-
-  handleClose() {
-    console.log('Closed');
-    this.showDialog = false;
   }
 
   ngOnInit(): void {
+    this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
+      next: (dates: ForbiddenDate[]) => {
+        this.alldates = dates.map(date => 
+          new Date(date.date)
+        );
+      },
+      error: (err: any) => {
+        console.error('Error during dates show', err);
+      },
+    });
     forkJoin({
       rooms: this.mapaService.getRooms(),
     }).subscribe(
       ({ rooms }) => {
         this.rooms = rooms;
         this.markDeskCells();
-        const today = new Date();
-        const date = today.toJSON().slice(0, 10);
+        const today = new Date().toISOString().slice(0, 10);
+        const checked_today = this.find_today(today);
+        const date = checked_today;
         this.markReserved(date);
       },
       (error: any) => {
@@ -89,14 +93,16 @@ export class MapaComponent implements OnInit, OnChanges {
   popup(type: number, text: string) {
     if(type == 0) {
       this.snackBar.open(text, "Zamknij", {
-        duration: 3500,
-        panelClass: ['success']
+        //duration: 3500,
+        panelClass: ['snackbar'],
+        verticalPosition: 'top',
       });
     }
     if(type == 1) {
       this.snackBar.open(text, "Zamknij", {
         duration: 3500,
-        panelClass: ['failure']
+        panelClass: ['snackbar'],
+        verticalPosition: 'top',
       });
     }
   }
@@ -108,7 +114,21 @@ export class MapaComponent implements OnInit, OnChanges {
   checkIfBelongsToUser(reservation: Reservation, cell: Cell): boolean {
     return (reservation.desk.positionX == cell.positionX && reservation.desk.positionY == cell.positionY) && reservation.user.id == this.userId;
   }
-
+  dialogopen(content: string, buttons: number): Promise<boolean>{
+    const dialogRef = this.dialog.open(MyDialogComponent, {
+      data: {buttonamount:buttons,  mycontent: `${content}` } 
+    });
+    return dialogRef.afterClosed().toPromise().then(result => {
+      if (result === 'confirmed') {
+        return true
+      } else if (result === 'cancelled') {
+        return false
+      }
+      else{
+        return false
+      }
+    });
+  }
   async onDeskClick(cell: Cell) {
     if (cell.isDesk && !cell.isReserved) {
       this.rooms.forEach(room => {
@@ -117,7 +137,7 @@ export class MapaComponent implements OnInit, OnChanges {
         });
       });
     }
-    if (cell.isUsers == false && !cell.isReserved && await this.openDialog(1)) {
+    if (cell.isUsers == false && !cell.isReserved && await this.dialogopen("Book this seat?", 2)) {
       cell.isClicked = true;
       const desk = this.getCellsDesk(cell);
 
@@ -155,7 +175,7 @@ export class MapaComponent implements OnInit, OnChanges {
         }
       });
     } 
-    else if (cell.isUsers && await this.openDialog(0)) {
+    else if (cell.isUsers && await this.dialogopen("Cancel this reservation?", 2)) {
       const reservation = this.reservations.find(r => r.user.id == this.userId);
       if (reservation) {
         this.mapaService.deleteReservationsById(reservation.id).subscribe({
@@ -171,7 +191,8 @@ export class MapaComponent implements OnInit, OnChanges {
     }
     else if(cell.isReserved) {
       const reservation = this.reservations.find(r => r.desk.positionX == cell.positionX && r.desk.positionY == cell.positionY);
-      this.popup(0, `Biurko zarezerwowane przez ${reservation?.user.name}`);
+      let text = `miejsce zajęte przez: ${reservation?.user.name}`
+      this.dialogopen(text, 1)
     }
     else {
       console.log("No action taken");
@@ -290,3 +311,5 @@ export class MapaComponent implements OnInit, OnChanges {
   
 
 }
+
+//𝓯𝓻𝓮𝓪𝓴𝔂 

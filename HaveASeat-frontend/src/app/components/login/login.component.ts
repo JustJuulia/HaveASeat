@@ -41,13 +41,15 @@ export class LoginComponent {
     if(type == 0) {
       this.snackBar.open(text, "Zamknij", {
         duration: 3500,
-        panelClass: ['success']
+        panelClass: ['success'],
+        verticalPosition: 'top',
       });
     }
     if(type == 1) {
       this.snackBar.open(text, "Zamknij", {
         duration: 3500,
-        panelClass: ['failure']
+        panelClass: ['failure'],
+        verticalPosition: 'top',
       });
     }
   }
