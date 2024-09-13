@@ -16,7 +16,7 @@ namespace haveaseat.Controllers;
 public class AreaController(DataContext _context) : ControllerBase
 {
     /// <summary>
-    /// This task provides Area object by http request at */GetArea
+    /// This task provides Area object via an HTTP GET request.
     /// </summary>
     /// 
     /// <returns>

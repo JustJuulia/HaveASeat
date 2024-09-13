@@ -18,7 +18,15 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         
         return reservationDtos;
     }
-
+    public async Task<Boolean> CheckIfReservationExistByDateAnDeskId(DateOnly date,long deskId)
+    {
+       
+        if (await context.Reservations.Where(x => x.Date == date).Where(y => y.DeskId == deskId).SingleOrDefaultAsync() != null)
+        {
+            return true;
+        }
+        return false;
+    }
     public async Task<List<ReservationDTO>> GetReservationsByDay(DateOnly date)
     {
         List<Reservation> reservationsOnGivenDay = await context.Reservations
@@ -52,6 +60,7 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         {
             return false;
         }
+
         if(await context.Reservations.Where(e=>e.Id == reservationId).ExecuteDeleteAsync() > 0){
             return true;
         }

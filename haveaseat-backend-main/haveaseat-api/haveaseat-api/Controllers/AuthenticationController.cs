@@ -22,9 +22,9 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// <seealso cref="NewUserDTO"/>
     /// <param name="newUser">The NewUserDTO object containing the user's registration details.</param>
     /// <returns>
-    /// Returns a Created status and NewUserDTO object if all requirements are met,
+    /// Returns a Created status and NewUserDTO object if user was added to database,
     /// a BadRequest status if the user already exists,
-    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met,
+    /// or an InternalServerError status if the record wasn't added to the database despite all requirements being met.
     /// </returns>
     [HttpPost("register")]
     [ProducesResponseType(typeof(NewUserDTO),201)]
@@ -53,7 +53,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// <param name="email">The email address of the user to retrieve.</param>
     /// <returns>
     /// Returns a OK status and UserDTO object if the user exist in the database,
-    /// a NotFound status if user doesn't exist in database.
+    /// or a NotFound status if user doesn't exist in database.
     /// </returns>
     [HttpGet("GetByEmail/{email}")]
     [ProducesResponseType(typeof(UserDTO), 200)]
@@ -74,7 +74,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// <param name="id">The id of the user to retrieve.</param>
     /// <returns>
     /// Returns an Ok status and UserDTO object if the user exists in the database,
-    /// a NotFound status if the user doesn't exist in the database.
+    /// or a NotFound status if the user doesn't exist in the database.
     /// </returns>
     [HttpGet("GetById/{id}")]
     [ProducesResponseType(typeof(UserDTO), 200)]
@@ -95,9 +95,9 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// <seealso cref="NewUserLoginDTO"/>
     /// <param name="user">The NewUserLoginDTO object containing the user's login details.</param>
     /// <returns>
-    /// Returns a Accepted status and true if all requirements are met,
-    /// a BadRequest status if the user already exists,
-    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met.
+    /// Returns a Accepted status and true if user is successfully logged in,
+    /// a BadRequest status if the user already exists or the credentials are incorrect,
+    /// or an InternalServerError status if the record wasn't added to the database despite all requirements being met.
     /// </returns>
     [HttpPost("Login")]
     [ProducesResponseType(typeof(Boolean), 202)]

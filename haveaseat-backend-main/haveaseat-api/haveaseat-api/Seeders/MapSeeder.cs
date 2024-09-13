@@ -2,7 +2,7 @@ using haveaseat.DbContexts;
 using haveaseat.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace haveaseat_api.Seeders;
+namespace haveaseat.Seeders;
 
 public static class MapSeeder
 {

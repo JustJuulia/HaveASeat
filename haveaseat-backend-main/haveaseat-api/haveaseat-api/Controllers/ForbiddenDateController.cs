@@ -18,12 +18,12 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     /// This task adds a forbidden date with the data provided from the HTTP POST request.
     /// </summary>
     /// <seealso cref="NewForbiddenDateDTO"/>
-    /// <param name="newForbiddenDate">The ForbiddenDate object containing the details of the forbidden date to be added.</param>
+    /// <param name="newForbiddenDate">The NewForbiddenDateDTO object containing the details of the forbidden date to be added.</param>
     /// <returns>
-    /// Returns a Created status if all requiments are met,
+    /// Returns a Created status if forbidden date was added to database,
     /// a BadRequest status if NewForbiddenDateDTO wasn't send,
     /// a BadRequest status if forbidden date already exist,
-    /// an InternalServerError status if the record wasn't added to the database despite all requirements being met,
+    /// or an InternalServerError status if the record wasn't added to the database despite all requirements being met.
     /// </returns>
     [HttpPost("AddForbiddenDate")]
     [ProducesResponseType(StatusCodes.Status201Created)]
@@ -51,10 +51,10 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     /// </summary>
     /// <param name="date">The date to be deleted.</param>
     /// <returns>
-    /// Returns status Accepted and true if all requirements are met,
+    /// Returns status Accepted and true if forbidden date was deleted,
     /// a BadRequest if date wasn't send,
     /// a BadRequest if date isn't forbidden,
-    /// an InternalServerError 
+    /// or an InternalServerError if the forbidden date wasn't delete despites all requirements being met. 
     /// </returns>
     [HttpDelete("delete/{date}")]
     [ProducesResponseType(typeof(Boolean), 202)]
@@ -77,7 +77,13 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         return Accepted("delete Forbidden date",result);
     }
-    
+    /// <summary>
+    /// This task retrieves a list of all forbidden dates from the database by HTTP GET request.
+    /// </summary>
+    /// <seealso cref="ForbiddenDateDTO"/>    
+    /// <returns>
+    /// Returns an Ok status and list of ForbiddenDateDTO objects.
+    /// </returns>
     [HttpGet("getAllForbiddenDates")]
     [ProducesResponseType(typeof(List<ForbiddenDateDTO>), 200)]
     public async Task<IActionResult> GetAllForbiddenDates()
@@ -86,6 +92,15 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         return Ok(result);
     }
 
+    /// <summary>
+    /// This task retrives forbidden date information based on the provided date from the HTTP GET request.
+    /// </summary>
+    /// <seealso cref="ForbiddenDateDTO"/>
+    /// <param name="date">The date of the forbidden date to retrieve.</param>
+    /// <returns>
+    /// Rewturns an Ok status and ForbiddenDateDTO object if the forbidden date exist in te database,
+    /// or a NotFound status if date isn't forbidden.
+    /// </returns>
     [HttpGet("GetByDate/{date}")]
     [ProducesResponseType(typeof(ForbiddenDateDTO), 200)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -98,9 +113,17 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         return Ok(getForbiddenDateByDate);
     }
-
+    /// <summary>
+    /// This task retrives forbidden date information based on the provided id from the HTTP GET request.
+    /// </summary>
+    /// <seealso cref="ForbiddenDateDTO"/>
+    /// <param name="id">The id of the forbidden date to retrieve.</param>
+    /// <returns>
+    /// Rewturns an Ok status and ForbiddenDateDTO object if the forbidden date exist in te database,
+    /// or a NotFound status if date isn't forbidden.
+    /// </returns>
     [HttpGet("GetById/{id}")]
-    [ProducesResponseType(typeof(UserDTO), 200)]
+    [ProducesResponseType(typeof(ForbiddenDateDTO), 200)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetForbiddenDateById(long id)
     {
@@ -112,20 +135,32 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
 
         return Ok(getForbiddenDateById);
     }
+    /// <summary>
+    /// This task edits forbidden date based on the provided date from the HTTP Post request.
+    /// </summary>
+    /// <seealso cref="NewForbiddenDateDTO"/>
+    /// <param name="newForbiddenDate">The date to be edited.</param>
+    /// <returns>
+    /// Returns status Ok and true if all forbidden date was deleted,
+    /// a BadRequest if NewForbiddenDateDTO object wasn't send,
+    /// a BadRequest if date isn't forbidden,
+    /// or an InternalServerError if the forbidden date wasn't edited despites all requirements being met. 
+    /// </returns>
     [HttpPost("EditForbiddenDate")]
     [ProducesResponseType(typeof(Boolean), 200)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> EditForbiddenDateByDate(NewForbiddenDateDTO newForbiddenDate)
     {
-        if(await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) == null)
-        {
-            return BadRequest("Date is not forbidden");
-        }
-        if(newForbiddenDate == null)
+        if (newForbiddenDate == null)
         {
             return BadRequest("not send!");
         }
+        if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) == null)
+        {
+            return BadRequest("Date is not forbidden");
+        }
+        
         Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(newForbiddenDate);
         if (!updated)
         {

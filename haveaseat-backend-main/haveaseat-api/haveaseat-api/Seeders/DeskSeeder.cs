@@ -2,7 +2,7 @@ using haveaseat.DbContexts;
 using haveaseat.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace haveaseat_api.Seeders;
+namespace haveaseat.Seeders;
 
 public static class DeskSeeder
 {

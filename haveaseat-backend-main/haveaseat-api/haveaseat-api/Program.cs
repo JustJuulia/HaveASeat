@@ -1,11 +1,13 @@
 global using haveaseat.Entities;
-using haveaseat_api.Seeders;
+using haveaseat.Seeders;
 using haveaseat.DbContexts;
 using haveaseat.Repositories;
 using haveaseat.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -25,7 +27,13 @@ builder.Services.AddScoped<IForbiddenDateRepository, ForbiddenDateRepository>();
 builder.Services.AddScoped<DataContext>(); 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options=>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+        options.IncludeXmlComments(xmlPath);
+    });
 
 var app = builder.Build();
 

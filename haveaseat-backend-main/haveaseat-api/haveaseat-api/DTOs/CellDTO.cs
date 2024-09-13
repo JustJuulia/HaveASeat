@@ -1,4 +1,4 @@
-using haveaseat_api.Seeders;
+using haveaseat.Seeders;
 
 namespace haveaseat.DTOs;
 
