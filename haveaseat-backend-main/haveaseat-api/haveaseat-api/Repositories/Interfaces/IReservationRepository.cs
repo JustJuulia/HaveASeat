@@ -10,5 +10,5 @@ public interface IReservationRepository
     Task<NewReservationDTO> InsertReservations(NewReservationDTO reservation);
     Task<Boolean> DeleteReservationById(long reservationId);
     Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date);
-    Task<List<LongTimeReservationToCheckDTQ>> longTimeReservationToCheckDTQByDeskId(long id);
+    Task<List<LongTimeReservationToCheckDTO>> longTimeReservationToCheckDTQByDeskId(long id);
 }

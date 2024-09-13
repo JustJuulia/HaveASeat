@@ -29,7 +29,7 @@ builder.Services.AddScoped<DataContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options=>
     {
-        options.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "HaveASeat_api", Version = "v1" });
         var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         options.IncludeXmlComments(xmlPath);

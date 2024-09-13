@@ -104,18 +104,18 @@ public class ReservationController(IReservationRepository _reservationRepository
     /// <summary>
     /// This task retrieves all reservations by desk ID via an HTTP GET request.
     /// </summary>
-    /// <seealso cref="LongTimeReservationToCheckDTQ"/>
+    /// <seealso cref="LongTimeReservationToCheckDTO"/>
     /// <param name="id">The ID of the desk to retrieve reservations for.</param>
     /// <returns>
     /// Returns an OK status and a list of LongTimeReservationToCheckDTQ objects.
     /// </returns>
     [HttpGet("getAllReservationsByDeskId/{id}")]
-    [ProducesResponseType(typeof(List<LongTimeReservationToCheckDTQ>), 200)]
+    [ProducesResponseType(typeof(List<LongTimeReservationToCheckDTO>), 200)]
     
 
     public async Task<IActionResult> GetAllReservationsByDeskId(long id)
     {
-        List<LongTimeReservationToCheckDTQ> longTimeReservationToCheckDTQs = await _reservationRepository.longTimeReservationToCheckDTQByDeskId(id);
+        List<LongTimeReservationToCheckDTO> longTimeReservationToCheckDTQs = await _reservationRepository.longTimeReservationToCheckDTQByDeskId(id);
         return Ok(longTimeReservationToCheckDTQs);
     }
     /// <summary>
