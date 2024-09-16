@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/models';
+import { HttpClientModule } from '@angular/common/http';
 import { Route } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MapaComponent } from '../mapa/mapa.component';
@@ -8,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
-import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-admin-panel',

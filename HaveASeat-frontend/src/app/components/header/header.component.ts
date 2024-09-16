@@ -6,7 +6,6 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { ForbiddenDate } from '../../models/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-header',
   standalone: true,
