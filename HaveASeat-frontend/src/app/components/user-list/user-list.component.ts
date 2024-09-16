@@ -7,6 +7,7 @@ import { ForbiddenDate } from '../../models/models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-user-list',

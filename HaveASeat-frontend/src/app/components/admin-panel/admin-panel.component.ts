@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-admin-panel',

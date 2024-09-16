@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
 import { UserListComponent } from '../user-list/user-list.component';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-main',

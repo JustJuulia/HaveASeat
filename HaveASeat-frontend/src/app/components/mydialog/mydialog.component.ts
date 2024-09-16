@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-my-dialog',
