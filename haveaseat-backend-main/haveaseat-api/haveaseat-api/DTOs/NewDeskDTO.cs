@@ -14,7 +14,7 @@ namespace haveaseat.DTOs;
 public class NewDeskDTO
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="NewDeskDTO"/> class.
+    /// Initializes a new instance of the NewDeskDTO class.
     /// </summary>
     /// <remarks>
     /// It is needed to be able to get data from client send in JSON to the NewDeskDTO object.
