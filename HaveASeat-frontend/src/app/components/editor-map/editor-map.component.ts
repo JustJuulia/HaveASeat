@@ -10,6 +10,7 @@ import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PropertyRead } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-editor-map',
   templateUrl: './editor-map.component.html',

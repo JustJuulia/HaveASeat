@@ -14,14 +14,14 @@ import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
-
+import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
   imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
   standalone: true,
-  providers: [MapaService, UserService],
+  providers: [MapaService, UserService, AppService],
 })
 export class MapaComponent implements OnInit, OnChanges {
 
@@ -35,26 +35,7 @@ export class MapaComponent implements OnInit, OnChanges {
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
   alldates: Date[] = [];
 
-  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog) { }
-
-  find_today(today: string): string {
-    let today_date = new Date(today);
-    while (true) {
-      let day = today_date.getDay();
-      let counter = 0;
-      if (day !== 6 && day !== 0) {
-        this.alldates.forEach((forb_date: { getTime: () => number; }) => {
-          if (today_date.getTime() === forb_date.getTime()) {
-            counter++;
-          }
-        });
-        if (counter === 0) {
-          return today_date.toISOString().slice(0, 10);
-        }
-      }
-      today_date.setDate(today_date.getDate() + 1);
-    }
-  }
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog, private appservice:AppService) { }
 
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
@@ -74,7 +55,7 @@ export class MapaComponent implements OnInit, OnChanges {
         this.rooms = rooms;
         this.markDeskCells();
         const today = new Date().toISOString().slice(0, 10);
-        const checked_today = this.find_today(today);
+        const checked_today = this.appservice.find_today(today);
         const date = checked_today;
         this.markReserved(date);
       },

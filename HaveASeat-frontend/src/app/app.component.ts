@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { UserService } from './services/user.service';
+import { AppService } from './services/app.service';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from "./components/login/login.component";
 import { FormsModule } from '@angular/forms';
