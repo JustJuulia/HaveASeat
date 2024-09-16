@@ -10,7 +10,6 @@ import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { ForbiddenDate } from '../../models/models';
-import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
@@ -93,7 +92,7 @@ export class MapaComponent implements OnInit, OnChanges {
   popup(type: number, text: string) {
     if(type == 0) {
       this.snackBar.open(text, "Zamknij", {
-        //duration: 3500,
+        duration: 3500,
         panelClass: ['snackbar'],
         verticalPosition: 'top',
       });
