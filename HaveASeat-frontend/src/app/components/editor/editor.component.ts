@@ -26,7 +26,6 @@ export class EditorComponent {
     this.route.queryParams.subscribe(params => {
       const userIdParam = params['userId'];
       this.userId = userIdParam ? +userIdParam : null;
-      console.log('Received User ID:', this.userId);
     });
   }
   onDateChanged(date: string): void {

@@ -40,30 +40,35 @@ export class MapaComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
       next: (dates: ForbiddenDate[]) => {
-        this.alldates = dates.map(date =>
-          new Date(date.date)
-        );
+        this.alldates = dates.map(date => new Date(date.date));
       },
       error: (err: any) => {
         console.error('Error during dates show', err);
       },
     });
+    
     forkJoin({
       rooms: this.mapaService.getRooms(),
     }).subscribe(
       ({ rooms }) => {
         this.rooms = rooms;
         this.markDeskCells();
-        const today = new Date().toISOString().slice(0, 10);
-        const checked_today = this.appservice.find_today(today);
-        const date = checked_today;
-        this.markReserved(date);
+        
+        this.appservice.find_today(new Date().toISOString().slice(0, 10)).subscribe(
+          checked_today => {
+            this.markReserved(checked_today);
+          },
+          error => {
+            console.error('Error finding today', error);
+          }
+        );
       },
-      (error: any) => {
+      error => {
         console.error('Error fetching data:', error);
       }
     );
   }
+  
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedDate']) {
@@ -112,7 +117,6 @@ export class MapaComponent implements OnInit, OnChanges {
   }
   async onDeskClick(cell: Cell) {
     if (cell.isDesk && !cell.isReserved) {
-      console.log('not reserved free desk')
       this.rooms.forEach(room => {
         room.cells.forEach(c => {
           c.isClicked = false;
@@ -178,7 +182,6 @@ export class MapaComponent implements OnInit, OnChanges {
       this.dialogopen(text, 1);
 
     } else {
-      console.log("No action taken");
     }
   }
 

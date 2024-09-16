@@ -23,7 +23,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
 
   today: string;
   username: string = "";
-  usersurname: string = "Jan Wieprzowina";
+  usersurname: string = "";
   user: User = <User>{};
   alldates: Date[] = [];
 
@@ -51,10 +51,8 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   
   ngOnChanges() {
     if (this.userId !== null) {
-      console.log('Fetching user with ID:', this.userId);
       this.userService.getUserById(this.userId).subscribe({
         next: userData => {
-          console.log('Received user data:', userData);
           this.user = userData;
           this.username = this.user.name;
           this.usersurname = this.user.surname
@@ -191,7 +189,6 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
       return false;
     }
     else {
-      console.log(this.user.role);
       return true;
     }
   }

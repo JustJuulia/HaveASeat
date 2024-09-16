@@ -138,7 +138,6 @@ export class EditorMapComponent implements OnInit, OnChanges {
 
   rotate(rotation: number) {
     this.currentRotation = rotation;
-    console.log(this.currentRotation);
   }
 
   check(desk: Desk, cell: Cell): boolean {
