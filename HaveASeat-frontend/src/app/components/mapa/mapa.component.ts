@@ -15,14 +15,13 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
 import { AppService } from '../../services/app.service';
-
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
   imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
   standalone: true,
-  providers: [MapaService, UserService],
+  providers: [MapaService, UserService, AppService],
 })
 export class MapaComponent implements OnInit, OnChanges {
 
@@ -36,54 +35,40 @@ export class MapaComponent implements OnInit, OnChanges {
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
   alldates: Date[] = [];
 
-  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog) { }
-
-  find_today(today: string): string {
-    let today_date = new Date(today);
-    while (true) {
-      let day = today_date.getDay();
-      let counter = 0;
-      if (day !== 6 && day !== 0) {
-        this.alldates.forEach((forb_date: { getTime: () => number; }) => {
-          if (today_date.getTime() === forb_date.getTime()) {
-            counter++;
-          }
-        });
-        if (counter === 0) {
-          return today_date.toISOString().slice(0, 10);
-        }
-      }
-      today_date.setDate(today_date.getDate() + 1);
-    }
-  }
+  constructor(private mapaService: MapaService, private snackBar: MatSnackBar, private http: HttpClient, private dialog: MatDialog, private appservice:AppService) { }
 
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
       next: (dates: ForbiddenDate[]) => {
-        this.alldates = dates.map(date =>
-          new Date(date.date)
-        );
+        this.alldates = dates.map(date => new Date(date.date));
       },
       error: (err: any) => {
         console.error('Error during dates show', err);
       },
     });
+    
     forkJoin({
       rooms: this.mapaService.getRooms(),
     }).subscribe(
       ({ rooms }) => {
         this.rooms = rooms;
         this.markDeskCells();
-        const today = new Date().toISOString().slice(0, 10);
-        const checked_today = this.find_today(today);
-        const date = checked_today;
-        this.markReserved(date);
+        
+        this.appservice.find_today(new Date().toISOString().slice(0, 10)).subscribe(
+          checked_today => {
+            this.markReserved(checked_today);
+          },
+          error => {
+            console.error('Error finding today', error);
+          }
+        );
       },
-      (error: any) => {
+      error => {
         console.error('Error fetching data:', error);
       }
     );
   }
+  
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedDate']) {
@@ -132,7 +117,6 @@ export class MapaComponent implements OnInit, OnChanges {
   }
   async onDeskClick(cell: Cell) {
     if (cell.isDesk && !cell.isReserved) {
-      console.log('not reserved free desk')
       this.rooms.forEach(room => {
         room.cells.forEach(c => {
           c.isClicked = false;
@@ -198,7 +182,6 @@ export class MapaComponent implements OnInit, OnChanges {
       this.dialogopen(text, 1);
 
     } else {
-      console.log("No action taken");
     }
   }
 

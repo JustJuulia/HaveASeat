@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-admin-dates',

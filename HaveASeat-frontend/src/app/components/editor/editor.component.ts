@@ -7,7 +7,7 @@ import { MapaComponent } from '../mapa/mapa.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
-import { AppService } from '../../services/app.service';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-editor',
   standalone: true,
@@ -26,7 +26,6 @@ export class EditorComponent {
     this.route.queryParams.subscribe(params => {
       const userIdParam = params['userId'];
       this.userId = userIdParam ? +userIdParam : null;
-      console.log('Received User ID:', this.userId);
     });
   }
   onDateChanged(date: string): void {

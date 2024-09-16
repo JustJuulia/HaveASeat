@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PropertyRead } from '@angular/compiler';
-import { AppService } from '../../services/app.service';
+
 
 @Component({
   selector: 'app-editor-map',
@@ -138,7 +138,6 @@ export class EditorMapComponent implements OnInit, OnChanges {
 
   rotate(rotation: number) {
     this.currentRotation = rotation;
-    console.log(this.currentRotation);
   }
 
   check(desk: Desk, cell: Cell): boolean {

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -24,7 +23,6 @@ export class LoginComponent {
   LoginSucces(email: string) {
     this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
       next: (user) => {
-        console.log('API Response:', user);
         if (user) {
           const userId = user.id;
           this.router.navigate(['main'], { queryParams: { userId } });
