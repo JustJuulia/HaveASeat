@@ -1,8 +1,10 @@
-
+<div id="dialog">
     <div mat-dialog-content>
-    <p>{{ data.mycontent }}</p>
+        <p>{{ data.mycontent }}</p>
     </div>
     <div mat-dialog-actions>
         <div *ngIf="data.buttonamount == 1"><button mat-button mat-dialog-close>Close</button></div>
         <div *ngIf="data.buttonamount == 2"><button mat-button mat-dialog-close (click)="onConfirm()">Confirm</button> <button mat-button mat-dialog-close (click)="onClose()">Cancel</button></div>
     </div>
+</div>
+    
