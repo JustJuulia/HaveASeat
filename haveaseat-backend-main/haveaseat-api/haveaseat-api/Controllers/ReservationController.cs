@@ -73,7 +73,7 @@ public class ReservationController(IReservationRepository _reservationRepository
         {
             return BadRequest("Not send!");
         }
-        if(!(await _reservationRepository.CheckIfReservationExistByDateAnDeskId(reservation.Date, reservation.DeskId)))
+        if(await _reservationRepository.CheckIfReservationExistByDateAnDeskId(reservation.Date, reservation.DeskId)==true)
         {
             return BadRequest("Reservation already exist!");
         }

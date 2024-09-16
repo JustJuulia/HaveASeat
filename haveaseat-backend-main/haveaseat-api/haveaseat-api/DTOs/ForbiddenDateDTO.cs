@@ -14,7 +14,6 @@ public class ForbiddenDateDTO
     /// <summary>
     /// Initializes a new instance of the ForbiddenDateDTO class.
     /// </summary>
-    /// <seealso cref="ForbiddenDateDTO"/>
     /// <seealso cref="ForbiddenDate"/>
     /// <param name="forbiddenDate">The ForbiddenDate entity to initialize the DTO from.</param>
     public ForbiddenDateDTO(ForbiddenDate forbiddenDate)
