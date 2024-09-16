@@ -94,7 +94,7 @@ export class MapaComponent implements OnInit, OnChanges {
   popup(type: number, text: string) {
     if (type == 0) {
       this.snackBar.open(text, "Zamknij", {
-        //duration: 3500,
+        duration: 2500,
         panelClass: ['snackbar'],
         verticalPosition: 'top',
       });
