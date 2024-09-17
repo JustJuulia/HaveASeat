@@ -57,32 +57,45 @@ export class AdminDatesComponent {
   Save_date(date: string) {
     let descrChangeElement = document.getElementById('edited_text') as HTMLInputElement;
     let descrChange: string;
-  
+
     if (descrChangeElement === null) {
-        descrChange = "Wolny dzien";
+        console.log('descrChangeElement not found, setting description to "Dzien wolny"');
+        descrChange = "Dzien wolny";
     } else {
-        descrChange = descrChangeElement.value || "Dzien wolny";
+        if (descrChangeElement.value.trim().length === 0) {
+            descrChange = "Dzien wolny";
+        } else {
+            descrChange = descrChangeElement.value || "Dzien wolny";
+        }
     }
-    
+    if (!date.includes(' - ')) {
+        console.error("Date string doesn't contain ' - '. Expected format: 'YYYY-MM-DD - description'");
+        return; 
+    }
     const [datePart, description] = date.split(' - ');
     const dateObj = new Date(datePart);
+    if (isNaN(dateObj.getTime())) {
+        console.error('Invalid date format:', datePart);
+        return;
+    }
     const isoDate = dateObj.toISOString().split('T')[0];
     const dateData = { description: descrChange, date: isoDate };
-    console.log(isoDate, descrChange);
-    
+    console.log('Sending data:', dateData);
     this.http.post(this.updateDate, dateData).subscribe({
-      next: (response) => {
-        this.popup(0, "Dzień wolny zmieniony");
-        this.ShowAllForbiddenDates();
-      },
-      error: (error) => {
-        console.error('Error changing forbidden date:', error);
-        this.popup(1, "Błąd w zmienianiu dnia wolnego");
-      },
+        next: (response) => {
+            console.log('Date successfully updated:', response);
+            this.popup(0, "Dzień wolny zmieniony");
+            this.ShowAllForbiddenDates();
+        },
+        error: (error) => {
+            console.error('Error changing forbidden date:', error);
+            this.popup(1, "Błąd w zmienianiu dnia wolnego");
+        },
     });
-    
+
     this.editedDate = null;
-  }
+}
+
   
   ShowAllForbiddenDates() :void{
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({

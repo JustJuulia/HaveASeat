@@ -78,3 +78,8 @@ img[src="/assets/images/zielonegora.png"]:hover
 simple-snack-bar {
   background-color: white;
 }
+
+.inactive {
+  pointer-events: none;
+  opacity: 0.25;
+}

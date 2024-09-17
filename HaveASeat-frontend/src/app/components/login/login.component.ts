@@ -23,7 +23,6 @@ export class LoginComponent {
   LoginSucces(email: string) {
     this.http.get<User>(`${this.checkuserUrl}${email}`).subscribe({
       next: (user) => {
-        console.log('API Response:', user);
         if (user) {
           const userId = user.id;
           this.router.navigate(['main'], { queryParams: { userId } });
