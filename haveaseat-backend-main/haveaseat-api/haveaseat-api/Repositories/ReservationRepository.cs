@@ -4,9 +4,20 @@ using haveaseat.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace haveaseat.Repositories;
-
+/// <summary>
+/// This repository stores reservation-related methods.
+/// </summary>
+/// <seealso cref="IReservationRepository"/>
+/// <seealso cref="DataContext"
+/// <param name="context">The DataContext instance used for accessing the database.</param>
 public class ReservationRepository(DataContext context) : IReservationRepository
 {
+    /// <summary>
+    /// This task retrieves reservations by user's email.
+    /// </summary>
+    /// <seealso cref="ReservationDTO"/>
+    /// <param name="email">The email of the user whose reservations are to be retrieved.</param>
+    /// <returns>Returns a list of ReservationDTO objects.</returns>
     public async Task<List<ReservationDTO>> GetReservationsByUserEmail(string email)
     {
         List<Reservation> reservationsOfUser = await context.Reservations
@@ -18,6 +29,13 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         
         return reservationDtos;
     }
+    /// <summary>
+    /// This task checks if a reservation on a given date and on a given desk exists.
+    /// </summary>
+    /// <seealso cref="Desk"/>
+    /// <param name="date">The date of the reservation to check.</param>
+    /// <param name="deskId">The ID of the desk to check.</param>
+    /// <returns>Returns true if the reservation exists, or false if it doesn't.</returns>
     public async Task<Boolean> CheckIfReservationExistByDateAnDeskId(DateOnly date,long deskId)
     {
        
@@ -27,6 +45,12 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         }
         return false;
     }
+    /// <summary>
+    /// This task retrieves reservations by date.
+    /// </summary>
+    /// <seealso cref="ReservationDTO"/>
+    /// <param name="date">The date of the reservations to retrieve.</param>
+    /// <returns>Returns a list of ReservationDTO objects.</returns>
     public async Task<List<ReservationDTO>> GetReservationsByDay(DateOnly date)
     {
         List<Reservation> reservationsOnGivenDay = await context.Reservations
@@ -40,7 +64,12 @@ public class ReservationRepository(DataContext context) : IReservationRepository
 
         return reservationDtos;
     }
-
+    /// <summary>
+    /// This task adds a new reservation to the database.
+    /// </summary>
+    /// <seealso cref="NewReservationDTO"/>
+    /// <param name="reservation">The NewReservationDTO object containing the details of the reservation to be added.</param>
+    /// <returns>Returns a NewReservationDTO object.</returns>
     public async Task<NewReservationDTO> InsertReservations(NewReservationDTO reservation)
     {
         Reservation entry = new Reservation
@@ -53,7 +82,11 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         await context.SaveChangesAsync();
         return reservation;
     }
-
+    /// <summary>
+    /// This task deletes a reservation with a given ID.
+    /// </summary>
+    /// <param name="reservationId">The ID of the reservation to be deleted.</param>
+    /// <returns>Returns true if the reservation was deleted, or false if the operation failed.</returns>
     public async Task<Boolean> DeleteReservationById(long reservationId)
     {
         if (reservationId < 0)
@@ -66,6 +99,12 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         }
         return false;
     }
+    /// <summary>
+    /// This task retrieves all users with reservations on a given date.
+    /// </summary>
+    /// <seealso cref="UserDTO"/>
+    /// <param name="date">The date of the reservations to retrieve users for.</param>
+    /// <returns>Returns a list of UserDTO objects if users have a reservations on given data, a null if they don't have.</returns>
     public async Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
     {
 
@@ -78,6 +117,12 @@ public class ReservationRepository(DataContext context) : IReservationRepository
 
         return userDTOs;
     }
+    /// <summary>
+    /// This task retrieves reservations on given desk by Desk id.
+    /// </summary>
+    /// <seealso cref="LongTimeReservationToCheckDTO"/>
+    /// <param name="id">The Id of the desk to retrieve reservations for.</param>
+    /// <returns>Returns a list of LongTimeReservationToCheckDTO objects if Desk is booked by someone, a null if by nobody.</returns>
     public async Task<List<LongTimeReservationToCheckDTO>> longTimeReservationToCheckDTQByDeskId(long id)
     {
         List<Reservation> reservations = await context.Reservations.Where(x => x.DeskId ==id).ToListAsync();
