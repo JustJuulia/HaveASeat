@@ -1,0 +1,39 @@
+<div class="content-container">
+
+  <app-user-list id="list"></app-user-list>
+
+  <div class="instruction-legends-container">
+    <div>
+      <div class="first_step_text">
+        <p class="number_for_instruction">1</p>
+        <p class="reservation_date">Wybierz datę rezerwacji </p>
+        <input type="date" id="datecalendar" class="date_timer open-sans-font" (input)="onDateChange($event)"
+          [value]="today" [min]="today" />
+      </div>
+      <div class="second_step_text">
+        <p class="number_for_instruction">2</p>
+        <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
+      </div>
+    </div>
+    <div class="legends" *ngIf="pageSwitch != 2">
+      <p class="legends_text">Legenda</p>
+      <div class="legends_descriptions">
+        <div class="legend-item">
+          <div class="square free"></div>
+          <span *ngIf="pageSwitch == 0"> Miejsce wolne</span>
+          <span *ngIf="pageSwitch == 1"> Biurko</span>
+        </div>
+        <div class="legend-item">
+          <div class="square reserved"></div>
+          <span *ngIf="pageSwitch == 0"> Miejsce zajęte</span>
+          <span *ngIf="pageSwitch == 1"> Biurko usunięte</span>
+        </div>
+        <div class="legend-item">
+          <div class="square yours"></div>
+          <span *ngIf="pageSwitch == 0"> Twoje miejsce</span>
+          <span *ngIf="pageSwitch == 1"> Nowo dodane biurko</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

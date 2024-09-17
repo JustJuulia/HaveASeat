@@ -1,0 +1,94 @@
+* {
+    font-family: 'Lucida Sans';
+    display: inline;
+}
+#list{
+    margin: auto;
+}
+
+.date_with_text {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.first_step_text {
+    display: flex;
+    margin-top: 9px;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.second_step_text {
+    display: flex;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.pick_one_seat_text {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.number_for_instruction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 10px;
+    width: 15px;
+    height: 22px;
+    background: #E7E7E7;
+    border-radius: 50%;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-bottom: 5px;
+}
+
+.legends {
+    margin-top: 15px;
+    margin-right: 100px;
+    float: right;
+}
+
+.legends_text {
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans;
+}
+
+.date_timer {
+    border: solid #BBC1C9 1px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.free {
+    background-color: #BAE7B3;
+}
+
+.reserved {
+    background-color: #E7A3A3;
+}
+
+.yours {
+    background-color: #00A3FF;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}

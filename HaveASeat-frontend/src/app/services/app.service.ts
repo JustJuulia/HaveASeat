@@ -30,6 +30,7 @@ export class AppService {
           if (day !== 6 && day !== 0) { 
             const isForbidden = alldates.some(forbDate => todayDate.getTime() === forbDate.getTime());
             if (!isForbidden) {
+              console.log(todayDate.toISOString().slice(0, 10))
               return todayDate.toISOString().slice(0, 10);
             }
           }
