@@ -35,8 +35,12 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
-      next: (dates: ForbiddenDate[]) => {
-        this.alldates = dates.map(date => new Date(date.date));
+      next: (dates: ForbiddenDate[] | null) => {
+        if (dates) {
+          this.alldates = dates.map(date => new Date(date.date));
+        } else {
+          this.alldates = [];
+        }
         this.appservice.find_today(this.today).subscribe({
           next: (checked_today: string) => {
             this.getUsers(checked_today);
@@ -48,14 +52,16 @@ export class UserListComponent implements OnInit {
       },
       error: (err: any) => {
         console.error('Error during fetching forbidden dates', err);
-      },
+      }
     });
+    
   }
 
   getUsers(date: string): void {
     const url = `${this.getAllUsersUrl}${date}`;
     this.http.get<User[]>(url).subscribe({
       next: (users: User[]) => {
+        console.log('user!1')
         this.users_list = users.map(user => `${user.name} ${user.surname}`);
       },
       error: (err) => {
