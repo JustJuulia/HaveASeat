@@ -1,7 +1,7 @@
 <div class="content-container">
-
+  <app-header id="header" [userId]="userId" [pageSwitch]="0"></app-header>
   <app-user-list id="list"></app-user-list>
-
+  <div class="space_haver"></div>
   <div class="instruction-legends-container">
     <div>
       <div class="first_step_text">
@@ -15,6 +15,7 @@
         <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
       </div>
     </div>
+    <div class="space_haver"></div>
     <div class="legends" *ngIf="pageSwitch != 2">
       <p class="legends_text">Legenda</p>
       <div class="legends_descriptions">

@@ -2,7 +2,14 @@
     font-family: 'Lucida Sans';
     display: inline;
 }
+.space_haver{
+    //padding: 200px;
+}
+.content-container{
+    display: block;
+}
 #list{
+    margin-left: 40%;
     margin: auto;
 }
 
@@ -61,6 +68,12 @@
     font-family: sans;
 }
 
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
 .date_timer {
     border: solid #BBC1C9 1px;
     border-radius: 3px;
@@ -87,8 +100,3 @@
     background-color: #00A3FF;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}

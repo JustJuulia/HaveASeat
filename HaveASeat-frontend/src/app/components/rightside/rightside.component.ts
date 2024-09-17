@@ -34,7 +34,7 @@ export class RightsideComponent implements OnChanges, AfterViewInit, OnInit {
   }
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
   private getforbDate = 'https://localhost:7023/api/ForbiddenDate/GetByDate';
-
+  
   ngOnInit(): void {
     this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
       next: (dates: ForbiddenDate[]) => {
@@ -170,7 +170,9 @@ export class RightsideComponent implements OnChanges, AfterViewInit, OnInit {
       this.dateChanged.emit(event.target.value);
       return;
     }
-  
+    else {
+      this.forbiddenDate.emit("")
+    }
     if (day === 6 || day === 0) { // Check if the date is Saturday or Sunday
       this.popup(0, "Weekend");
       let emit_date = this.nearestworkday(this.today);

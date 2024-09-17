@@ -22,7 +22,7 @@ import { RightsideComponent } from '../rightside/rightside.component';
 export class MainComponent implements OnInit {
   title = 'HaveASeat';
   selectedDate: string = '';
-  forbiddenDate: string | null = null;
+  forbiddenDate: string = "";
   userId: number | null = null;
 
   constructor(private route: ActivatedRoute) { }
