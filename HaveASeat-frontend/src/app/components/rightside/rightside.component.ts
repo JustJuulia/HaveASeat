@@ -19,6 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RightsideComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() userId: number | null = null;
   @Input() pageSwitch: number = 0;
+  @Input() description: string = "";
   @Output() dateChanged = new EventEmitter<string>();
   @Output() forbiddenDate = new EventEmitter<string>();
 

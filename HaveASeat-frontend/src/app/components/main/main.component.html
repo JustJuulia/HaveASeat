@@ -3,6 +3,6 @@
   </div>
   <div *ngIf="userId !== null">
     <app-mapa id="map" [selectedDate]="selectedDate" [userId]="userId" [forbiddenDate]="forbiddenDate"></app-mapa>
-    <app-rightside [userId]="userId" [pageSwitch]="0" (dateChanged)="onDateChanged($event)" (forbiddenDate)="onForbiddenDate($event)"></app-rightside>
+    <app-rightside [userId]="userId" [pageSwitch]="0" (dateChanged)="onDateChanged($event)" (forbiddenDate)="onForbiddenDate($event)" [description]="forbiddenDate"></app-rightside>
   </div>
   
