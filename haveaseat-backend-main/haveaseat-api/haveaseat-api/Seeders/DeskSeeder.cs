@@ -3,12 +3,18 @@ using haveaseat.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace haveaseat.Seeders;
-
+/// <summary>
+/// This static class seeds the desk data.
+/// </summary>
 public static class DeskSeeder
 {
 
     private static List<Desk> desks;
-    
+    /// <summary>
+    /// Seeds the desk data.
+    /// </summary>
+    /// <param name="app">The WebApplication instance.</param>
+    /// <returns>Returns the WebApplication instance.</returns>
     public static WebApplication SeedDesks(this WebApplication app)
     {
         using (var scope = app.Services.CreateScope())

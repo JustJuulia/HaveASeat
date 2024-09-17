@@ -3,12 +3,17 @@ using haveaseat.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace haveaseat.Seeders;
-
+/// <summary>
+/// This static class seeds the map data.
+/// </summary>
 public static class MapSeeder
 {
 
     private static List<Cell> map = new List<Cell>();
-
+    /// <summary>
+    /// This static class defines border styles.
+    /// </summary>
+   
     private static class Border
     {
         public const string Left = "-4px 0px 0px 0px black";
@@ -21,6 +26,11 @@ public static class MapSeeder
         public const string BottomLeft = "-2px 2px 0px 2px black";
         public const string BottomRight = "2px 2px 0px 2px black";
     }
+    /// <summary>
+    /// Seeds the map data.
+    /// </summary>
+    /// <param name="app">The WebApplication instance.</param>
+    /// <returns>Returns the WebApplication instance.</returns>
     public static WebApplication SeedMap(this WebApplication app)
     {
         using (var scope = app.Services.CreateScope())
