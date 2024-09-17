@@ -19,6 +19,7 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
   @Input() userId: number | null = null;
   @Input() pageSwitch: number = 0;
   @Output() dateChanged = new EventEmitter<string>();
+  @Output() forbiddenDate = new EventEmitter<string>();
 
 
   today: string;
@@ -156,15 +157,16 @@ export class HeaderComponent implements OnChanges, AfterViewInit, OnInit {
       const url = `${this.getforbDate}/${formattedSelectedDate}`;
       this.http.get<ForbiddenDate>(url).subscribe({
         next: (date: ForbiddenDate) => {
-          this.popup(0, date.description);
+          this.forbiddenDate.emit(date.description);
         },
         error: (err) => {
           console.error('Error during dates show', err);
         },
       });
-      let emit_date = this.nearestworkday(this.today);
+      /*let emit_date = this.nearestworkday(this.today);
       event.target.value = emit_date;
-      this.dateChanged.emit(emit_date);
+      this.dateChanged.emit(emit_date);*/
+      this.dateChanged.emit(event.target.value);
       return;
     }
   

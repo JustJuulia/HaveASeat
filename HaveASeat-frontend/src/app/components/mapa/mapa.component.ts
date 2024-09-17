@@ -32,6 +32,7 @@ export class MapaComponent implements OnInit, OnChanges {
   clickedOnce = false;
   @Input() selectedDate: string = '';
   @Input() userId: number | null = null;
+  @Input() forbiddenDate: string | null = null;
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
   alldates: Date[] = [];
 

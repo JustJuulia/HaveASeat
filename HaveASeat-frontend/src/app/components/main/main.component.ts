@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class MainComponent implements OnInit {
   title = 'HaveASeat';
   selectedDate: string = '';
+  forbiddenDate: string | null = null;
   userId: number | null = null;
 
   constructor(private route: ActivatedRoute) { }
@@ -33,5 +34,8 @@ export class MainComponent implements OnInit {
   }
   onDateChanged(date: string): void {
     this.selectedDate = date;
+  }
+  onForbiddenDate(date: string): void{
+    this.forbiddenDate = date
   }
 }
