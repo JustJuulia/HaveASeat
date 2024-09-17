@@ -4,6 +4,6 @@
   <div *ngIf="userId !== null">
     <app-header id="header" [userId]="userId" [pageSwitch]="0" (dateChanged)="onDateChanged($event)"></app-header>
     <app-mapa id="map" [selectedDate]="selectedDate" [userId]="userId"></app-mapa>
-    <app-user-list id="list"></app-user-list>
+    <app-rightside [userId]="userId" [pageSwitch]="0" (dateChanged)="onDateChanged($event)"></app-rightside>
   </div>
   
