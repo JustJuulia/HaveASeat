@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-panel',
@@ -19,7 +20,8 @@ import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
 })
 export class AdminPanelComponent {
   title = 'HaveASeat';
-  userId: number | null = null;
+  @Input() userId: number | null = null;
+  @Input() pageSwitch: number = 2;
 
   constructor(private route: ActivatedRoute) { }
 

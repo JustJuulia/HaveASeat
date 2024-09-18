@@ -8,6 +8,7 @@ import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RightsideComponent } from '../rightside/rightside.component';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-dates',
@@ -26,7 +27,8 @@ export class AdminDatesComponent {
   editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
-  userId: number | null = null;
+  @Input() userId: number | null = null;
+  @Input() pageSwitch: number = 2;
   isEditing = false;
   newdesc: string = '';
 
