@@ -1,13 +1,17 @@
 *{
   margin: 0;
   padding: 0;
-  font-family:'Lucida Sans';
+  font-family:'Open Sans';
+}
+.image{
+  margin-top: 0;
+  margin-left: 7%;
 }
 .header {
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    padding: 10px 20px;
+    //padding: 10px 20px;
     margin-top: 0;
     margin: 0;
     cursor: pointer;
@@ -16,32 +20,50 @@
     font-size: 24px;
   }
   .logo{
-    height: 100px;
+    margin-top: 0;
+    height: 8vh;
     width: auto;
   }
   span{
     margin-right: 5px;
   }
-  #profile {
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
-    margin-right: 100px;
-    margin-bottom: 0;
-    height:60px;
-    cursor: pointer;
+  #filler{
+    width: 15vh;
   }
+  #profile {
+    float: right;
+    margin-top: 5%;
+    height:60px;
+    font-family: 'Open Sans';
+    
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
   #user {
     display:flex;
     flex-direction: row;
+    float: right;
+    margin-top: 4%;
     align-items: center;
-    margin:auto;
+    #username{
+      padding-right: 10px;
+    }
     img {
-      height: 40px;
-      width: 40px;
       margin-right: 1rem;
+      float: right;
+      #img_prof{
+      height: 3vh;
+      width: 3vh;
+      }
+      #img_arr{
+        padding: 20px;
+        margin-left: 10%;
+        height: 1vh;
+        width: 1vh;
+      }
     }
   } 
+}
   .menu_list {
     margin-top:8vh;
     position: absolute;

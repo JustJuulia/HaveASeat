@@ -1,22 +1,25 @@
 <div class="content-container">
   <app-header id="header" [userId]="userId" [pageSwitch]="0"></app-header>
-  <app-user-list id="list" *ngIf="description == ''"></app-user-list>
-  <div class="day-description" *ngIf="description != ''">
-    <h4>Dzień wolny: {{description}}</h4>
-  </div>
+
   <div class="space_haver"></div>
   <div class="instruction-legends-container">
-    <div>
+    <div id="instructions_div">
       <div class="first_step_text">
         <p class="number_for_instruction">1</p>
         <p class="reservation_date">Wybierz datę rezerwacji </p>
-        <input type="date" id="datecalendar" class="date_timer open-sans-font" (input)="onDateChange($event)"
-          [value]="today" [min]="today" />
       </div>
       <div class="second_step_text">
         <p class="number_for_instruction">2</p>
         <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
       </div>
+      <div id="date_instruction">
+        <p class="text_for_date">Rezerwacje na dzień <input type="date" id="datecalendar" class="date_timer open-sans-font" (input)="onDateChange($event)"
+          [value]="today" [min]="today" /></p>
+      </div>
+    </div>
+    <app-user-list id="list" *ngIf="description == ''"></app-user-list>
+    <div class="day-description" *ngIf="description != ''">
+      <h4>Dzień wolny: {{description}}</h4>
     </div>
     <div class="space_haver"></div>
     <div class="legends" *ngIf="pageSwitch != 2">

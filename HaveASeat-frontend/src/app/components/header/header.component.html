@@ -1,23 +1,24 @@
-
 <div class="header open-sans-font">
   <div class="image" (click)="goToMap()">
     <img src="assets/images/belmondo.png" alt="Logo" class="logo">
   </div>
-<div class="right-icon">
-<p></p>
-</div>
-
-<div id="profile" (click)="toggleDropdown()">
-  <div id="user">
-    <img src="assets/images/avatar.png" alt="User avatar">
-    <p id="username"> {{username}} {{usersurname}}</p>
+  <div class="right-icon">
+    <p></p>
   </div>
+  <div id="filler"></div>
+  <div id="profile" (click)="toggleDropdown()">
+    <div id="user">
+      <img id="img_prof" src="assets/images/avatar.png" alt="User avatar">
+      <p id="username"> {{username}} {{usersurname}}</p>
+      <img id="img_arr" src="assets/images/arrow_drop.png" alt="arrow drop">
+    </div>
 
-  <ul *ngIf="dropdownVisible" class="menu_list">
-    <li class="menu_item" (click)="goToMap()">Mapa biura</li>
-    @if(!checkifAdmin()){
+    <ul *ngIf="dropdownVisible" class="menu_list">
+      <li class="menu_item" (click)="goToMap()">Mapa biura</li>
+      @if(!checkifAdmin()){
       <li class="menu_item" (click)="goToAdminPanel()"> Panel admina</li>
       <li class="menu_item" (click)="GoToEdition()"> Edytor biura</li>
-    }
-  </ul>
+      }
+    </ul>
+  </div>
 </div>

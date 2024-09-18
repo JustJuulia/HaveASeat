@@ -1,12 +1,18 @@
 * {
     font-family: 'Lucida Sans';
     display: inline;
+    
 }
-.space_haver{
-    //padding: 200px;
-}
+
+
 .content-container{
     display: block;
+    border-left:2px solid #BBC1C9;
+    height: 100%;
+    width: 100%;
+    #header{
+        margin-top: 0;
+    }
 }
 #list{
     margin-left: 40%;
@@ -17,10 +23,12 @@
     margin-left: auto;
     margin-right: 20px;
 }
-
+#instructions_div{
+    font-size:1.8ch;
+}
 .first_step_text {
     display: flex;
-    margin-top: 9px;
+    margin-top: 11px;
     margin-left: auto;
     margin-right: 20px;
     margin-bottom: 5px;
@@ -28,16 +36,25 @@
 
 .second_step_text {
     display: flex;
-    margin-top: 20px;
+    margin-top: 11px;
     margin-left: auto;
     margin-right: 20px;
+    margin-bottom: 5px;
 }
-
-.pick_one_seat_text {
-    margin-left: auto;
+.reservation_date, .pick_one_seat_text{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+#datecalendar{
+    border: solid #BBC1C9 1px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 3%;
     margin-right: 20px;
 }
-
+.text_for_date{
+    margin-left: 7%;
+}
 .number_for_instruction {
     display: flex;
     flex-direction: column;
@@ -52,7 +69,8 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin-bottom: 5px;
+    margin-bottom: 2%;
+    margin-left: 6%;
 }
 
 .legends {
@@ -72,14 +90,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-}
-
-.date_timer {
-    border: solid #BBC1C9 1px;
-    border-radius: 3px;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: 20px;
 }
 
 .square {
