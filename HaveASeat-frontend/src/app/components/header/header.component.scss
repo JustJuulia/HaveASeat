@@ -9,7 +9,7 @@
 }
 .header {
     display: flex;
-    align-items: center;
+    //align-items: center;
     background-color: #ffffff;
     //padding: 10px 20px;
     margin-top: 0;
@@ -40,12 +40,16 @@
     cursor: pointer;
   #user {
     display:flex;
+<<<<<<< Updated upstream
     flex-direction: row;
     float: right;
     font-weight: bold;
+=======
+>>>>>>> Stashed changes
     margin-top: 4%;
     align-items: center;
     #username{
+      width: fit-content;
       padding-right: 10px;
     }
     img {
@@ -57,7 +61,7 @@
       }
       #img_arr{
         padding: 20px;
-        margin-left: 10%;
+        margin-left: 20vw;
         height: 1vh;
         width: 1vh;
       }
