@@ -27,10 +27,7 @@ ul li:last-child {
     border-bottom: none;
 }
 
-.highlighted {
+#this_user {
     font-weight: bold;
 }
 
-.highlighted::before {
-    content: "(Ja) ";
-}

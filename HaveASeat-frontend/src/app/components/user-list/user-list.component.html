@@ -1,9 +1,9 @@
 <div class="fulllista">
     <div *ngIf="users_list.length > 0">
         <ul>
-          <li id="this_user" *ngIf="isThisUserReserved()"> {{this_user}} (ty)</li>
+          <li id="this_user" *ngIf="isThisUserReserved()">(Ja) {{this_user}} </li>
           <li *ngFor="let user of users_list">
-             <span *ngIf="user != this_user">{{ user }} </span>
+             <span *ngIf="user != this_user && user != null">{{ user }}</span>
           </li>
         </ul>
       </div>
