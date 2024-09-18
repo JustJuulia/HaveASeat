@@ -2,9 +2,9 @@
     <div *ngIf="users_list.length > 0">
         <ul>
           <li id="this_user" *ngIf="isThisUserReserved()"> {{this_user}} (ty)</li>
-          <li *ngFor="let user of users_list">
-             <span *ngIf="user != this_user">{{ user }} </span>
-          </li>
+          <span *ngFor="let user of users_list">
+             <li *ngIf="user != this_user">{{ user }} </li>
+          </span>
         </ul>
       </div>
 </div>
