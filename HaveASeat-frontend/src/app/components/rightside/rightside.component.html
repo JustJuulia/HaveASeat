@@ -19,7 +19,7 @@
     </div>
     <app-user-list [this_user]="username + ' ' + usersurname" id="list" *ngIf="description == ''"></app-user-list>
     <div class="day-description" *ngIf="description != ''">
-      <h4>Dzień wolny: {{description}}</h4>
+      Dzień wolny: {{description}}
     </div>
     <div class="space_haver"></div>
     <div class="legends" *ngIf="pageSwitch != 2">
