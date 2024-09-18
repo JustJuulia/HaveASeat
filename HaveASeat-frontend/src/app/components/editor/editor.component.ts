@@ -8,10 +8,11 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RightsideComponent } from '../rightside/rightside.component';
 @Component({
   selector: 'app-editor',
   standalone: true,
-  imports: [HeaderComponent, MapaComponent, CommonModule,HeaderComponent, EditorMapComponent],
+  imports: [HeaderComponent, MapaComponent, CommonModule,HeaderComponent, EditorMapComponent, RightsideComponent],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss'
 })

@@ -1,9 +1,13 @@
 <div class="content-container">
-  <app-header id="header" [userId]="userId" [pageSwitch]="0"></app-header>
-
+  <span *ngIf="pageSwitch == 1">
+  <app-header id="header" [userId]="userId" [pageSwitch]="1"></app-header>
+  </span>
+  <span *ngIf="pageSwitch != 1">
+    <app-header id="header" [userId]="userId" [pageSwitch]="0"></app-header>
+    </span>
   <div class="space_haver"></div>
   <div class="instruction-legends-container">
-    <div id="instructions_div">
+    <div id="instructions_div" *ngIf="pageSwitch != 1">
       <div class="first_step_text">
         <p class="number_for_instruction">1</p>
         <p class="reservation_date">Wybierz datę rezerwacji </p>
@@ -17,7 +21,7 @@
           [value]="today" [min]="today" /></p>
       </div>
     </div>
-    <app-user-list [this_user]="username + ' ' + usersurname" id="list" *ngIf="description == ''"></app-user-list>
+    <app-user-list [this_user]="username + ' ' + usersurname" id="list" *ngIf="description == '' && pageSwitch != 1"></app-user-list>
     <div class="day-description" *ngIf="description != ''">
       Dzień wolny: {{description}}
     </div>
