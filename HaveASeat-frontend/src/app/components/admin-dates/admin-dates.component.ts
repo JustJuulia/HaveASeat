@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RightsideComponent } from '../rightside/rightside.component';
 
 @Component({
   selector: 'app-admin-dates',
   standalone: true,
-  imports: [HttpClientModule, NgIf, FormsModule, NgFor],
+  imports: [HttpClientModule, NgIf, FormsModule, NgFor, RightsideComponent],
   templateUrl: './admin-dates.component.html',
   styleUrls: ['./admin-dates.component.scss']
 })
@@ -25,6 +26,7 @@ export class AdminDatesComponent {
   editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
+  userId: number | null = null;
   isEditing = false;
   newdesc: string = '';
 
