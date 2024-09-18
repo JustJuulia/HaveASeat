@@ -25,7 +25,9 @@
       </ng-container>
     </ng-container>
   </div>
-
+  <div id="menu">
+  <app-rightside [userId]="userId" [pageSwitch]="1" id="prawa">
+  </app-rightside>
   <div class="desk-menu">
     <div *ngIf="!currentCell?.isDesk && currentCell != null">
       <div class="rotation-menu">
@@ -38,4 +40,5 @@
     </div> 
     <button *ngIf="currentCell?.isDesk" class="remove-desk" (click)="removeDesk()">Usuń biurko</button>
   </div>
+</div>
 </div>
