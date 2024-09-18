@@ -1,7 +1,10 @@
 <div class="content-container">
-
-  <app-user-list id="list"></app-user-list>
-
+  <app-header id="header" [userId]="userId" [pageSwitch]="0"></app-header>
+  <app-user-list id="list" *ngIf="description == ''"></app-user-list>
+  <div class="day-description" *ngIf="description != ''">
+    <h4>Dzień wolny: {{description}}</h4>
+  </div>
+  <div class="space_haver"></div>
   <div class="instruction-legends-container">
     <div>
       <div class="first_step_text">
@@ -15,6 +18,7 @@
         <p class="pick_one_seat_text">Wskaż jedno miejsce na mapie aby zarezerwować</p>
       </div>
     </div>
+    <div class="space_haver"></div>
     <div class="legends" *ngIf="pageSwitch != 2">
       <p class="legends_text">Legenda</p>
       <div class="legends_descriptions">

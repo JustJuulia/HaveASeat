@@ -1,5 +1,6 @@
 <div class="main">
-  <div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'">
+  <div class="room" [style.gridTemplateColumns]="'repeat(' + 0 + ', 50px)'">
+    <!-- roomWidth w reapet zostało zamienione na 0-->
     <ng-container *ngFor="let room of rooms; let rowIndex = index" >
       <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">
         <div 

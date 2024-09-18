@@ -1,5 +1,6 @@
-
-<div class="room" [style.gridTemplateColumns]="'repeat(' + roomWidth + ', 50px)'" [ngClass]="{'inactive': forbiddenDate!= null}">
+<div style="margin-top: 3%;">
+<div class="room" [style.gridTemplateColumns]="'repeat(' + 0 + ', 50px)'" [ngClass]="{'inactive': forbiddenDate!= ''}">
+  <!-- wczesniej zamiast 0 w repeat bylo roomWidth-->
   <ng-container *ngFor="let room of rooms; let rowIndex = index" >
     <ng-container *ngFor="let cell of room.cells; let colIndex = index" style="box-sizing: border-box;">
       <div 
@@ -22,4 +23,5 @@
       </div>
     </ng-container>
   </ng-container>
+</div>
 </div>
