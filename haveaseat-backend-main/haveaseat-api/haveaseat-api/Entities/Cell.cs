@@ -9,7 +9,7 @@ namespace haveaseat.Entities;
 /// <remarks>
 /// The cells are used for deawing the office walls. These objects are occupaying all the map's space.
 /// 
-/// This class is used for creating a table in the postgresql database where the variables from this class are rows.
+/// This class is used for creating a table in the postgresql database in which variables from this class are rows.
 /// </remarks>
 public class Cell
 {

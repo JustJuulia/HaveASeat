@@ -11,7 +11,7 @@ namespace haveaseat.Entities;
 /// 
 /// All desk share position with the cells but not all cells share position with desks.
 /// 
-/// This class is used for creating a table in the postgresql database where the variables from this class are rows.
+/// This class is used for creating a table in the postgresql database in which variables from this class are rows.
 /// </remarks>
 public class Desk
 {

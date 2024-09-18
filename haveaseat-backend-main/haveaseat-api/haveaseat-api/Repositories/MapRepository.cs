@@ -9,7 +9,7 @@ namespace haveaseat.Repositories;
 /// This repository stores map-related methods.
 /// </summary>
 /// <seealso cref="IMapRepository"/>
-/// <seealso cref="DataContext"
+/// <seealso cref="DataContext"/>
 /// <param name="context">The DataContext instance used for accessing the database.</param>
 public class MapRepository(DataContext context) : IMapRepository
 {

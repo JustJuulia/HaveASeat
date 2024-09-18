@@ -8,7 +8,7 @@ namespace haveaseat.Entities;
 /// <remarks>
 /// The whole map is divided into rooms. Room stores the information about the cells and desks in it.
 /// 
-/// This class is used for creating a table in the postgresql database where the variables from this class are rows.
+/// This class is used for creating a table in the postgresql database in which variables from this class are rows.
 /// </remarks>
 public class Room
 {

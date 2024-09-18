@@ -8,7 +8,7 @@ namespace haveaseat.Entities;
 /// <remarks>
 /// This object is used for storing information about the dates when all employee have a free day for example the Independence day.
 /// 
-/// This class is used for creating a table in the postgresql database where the variables from this class are rows.
+/// This class is used for creating a table in the postgresql database in which variables from this class are rows.
 /// </remarks>
 public class ForbiddenDate
     {

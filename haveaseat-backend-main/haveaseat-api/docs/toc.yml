@@ -1,4 +1,110 @@
-- name: Introduction
-  href: introduction.md
-- name: Getting Started
-  href: getting-started.md
+### YamlMime:TableOfContent
+items:
+- uid: haveaseat.Controllers
+  name: haveaseat.Controllers
+  items:
+  - uid: haveaseat.Controllers.AreaController
+    name: AreaController
+  - uid: haveaseat.Controllers.AuthenticationController
+    name: AuthenticationController
+  - uid: haveaseat.Controllers.ForbiddenDateController
+    name: ForbiddenDateController
+  - uid: haveaseat.Controllers.MapController
+    name: MapController
+  - uid: haveaseat.Controllers.ReservationController
+    name: ReservationController
+- uid: haveaseat.DTOs
+  name: haveaseat.DTOs
+  items:
+  - uid: haveaseat.DTOs.CellDTO
+    name: CellDTO
+  - uid: haveaseat.DTOs.DeskDTO
+    name: DeskDTO
+  - uid: haveaseat.DTOs.ForbiddenDateDTO
+    name: ForbiddenDateDTO
+  - uid: haveaseat.DTOs.LongTimeReservationToCheckDTO
+    name: LongTimeReservationToCheckDTO
+  - uid: haveaseat.DTOs.NewDeskDTO
+    name: NewDeskDTO
+  - uid: haveaseat.DTOs.NewForbiddenDateDTO
+    name: NewForbiddenDateDTO
+  - uid: haveaseat.DTOs.NewReservationDTO
+    name: NewReservationDTO
+  - uid: haveaseat.DTOs.NewUserDTO
+    name: NewUserDTO
+  - uid: haveaseat.DTOs.NewUserLoginDTO
+    name: NewUserLoginDTO
+  - uid: haveaseat.DTOs.ReservationDTO
+    name: ReservationDTO
+  - uid: haveaseat.DTOs.RoomDTO
+    name: RoomDTO
+  - uid: haveaseat.DTOs.RoomDTOCells
+    name: RoomDTOCells
+  - uid: haveaseat.DTOs.RoomDTODesks
+    name: RoomDTODesks
+  - uid: haveaseat.DTOs.UserDTO
+    name: UserDTO
+- uid: haveaseat.DbContexts
+  name: haveaseat.DbContexts
+  items:
+  - uid: haveaseat.DbContexts.DataContext
+    name: DataContext
+- uid: haveaseat.Entities
+  name: haveaseat.Entities
+  items:
+  - uid: haveaseat.Entities.Area
+    name: Area
+  - uid: haveaseat.Entities.Cell
+    name: Cell
+  - uid: haveaseat.Entities.Desk
+    name: Desk
+  - uid: haveaseat.Entities.ForbiddenDate
+    name: ForbiddenDate
+  - uid: haveaseat.Entities.Reservation
+    name: Reservation
+  - uid: haveaseat.Entities.Room
+    name: Room
+  - uid: haveaseat.Entities.User
+    name: User
+- uid: haveaseat.Models
+  name: haveaseat.Models
+  items:
+  - uid: haveaseat.Models.ChairPosition
+    name: ChairPosition
+  - uid: haveaseat.Models.Role
+    name: Role
+- uid: haveaseat.Repositories
+  name: haveaseat.Repositories
+  items:
+  - uid: haveaseat.Repositories.AuthenticationRepository
+    name: AuthenticationRepository
+  - uid: haveaseat.Repositories.ForbiddenDateRepository
+    name: ForbiddenDateRepository
+  - uid: haveaseat.Repositories.MapRepository
+    name: MapRepository
+  - uid: haveaseat.Repositories.ReservationRepository
+    name: ReservationRepository
+- uid: haveaseat.Repositories.Interfaces
+  name: haveaseat.Repositories.Interfaces
+  items:
+  - uid: haveaseat.Repositories.Interfaces.IAuthenticationRepository
+    name: IAuthenticationRepository
+  - uid: haveaseat.Repositories.Interfaces.IForbiddenDateRepository
+    name: IForbiddenDateRepository
+  - uid: haveaseat.Repositories.Interfaces.IMapRepository
+    name: IMapRepository
+  - uid: haveaseat.Repositories.Interfaces.IReservationRepository
+    name: IReservationRepository
+- uid: haveaseat.Seeders
+  name: haveaseat.Seeders
+  items:
+  - uid: haveaseat.Seeders.DeskSeeder
+    name: DeskSeeder
+  - uid: haveaseat.Seeders.MapSeeder
+    name: MapSeeder
+- uid: haveaseatapi.Migrations
+  name: haveaseatapi.Migrations
+  items:
+  - uid: haveaseatapi.Migrations.NamesAndSurnames
+    name: NamesAndSurnames
+memberLayout: SamePage

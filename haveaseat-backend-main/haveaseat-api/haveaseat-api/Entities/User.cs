@@ -7,7 +7,7 @@ namespace haveaseat.Entities;
 /// This entity represents a user with specific properties.
 /// </summary>
 /// <remarks>
-/// This class is used for creating a table in the postgresql database where the variables from this class are rows.
+/// This class is used for creating a table in the postgresql database in which variables from this class are rows.
 /// </remarks>
 public class User
 {
@@ -26,7 +26,7 @@ public class User
     /// <remarks>
     /// The email of the user. Maximum length is 45 characters.
     /// 
-    /// The email must be unique..
+    /// The email must be unique.
     /// </remarks>
     [MaxLength(45)]
     public string Email { get; set; }

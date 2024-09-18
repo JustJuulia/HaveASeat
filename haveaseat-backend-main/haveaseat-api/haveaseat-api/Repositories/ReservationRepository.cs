@@ -8,7 +8,7 @@ namespace haveaseat.Repositories;
 /// This repository stores reservation-related methods.
 /// </summary>
 /// <seealso cref="IReservationRepository"/>
-/// <seealso cref="DataContext"
+/// <seealso cref="DataContext"/>
 /// <param name="context">The DataContext instance used for accessing the database.</param>
 public class ReservationRepository(DataContext context) : IReservationRepository
 {

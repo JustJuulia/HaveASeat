@@ -25,7 +25,7 @@ public interface IForbiddenDateRepository
     /// This task retrieves all forbidden dates.
     /// </summary>
     /// <seealso cref="ForbiddenDateDTO"/>
-    /// <returns>Returns a list of ForbiddenDateDTO objects.</returns
+    /// <returns>Returns a list of ForbiddenDateDTO objects.</returns>
     Task<List<ForbiddenDateDTO>> GetAllForbiddenDates();
     /// <summary>
     /// This task retrieves a forbidden date by date.
