@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/models';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,7 +21,10 @@ import { Input } from '@angular/core';
 export class AdminPanelComponent {
   title = 'HaveASeat';
   @Input() userId: number | null = null;
+<<<<<<< Updated upstream
   @Input() pageSwitch: number = 2;
+=======
+>>>>>>> Stashed changes
 
   constructor(private route: ActivatedRoute) { }
 

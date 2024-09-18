@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, SimpleChanges, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -27,10 +27,15 @@ export class AdminDatesComponent {
   editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
+<<<<<<< Updated upstream
   @Input() userId: number | null = null;
   @Input() pageSwitch: number = 2;
+=======
+>>>>>>> Stashed changes
   isEditing = false;
   newdesc: string = '';
+
+  @Input() userId: number | null = null;
 
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {
     this.today = new Date().toISOString().split('T')[0];
