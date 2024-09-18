@@ -8,8 +8,6 @@ import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RightsideComponent } from '../rightside/rightside.component';
-import { Input } from '@angular/core';
-
 @Component({
   selector: 'app-admin-dates',
   standalone: true,
@@ -27,15 +25,11 @@ export class AdminDatesComponent {
   editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
-<<<<<<< Updated upstream
   @Input() userId: number | null = null;
   @Input() pageSwitch: number = 2;
-=======
->>>>>>> Stashed changes
   isEditing = false;
   newdesc: string = '';
 
-  @Input() userId: number | null = null;
 
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {
     this.today = new Date().toISOString().split('T')[0];

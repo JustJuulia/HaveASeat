@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { EditorMapComponent} from  '../editor-map/editor-map.component';
 import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
-import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-admin-panel',
@@ -21,10 +20,7 @@ import { Input } from '@angular/core';
 export class AdminPanelComponent {
   title = 'HaveASeat';
   @Input() userId: number | null = null;
-<<<<<<< Updated upstream
   @Input() pageSwitch: number = 2;
-=======
->>>>>>> Stashed changes
 
   constructor(private route: ActivatedRoute) { }
 
