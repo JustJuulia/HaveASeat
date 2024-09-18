@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -20,6 +20,8 @@ export class UserListComponent implements OnInit {
   today: string;
   users_list: string[] = [];
   alldates: Date[] = [];
+
+  @Input() this_user: string | null = null;
 
   private getAllUsersUrl = 'https://localhost:7023/api/Reservation/getAllUsersWithReservationByDay/';
   private getallDates = 'https://localhost:7023/api/ForbiddenDate/getAllForbiddenDates';
@@ -55,6 +57,16 @@ export class UserListComponent implements OnInit {
       }
     });
     
+  }
+
+  isThisUserReserved(): boolean {
+    let result: boolean = false
+    this.users_list.forEach(user => {
+      if(user == this.this_user) {
+        result = true
+      }
+    });
+    return result;
   }
 
   getUsers(date: string): void {

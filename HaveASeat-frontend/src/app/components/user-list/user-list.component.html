@@ -2,7 +2,9 @@
     Lista użytkowników na wybrany dzień:
     <div *ngIf="users_list.length > 0">
         <ul>
-          <li *ngFor="let user of users_list"> {{ user }} 
+          <li id="this_user" *ngIf="isThisUserReserved()"> {{this_user}} (ty)</li>
+          <li *ngFor="let user of users_list">
+             <span *ngIf="user != this_user">{{ user }} </span>
           </li>
         </ul>
       </div>

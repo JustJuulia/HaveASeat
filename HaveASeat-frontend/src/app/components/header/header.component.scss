@@ -35,14 +35,14 @@
     margin-top: 5%;
     height:60px;
     font-family: 'Open Sans';
-    
+    width: 13vw;
     font-size: 14px;
-    font-weight: bold;
     cursor: pointer;
   #user {
     display:flex;
     flex-direction: row;
     float: right;
+    font-weight: bold;
     margin-top: 4%;
     align-items: center;
     #username{
@@ -65,15 +65,23 @@
   } 
 }
   .menu_list {
-    margin-top:8vh;
+    margin-top:6vh;
     position: absolute;
+    margin-left: 1vw;
     border:2px solid #BBC1C9;
     background-color: #ffffff;
     list-style-type:none;
     border-radius:3px;
+    width: 10vw;
   }
   
   .menu_item {
     margin:10px;
+    text-align: center;
     cursor:pointer;
+  }
+  
+  .menu_item:hover {
+    background-color: #cfd6df;
+    border-radius: 3px;
   }

@@ -17,7 +17,7 @@
           [value]="today" [min]="today" /></p>
       </div>
     </div>
-    <app-user-list id="list" *ngIf="description == ''"></app-user-list>
+    <app-user-list [this_user]="username + ' ' + usersurname" id="list" *ngIf="description == ''"></app-user-list>
     <div class="day-description" *ngIf="description != ''">
       <h4>Dzień wolny: {{description}}</h4>
     </div>
