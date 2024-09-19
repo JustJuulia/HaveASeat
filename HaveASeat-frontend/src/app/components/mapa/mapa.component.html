@@ -19,7 +19,7 @@
         class="place">
         <img *ngIf="cell.isDesk && !cell.isReserved"  [src]="(cell.isClicked || cell.isUsers) ? '/assets/images/niebieskiegora.png' : '/assets/images/zielonegora.png'" alt="Desk Image" class="desk-img"
         style="--cursor: pointer">
-        <img *ngIf="cell.isReserved" src="/assets/images/czerwonegora.png" alt="" class="desk-img" style="--cursor: not-allowed">
+        <img *ngIf="cell.isReserved" src="/assets/images/czerwonegora.png" alt="" class="desk-img" style="--cursor: not-allowed" matTooltip=" {{getNameByCell(cell)}}">
       </div>
     </ng-container>
   </ng-container>

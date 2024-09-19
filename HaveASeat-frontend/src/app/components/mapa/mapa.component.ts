@@ -13,13 +13,14 @@ import { ForbiddenDate } from '../../models/models';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
 import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule, MatTooltipModule],
   standalone: true,
   providers: [MapaService, UserService, AppService],
 })
@@ -196,6 +197,11 @@ export class MapaComponent implements OnInit, OnChanges {
       }
     }
     throw new Error('Desk not found for the given cell');
+  }
+
+  getNameByCell(cell: Cell) {
+    const reservation = this.reservations.find(r => r.desk.positionX === cell.positionX && r.desk.positionY === cell.positionY);
+    return reservation?.user.name + " " + reservation?.user.surname;
   }
 
   getDesksCell(desk: Desk): Cell {
