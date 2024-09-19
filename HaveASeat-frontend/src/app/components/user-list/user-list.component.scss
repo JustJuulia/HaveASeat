@@ -5,12 +5,20 @@
     padding: 5px;
     border-radius: 5px;
     overflow-y: auto;
-    max-height: 55vh;
+    height: 55vh;
     margin-right: 4%;
     margin-top: 4%;
     font-size: 1.8ch;
 }
-
+#button_delete{
+    border: none;
+    background-color: white;
+    float: right;
+    #picture_delete:hover{
+        cursor: pointer;
+        filter: brightness(0) saturate(100%) invert(77%) sepia(67%) saturate(1264%) hue-rotate(176deg) brightness(80%) contrast(80%);
+    }
+}
 ul {
     margin-top: 1%;
     padding: 0;

@@ -13,13 +13,14 @@ import { ForbiddenDate } from '../../models/models';
 import { provideProtractorTestingSupport } from '@angular/platform-browser';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MyDialogComponent } from '../mydialog/mydialog.component';
 import { AppService } from '../../services/app.service';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss'],
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, MatDialogModule, MatButtonModule, MatTooltipModule],
   standalone: true,
   providers: [MapaService, UserService, AppService],
 })
@@ -75,6 +76,7 @@ export class MapaComponent implements OnInit, OnChanges {
     if (changes['selectedDate']) {
       this.markReserved(changes['selectedDate'].currentValue);
     }
+    
   }
 
   popup(type: number, text: string) {
@@ -143,6 +145,9 @@ export class MapaComponent implements OnInit, OnChanges {
         complete: () => {
           this.markReserved(newReservation.date);
           this.popup(0, "Zarezerwowano");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
           var usersReservations = this.reservations.filter(r => r.user.id == this.userId);
           if (usersReservations.length) {
             usersReservations.forEach(reservation => {
@@ -170,6 +175,9 @@ export class MapaComponent implements OnInit, OnChanges {
           next: () => {
             this.markReserved(reservation.date);
             this.popup(0, "Anulowano rezerwację");
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           },
           error: deleteError => {
             console.error("Cancelation failed:", deleteError);
@@ -196,6 +204,11 @@ export class MapaComponent implements OnInit, OnChanges {
       }
     }
     throw new Error('Desk not found for the given cell');
+  }
+
+  getNameByCell(cell: Cell) {
+    const reservation = this.reservations.find(r => r.desk.positionX === cell.positionX && r.desk.positionY === cell.positionY);
+    return reservation?.user.name + " " + reservation?.user.surname;
   }
 
   getDesksCell(desk: Desk): Cell {
@@ -284,8 +297,16 @@ export class MapaComponent implements OnInit, OnChanges {
   getBorder(roomId: number, positionY: number, positionX: number): string {
     const room = this.rooms.find(r => r.id === roomId);
     const cell = room?.cells.find(c => c.positionX === positionX && c.positionY === positionY);
-    return cell?.border ?? '';
+    const convertPxToVw = (px: string): string => {
+      const numericPx = parseFloat(px);
+      const vw = (100 * numericPx) / window.innerWidth;
+      return `${vw}vw`;
+    };
+    const border = cell?.border ?? '';
+    const convertedBorder = border.replace(/(-?\d*\.?\d+)px/g, (match, p1) => convertPxToVw(p1));
+    return convertedBorder;
   }
+  
 
   isCellPresent(roomId: number, positionX: number, positionY: number): boolean {
     const room = this.rooms.find(r => r.id === roomId);
