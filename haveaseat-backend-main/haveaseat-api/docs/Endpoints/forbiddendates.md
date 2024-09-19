@@ -239,3 +239,35 @@ Host: localhost:7023
 **Method**: DELETE
 
 **URL**: /api/Authentication/delete
+
+**Responses**:
+
+- **Status Code**: 202 Accepted
+
+```
+  true
+```
+
+- **Status Code**: 400 Bad Request
+
+```
+{
+  "error": "Not send!"
+}
+```
+
+- **Status Code**: 400 Bad Request
+
+```
+{
+  "error": "Date is not forbidden"
+}
+```
+
+- **Status Code**: 500 Internal Server Error
+
+```
+{
+  "error": "Error with the database"
+}
+```

@@ -68,12 +68,12 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(date) == null)
         {
-            return BadRequest("This date is not forbidden!");
+            return BadRequest(new { error = "This date is not forbidden!" });
         }
         Boolean result = await forbiddenDateRepository.DeleteForbiddenDateByDate(date);
         if (!result)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError,"error with database!");
+            return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An Error with the database!" });
         }
         return Accepted("delete Forbidden date",result);
     }

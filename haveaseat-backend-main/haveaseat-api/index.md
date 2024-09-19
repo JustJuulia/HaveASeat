@@ -2,9 +2,9 @@
 _layout: landing
 ---
 
-# This is the **HOMEPAGE**.
+# This is the **HOMEPAGE** of .
 
-Refer to [Markdown](http://daringfireball.net/projects/markdown/) for how to write markdown files.
+
 
 ## Quick Start Notes:
 
