@@ -1,10 +1,14 @@
 <div class="fulllista">
-    <div *ngIf="users_list.length > 0">
-        <ul>
-          <li id="this_user" *ngIf="isThisUserReserved()"> {{this_user}} (ty)</li>
-          <span *ngFor="let user of users_list">
-             <li *ngIf="user != this_user">{{ user }} </li>
-          </span>
-        </ul>
-      </div>
+  <div *ngIf="users_list.length > 0">
+    <ul>
+      <li id="this_user" *ngIf="isThisUserReserved()">
+        {{ this_user }} (ty) <button id="button_delete" (click)="Cancel_Reservation( this_user_reservationId )"> <img id="picture_delete" src="assets/images/bin_image.png" height="10px" width="10px"></button> 
+      </li>
+      <span *ngFor="let user of users_list">
+        <li *ngIf="user.name !== this_user">
+          {{ user.name }} 
+        </li>
+      </span>
+    </ul>
+  </div>
 </div>

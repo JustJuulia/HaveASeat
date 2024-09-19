@@ -49,6 +49,7 @@ export interface Room {
     name: string;
     surname: string;
     role: number;
+    reservationId: number;
   }
 
   export interface ForbiddenDate {
