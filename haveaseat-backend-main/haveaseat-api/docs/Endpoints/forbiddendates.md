@@ -225,4 +225,17 @@ Content-Type: application/json
 }
 ```
 
-## 
+## Delete
+
+Deletes forbidden date.
+
+**Request example**:
+
+```
+http DELETE https://localhost:7023/api/ForbiddenDate/delete/11.11.2024
+Host: localhost:7023
+```
+
+**Method**: DELETE
+
+**URL**: /api/Authentication/delete

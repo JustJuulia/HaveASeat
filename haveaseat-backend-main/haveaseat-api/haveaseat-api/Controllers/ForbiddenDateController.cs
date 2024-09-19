@@ -63,7 +63,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     public async Task<IActionResult> DeleteForbiddenDateByDate(DateOnly date)
     {
         if(date == null){
-            return BadRequest("not send!");
+            return BadRequest(new { error = "Not send!" });
 
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(date) == null)
