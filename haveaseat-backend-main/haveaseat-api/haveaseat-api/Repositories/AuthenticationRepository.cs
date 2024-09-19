@@ -33,8 +33,15 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
             salt=Salt
         };
         await context.Users.AddAsync(entry);
-        await context.SaveChangesAsync();
-        return user.Email;
+        int result = await context.SaveChangesAsync();
+        if (result > 0)
+        {
+            return user.Email;
+        }
+        else
+        {
+            return null;
+        }
     }
     /// <summary>
     /// This task retrieves the salt associated with a given email.
@@ -44,9 +51,10 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
     /// <remarks>
     /// This task should't be added to controller.
     /// </remarks>
+    /// <remarks>It is case insensitive.</remarks>
     public async Task<string> GetSaltByEmail(string email)
     {
-        String? salt = (await context.Users.Where(x => x.Email == email).SingleOrDefaultAsync()).salt;
+        String? salt = (await context.Users.Where(x => x.Email.ToLower() == email.ToLower()).SingleOrDefaultAsync()).salt;
         if (salt == null)
         {
             return null;
@@ -59,9 +67,10 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
     /// <seealso cref="UserDTO"/>
     /// <param name="email">The email of the user.</param>
     /// <returns>Returns a UserDTO object if the user is found, or null if the user is not found.</returns>
+    /// <remarks>It is case insensitive.</remarks>
     public async Task<UserDTO> GetUserByEmail(string email)
     {
-        User? user = await context.Users.Where(user => user.Email == email).SingleOrDefaultAsync();
+        User? user = await context.Users.Where(user => user.Email.ToLower() == email.ToLower()).SingleOrDefaultAsync();
 
         if (user == null)
         {
@@ -99,7 +108,7 @@ public class AuthenticationRepository(DataContext context) : IAuthenticationRepo
         {
             return false;
         }
-        User? userchecked = await context.Users.Where(userchecked => userchecked.Password == user.Password).Where(userchecked => userchecked.Password == user.Password).SingleOrDefaultAsync();
+        User? userchecked = await context.Users.Where(userchecked => userchecked.Email.ToLower() == user.Email.ToLower()).Where(userchecked => userchecked.Password == user.Password).SingleOrDefaultAsync();
         if (userchecked == null)
         {
             return false;

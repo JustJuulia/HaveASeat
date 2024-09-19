@@ -25,6 +25,7 @@ public class ReservationController(IReservationRepository _reservationRepository
     /// Returns an OK status and a list of ReservationDTO objects if reservations exist,
     /// or a NotFound status if no reservations are found for the given user.
     /// </returns>
+    /// <remarks>It is case insensitive.</remarks>
     [HttpGet("getByEmail/{email}")]
     [ProducesResponseType(typeof(List<ReservationDTO>), 200)]
     public async Task<IActionResult> ReservationsByEmail(string email)

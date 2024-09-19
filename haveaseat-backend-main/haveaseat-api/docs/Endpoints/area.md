@@ -2,21 +2,22 @@
 
 ## GetArea
 
-Retrieves Area of the office map.
+Retrieves area of the office map.
 
 **Request example**:
 
 ```
-https://localhost:7023/api/Area/GetArea
+http GET https://localhost:7023/api/Area/GetArea
+Host: localhost:7023
 ```
 
-**method**: Get
+**Method**: GET
 
-**Url**: /api/Area/GetArea
+**URL**: /api/Area/GetArea
 
 **Responses**:
 
-- **Status Code**: 200
+- **Status Code**: 200 OK
 
 ```
 {

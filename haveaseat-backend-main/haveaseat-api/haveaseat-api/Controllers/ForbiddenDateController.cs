@@ -32,17 +32,17 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     public async Task<IActionResult> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate)
     {   if(newForbiddenDate == null)
         {
-            return BadRequest("Not send!");
+            return BadRequest(new { error = "Not send!" });
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) != null)
         {
-            return BadRequest("Date already exist");
+            return BadRequest(new { error = "Date already is forbidden" });
         }
         
         NewForbiddenDateDTO result = await forbiddenDateRepository.AddForbiddenDate(newForbiddenDate);
         if (result == null)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error with database");
+            return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An error with the database" });
         }
         return Created("Forbidden date added", result);
     }
@@ -109,7 +109,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         var getForbiddenDateByDate = await forbiddenDateRepository.GetForbiddenDateByDate(date);
         if (getForbiddenDateByDate == null)
         {
-            return NotFound(new { Message = "Date is not Forbidden date!", ForbiddenDate = date });
+            return NotFound(new { error = "Date is not Forbidden date!", forbiddenDate = date });
         }
         return Ok(getForbiddenDateByDate);
     }
@@ -130,7 +130,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
         var getForbiddenDateById = await forbiddenDateRepository.GetForbiddenDateById(id);
         if (getForbiddenDateById == null)
         {
-            return NotFound(new { Message = "Date is not Forbidden date!", GivenId = id });
+            return NotFound(new { error = "Date is not Forbidden date!",forbiddenDateId = id });
         }
 
         return Ok(getForbiddenDateById);
@@ -154,17 +154,17 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     {
         if (newForbiddenDate == null)
         {
-            return BadRequest("not send!");
+            return BadRequest(new { error = "Not send!" });
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) == null)
         {
-            return BadRequest("Date is not forbidden");
+            return BadRequest(new { error = "Date is not forbidden" });
         }
         
         Boolean updated = await forbiddenDateRepository.EditForbiddenDateByDate(newForbiddenDate);
         if (!updated)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Error with database");
+            return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Error with the database" });
         }
         return Ok(updated);
     }

@@ -18,11 +18,12 @@ public class ReservationRepository(DataContext context) : IReservationRepository
     /// <seealso cref="ReservationDTO"/>
     /// <param name="email">The email of the user whose reservations are to be retrieved.</param>
     /// <returns>Returns a list of ReservationDTO objects.</returns>
+    /// <remarks>It is case insensitive.</remarks>
     public async Task<List<ReservationDTO>> GetReservationsByUserEmail(string email)
     {
         List<Reservation> reservationsOfUser = await context.Reservations
             .Include(r => r.Desk) 
-            .Where(reservation => reservation.User.Email == email)
+            .Where(reservation => reservation.User.Email.ToLower() == email.ToLower())
             .ToListAsync();
         
         List<ReservationDTO> reservationDtos = reservationsOfUser.Select(r => new ReservationDTO(r)).ToList();

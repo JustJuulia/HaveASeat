@@ -14,13 +14,14 @@ public interface IAuthenticationRepository
     /// <seealso cref="NewUserDTO"/>
     /// <param name="user">The NewUserDTO object containing the details of the user to be registered.</param>
     /// <param name="Salt">The salt used for hashing the user's password.</param>
-    /// <returns>Returns a rmail of registered user.</returns>
+    /// <returns>Returns a email of registered user.</returns>
     Task<string> RegisterUser(NewUserDTO user, string Salt);
     /// <summary>
     /// This task retrieves the salt by email.
     /// </summary>
     /// <param name="email">The email of the user whose salt is to be retrieved.</param>
     /// <returns>Returns a string representing the salt.</returns>
+    /// <remarks>It is case insensitive.</remarks>
     Task<string> GetSaltByEmail(string email); //don't allow any client to get this information
     /// <summary>
     /// This task retrieves a user by email.
@@ -28,6 +29,7 @@ public interface IAuthenticationRepository
     /// <seealso cref="UserDTO"/>
     /// <param name="email">The email of the user to be retrieved.</param>
     /// <returns>Returns a UserDTO object.</returns>
+    /// <remarks>It is case insensitive.</remarks>
     Task<UserDTO> GetUserByEmail(string email);
     /// <summary>
     /// This task retrieves a user by ID.
@@ -35,6 +37,7 @@ public interface IAuthenticationRepository
     /// <seealso cref="UserDTO"/>
     /// <param name="id">The ID of the user to be retrieved.</param>
     /// <returns>Returns a UserDTO object.</returns>
+    
     Task<UserDTO> GetUserById(long id);
     /// <summary>
     /// This task logs in a user.

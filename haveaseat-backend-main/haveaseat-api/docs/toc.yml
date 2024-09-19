@@ -12,3 +12,7 @@
   items:
     - name: Area
       href: Endpoints/area.md
+    - name: Authentication
+      href: Endpoints/authentication.md
+    - name: Forbidden dates
+      href: Endpoints/forbiddendates.md

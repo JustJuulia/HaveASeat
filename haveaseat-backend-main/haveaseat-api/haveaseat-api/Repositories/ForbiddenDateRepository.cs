@@ -19,7 +19,7 @@ public class ForbiddenDateRepository(DataContext context) : IForbiddenDateReposi
     /// </summary>
     /// <seealso cref="NewForbiddenDateDTO"/>
     /// <param name="newForbiddenDate">The NewForbiddenDateDTO object containing the forbidden date's details.</param>
-    /// <returns>Returns the NewForbiddenDateDTO object of the added forbidden date.</returns>
+    /// <returns>Returns the NewForbiddenDateDTO object of the added forbidden date if operation was succesfuly or a null if operation failed.</returns>
     public async Task<NewForbiddenDateDTO> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate)
     {
         ForbiddenDate entry = new ForbiddenDate {
@@ -29,8 +29,12 @@ public class ForbiddenDateRepository(DataContext context) : IForbiddenDateReposi
 
         };
         await context.ForbiddenDates.AddAsync(entry);
-        await context.SaveChangesAsync();
-        return newForbiddenDate;
+        int result = await context.SaveChangesAsync();
+        if (result > 0)
+        {
+            return newForbiddenDate;
+        }
+        return null;
     }
     /// <summary>
     /// This task deletes a forbidden date by its date.

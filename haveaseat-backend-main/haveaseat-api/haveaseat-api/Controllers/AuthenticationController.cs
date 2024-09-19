@@ -32,7 +32,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     public async Task<IActionResult> RegisterUser(NewUserDTO newUser)
     {
         if (await authenticationRepository.GetUserByEmail(newUser.Email) != null) {
-            return BadRequest("User already exist !"+(authenticationRepository.GetUserByEmail(newUser.Email)));
+            return BadRequest(new { error = "User already exist!" });
         }
 
             String salt = BCrypt.Net.BCrypt.GenerateSalt(10);
@@ -40,7 +40,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
             string result = await authenticationRepository.RegisterUser(newUser, salt);
             if (result == null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error with adding user to database!");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An error with adding user to database!" });
             }
             return Created("User registered", newUser);
         
@@ -54,6 +54,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// Returns a OK status and UserDTO object if the user exist in the database,
     /// or a NotFound status if user doesn't exist in database.
     /// </returns>
+    /// <remarks>It is case insensitive.</remarks>
     [HttpGet("GetByEmail/{email}")]
     [ProducesResponseType(typeof(UserDTO), 200)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -83,7 +84,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
         var userById = await authenticationRepository.GetUserById(id);
         if (userById == null)
         {
-            return NotFound(new { Message = "No such user", GivenId = id });
+            return NotFound(new { Message = "No such user", userId = id });
         }
 
         return Ok(userById);
@@ -106,18 +107,18 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     {
         if (user == null)
         {
-            return BadRequest("Not send!");
+            return BadRequest(new { error = "Not send!" });
         }
       
         
            if(await authenticationRepository.GetUserByEmail(user.Email) == null)
             {
-                return BadRequest("Wrong email or password!");
+                return BadRequest(new { error = "Wrong email or password!" });
             }
             String salt = await authenticationRepository.GetSaltByEmail(user.Email);
             if (salt == null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error with connecting to database!");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { error = "An error with connecting to database!" });
             }
            
             user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
@@ -125,7 +126,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
            
             if(result == false)
             {
-                return BadRequest("Wrong email or password!");
+                return BadRequest(new { error = "Wrong email or password!" });
             }
             return Accepted("Login successful", true);
         
