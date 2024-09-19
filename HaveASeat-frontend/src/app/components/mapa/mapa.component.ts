@@ -76,6 +76,7 @@ export class MapaComponent implements OnInit, OnChanges {
     if (changes['selectedDate']) {
       this.markReserved(changes['selectedDate'].currentValue);
     }
+    
   }
 
   popup(type: number, text: string) {
@@ -144,6 +145,9 @@ export class MapaComponent implements OnInit, OnChanges {
         complete: () => {
           this.markReserved(newReservation.date);
           this.popup(0, "Zarezerwowano");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
           var usersReservations = this.reservations.filter(r => r.user.id == this.userId);
           if (usersReservations.length) {
             usersReservations.forEach(reservation => {
@@ -171,6 +175,9 @@ export class MapaComponent implements OnInit, OnChanges {
           next: () => {
             this.markReserved(reservation.date);
             this.popup(0, "Anulowano rezerwację");
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           },
           error: deleteError => {
             console.error("Cancelation failed:", deleteError);

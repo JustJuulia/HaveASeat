@@ -8,7 +8,7 @@
   </div>
   
   <div id="dates_list_contaier">
-    <div *ngIf="alldates.length > 0">
+    <div *ngIf="alldates.length > 0 && alldates[0] != 'No forbidden dates available.'">
       <ul id="dates_list">
         <li class="single_date" *ngFor="let date of alldates">
           {{ date }}

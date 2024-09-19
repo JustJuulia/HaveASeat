@@ -81,16 +81,16 @@ public class ReservationController(IReservationRepository _reservationRepository
         return Created("Reservation added", result);
     }
     /// <summary>
-    /// This task retrieves all users with reservations on a specific date via an HTTP GET request.
+    /// This task retrieves all users with reservations on a given date and also retrieves the ID of each reservation via an HTTP GET request.
     /// </summary>
-    /// <seealso cref="UserDTO"/>
+    /// <seealso cref="ReservationUserDTO"/>
     /// <param name="date">The date to retrieve users with reservations for.</param>
     /// <returns>
     /// Returns an OK status and a list of UserDTO objects,
     /// or a BadRequest status if the date wasn't sent.
     /// </returns>
     [HttpGet("getAllUsersWithReservationByDay/{date}")]
-    [ProducesResponseType(typeof(List<UserDTO>), 200)]
+    [ProducesResponseType(typeof(List<ReservationUserDTO>), 200)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAllUsersFromReservationsByDate(DateOnly date)
     {
@@ -98,8 +98,8 @@ public class ReservationController(IReservationRepository _reservationRepository
         {
             return BadRequest("Not send!");
         }
-        List<UserDTO> userDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
-        return Ok(userDTOs);
+        List<ReservationUserDTO> reservationUserDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
+        return Ok(reservationUserDTOs);
     }
     /// <summary>
     /// This task retrieves all reservations by desk ID via an HTTP GET request.

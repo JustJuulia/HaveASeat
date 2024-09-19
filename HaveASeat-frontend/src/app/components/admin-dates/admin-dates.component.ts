@@ -98,20 +98,24 @@ export class AdminDatesComponent {
 
     this.editedDate = null;
 }
-
-  
-  ShowAllForbiddenDates() :void{
-    this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
-      next: (dates: ForbiddenDate[]) => {
-        this.alldates = dates.map(date => 
+ShowAllForbiddenDates(): void {
+  this.http.get<ForbiddenDate[]>(this.getallDates).subscribe({
+    next: (dates: ForbiddenDate[]) => {
+      if (dates && dates.length > 0) {
+        this.alldates = dates.map(date =>
           `${new Date(date.date).toISOString().split('T')[0]} - ${date.description}`
         );
-      },
-      error: (err) => {
-        console.error('Error during dates show', err);
-      },
-    });
-  }
+      } else {
+        this.alldates = ['No forbidden dates available.'];
+      }
+    },
+    error: (err) => {
+      console.error('Error during dates show', err);
+      this.alldates = ['Error fetching forbidden dates.'];
+    },
+  });
+}
+
   CreateForbiddenDate(): void {
     if (this.pickedDate != null) {
       const dateObj = new Date(this.pickedDate);
