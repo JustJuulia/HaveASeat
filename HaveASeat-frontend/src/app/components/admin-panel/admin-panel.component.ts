@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/models';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,8 @@ import { AdminDatesComponent } from '../admin-dates/admin-dates.component';
 })
 export class AdminPanelComponent {
   title = 'HaveASeat';
-  userId: number | null = null;
+  @Input() userId: number | null = null;
+  @Input() pageSwitch: number = 2;
 
   constructor(private route: ActivatedRoute) { }
 

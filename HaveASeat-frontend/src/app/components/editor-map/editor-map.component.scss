@@ -109,20 +109,29 @@
     color:white;
     background: red;
   }
-
+  #menu{
+    position: relative;
+    z-index: 1;
+  }
   .desk-menu {
-    margin-left: auto;
-    margin-right: auto;
+    bottom: 280px;
+    left: 90px;
     margin-bottom: auto;
-    margin-top: 10vh;
+    //margin-top: 50vh;
+    margin-right: 25vw;
+    position: absolute;
     align-items: center;
     display: flex;
-    background-color: #E6EAED;
+    //background-color: #E6EAED;
     padding:25px;
-    border: 5px #E6EAED solid;
+    //border: 5px #E6EAED solid;
     border-radius: 15px;
+    z-index: 999;
   }
-  
+  app-rightside {
+    position: relative;
+    z-index: 10; 
+  }
   .add-desk {
     margin-top:25px;
     margin-left: 26%;

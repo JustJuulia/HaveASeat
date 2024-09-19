@@ -1,15 +1,33 @@
-ul{
-    margin-top: 3%;
-    text-align: center;
-    li{
-        margin-top: 3%;
-        list-style: none;
-    }
-    
+.fulllista {
+    background-color: rgb(255, 255, 255);
+    width: 350px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+    overflow-y: auto;
+    max-height: 55vh;
+    margin-right: 4%;
+    margin-top: 4%;
+    font-size: 1.8ch;
 }
-.fulllista{
-    background-color: rgb(221, 197, 197);
-    border-radius: 20px;
-    padding: 40px;
-    float: right;
+
+ul {
+    margin-top: 1%;
+    padding: 0;
 }
+
+ul li {
+    margin-top: 1%;
+    list-style: none;
+    border-bottom: 1px solid #eee;
+    padding: 8px;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+#this_user {
+    font-weight: bold;
+}
+

@@ -9,13 +9,13 @@ import { UserService } from '../../services/user.service';
 import { MapaService } from '../../services/mapa.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PropertyRead } from '@angular/compiler';
-
+import { RightsideComponent } from '../rightside/rightside.component';
 
 @Component({
   selector: 'app-editor-map',
   templateUrl: './editor-map.component.html',
   styleUrl: './editor-map.component.scss',
-  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent],
+  imports: [NgStyle, NgFor, HttpClientModule, NgIf, CommonModule, HeaderComponent, RightsideComponent],
   standalone: true,
   providers: [MapaService, UserService],
 })

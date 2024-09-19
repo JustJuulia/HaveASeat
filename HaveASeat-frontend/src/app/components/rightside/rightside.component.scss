@@ -1,26 +1,39 @@
 * {
     font-family: 'Lucida Sans';
     display: inline;
+    
 }
-.space_haver{
-    //padding: 200px;
-}
+
 .content-container{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    border-left:2px solid #BBC1C9;
+    height: 100%;
+    width: 100%;
+    #header{
+        margin-top: 0;
+    }
 }
 #list{
     margin-left: 40%;
     margin: auto;
 }
 
+.instruction-legends-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .date_with_text {
     margin-left: auto;
     margin-right: 20px;
 }
-
+#instructions_div{
+    font-size:1.8ch;
+}
 .first_step_text {
     display: flex;
-    margin-top: 9px;
+    margin-top: 13px;
     margin-left: auto;
     margin-right: 20px;
     margin-bottom: 5px;
@@ -28,16 +41,25 @@
 
 .second_step_text {
     display: flex;
-    margin-top: 20px;
+    margin-top: 13px;
     margin-left: auto;
     margin-right: 20px;
+    margin-bottom: 5px;
 }
-
-.pick_one_seat_text {
-    margin-left: auto;
+.reservation_date, .pick_one_seat_text{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+#datecalendar{
+    border: solid #BBC1C9 1px;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 3%;
     margin-right: 20px;
 }
-
+.text_for_date{
+    margin-left: 7%;
+}
 .number_for_instruction {
     display: flex;
     flex-direction: column;
@@ -52,40 +74,38 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    margin-bottom: 5px;
+    margin-bottom: 2%;
+    margin-left: 6%;
 }
 
 .legends {
-    margin-top: 15px;
-    margin-right: 100px;
-    float: right;
+    margin-top: 3%;
+    margin-left: 8%;
+    display: flex;
+    font-size: 1.6ch;
+    width: 100%;
 }
-
+.legends_descriptions{
+    display: flex;
+}
 .legends_text {
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: center;
-    font-family: sans;
+    display: inline-block;
+    margin-top: 7px;
 }
 
 .legend-item {
     display: flex;
-    align-items: center;
     margin-bottom: 5px;
-}
-
-.date_timer {
-    border: solid #BBC1C9 1px;
-    border-radius: 3px;
-    padding: 5px;
-    margin-left: auto;
-    margin-right: 20px;
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 8vw;
 }
 
 .square {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    margin-left: 2%;
+    margin-right: 3%;
 }
 
 .free {
@@ -100,3 +120,13 @@
     background-color: #00A3FF;
 }
 
+.day-description {
+    background-color: white;
+    width: 350px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: 6%;
+    margin-top: 4%;
+    font-size: 2.3ch;
+}

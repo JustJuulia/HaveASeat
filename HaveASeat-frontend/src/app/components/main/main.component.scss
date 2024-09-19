@@ -1,17 +1,19 @@
 
 #map{
     float: left;
+    height: fit-content;
+    width: fit-content;
+    height: 98vh;
 }
 #prawa{
-    width: max-content;
     float: right;
     margin-top: 0;
-    width: 33%;
     height: 98vh;
+    width: 20% ;
     border-left: 2px #D5D8DC solid;
 }
 #stronka{
-    width: 100%;
+    width: 100vw;
     height:  98vh;
     display: flex;
 }

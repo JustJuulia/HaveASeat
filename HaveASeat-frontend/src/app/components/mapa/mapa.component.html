@@ -1,4 +1,4 @@
-<div style="margin-top: 3%;">
+<div style="height: fit-content; width: fit-content; padding: 0;">
 <div class="room" [style.gridTemplateColumns]="'repeat(' + 0 + ', 50px)'" [ngClass]="{'inactive': forbiddenDate!= ''}">
   <!-- wczesniej zamiast 0 w repeat bylo roomWidth-->
   <ng-container *ngFor="let room of rooms; let rowIndex = index" >

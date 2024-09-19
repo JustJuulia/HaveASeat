@@ -8,8 +8,15 @@
     border: 5px #E6EAED solid;
     border-radius: 15px;
     padding: 15px;
+    float: left;
 }
-
+#prawa{
+    float: right;
+}
+app-rightside{
+    height: 98vh;
+    
+}
 #add-dates {
     display: flex;
     flex-direction: column;

@@ -1,17 +1,17 @@
 import { NgIf } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, SimpleChanges, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ForbiddenDate } from '../../models/models';
 import { NgFor } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { RightsideComponent } from '../rightside/rightside.component';
 @Component({
   selector: 'app-admin-dates',
   standalone: true,
-  imports: [HttpClientModule, NgIf, FormsModule, NgFor],
+  imports: [HttpClientModule, NgIf, FormsModule, NgFor, RightsideComponent],
   templateUrl: './admin-dates.component.html',
   styleUrls: ['./admin-dates.component.scss']
 })
@@ -25,8 +25,11 @@ export class AdminDatesComponent {
   editedDate: string | null = null; 
   pickedDate: string | null = null;
   writtendescr: string | null = null;
+  @Input() userId: number | null = null;
+  @Input() pageSwitch: number = 2;
   isEditing = false;
   newdesc: string = '';
+
 
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {
     this.today = new Date().toISOString().split('T')[0];
