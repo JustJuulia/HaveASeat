@@ -179,7 +179,15 @@ export class EditorMapComponent implements OnInit, OnChanges {
   getBorder(roomId: number, positionY: number, positionX: number): string {
     const room = this.rooms.find(r => r.id === roomId);
     const cell = room?.cells.find(c => c.positionX === positionX && c.positionY === positionY);
-    return cell?.border ?? '';
+    const convertPxToVw = (px: string): string => {
+      const numericPx = parseFloat(px);
+      const vw = (100 * numericPx) / window.innerWidth;
+      return `${vw}vw`;
+    };
+    const border = cell?.border ?? '';
+    const convertedBorder = border.replace(/(-?\d*\.?\d+)px/g, (match, p1) => convertPxToVw(p1));
+  
+    return convertedBorder;
   }
 
 
