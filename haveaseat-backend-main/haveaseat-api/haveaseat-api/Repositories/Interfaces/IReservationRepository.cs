@@ -46,11 +46,12 @@ public interface IReservationRepository
     /// <returns>Returns true if the reservation was deleted, or false if the operation failed.</returns>
     Task<Boolean> DeleteReservationById(long reservationId);
     /// <summary>
-    /// This task retrieves all users with reservations on a given date.
+    /// This task retrieves all users with reservations on a given date and also retrieves the ID of each reservation.
     /// </summary>
+    /// <seealso cref="ReservationUserDTO"/>
     /// <param name="date">The date of the reservations to retrieve users for.</param>
-    /// <returns>Returns a list of UserDTO objects.</returns>
-    Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date);
+    /// <returns>Returns a list of ReservationUserDTO objects.</returns>
+    Task<List<ReservationUserDTO>> GetAllUsersFromReservationsByDate(DateOnly date);
     /// <summary>
     /// This task retrieves all reservations on desk by desk ID.
     /// </summary>

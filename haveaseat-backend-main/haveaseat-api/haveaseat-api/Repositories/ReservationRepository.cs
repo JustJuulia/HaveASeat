@@ -100,22 +100,22 @@ public class ReservationRepository(DataContext context) : IReservationRepository
         return false;
     }
     /// <summary>
-    /// This task retrieves all users with reservations on a given date.
+    /// This task retrieves all users with reservations on a given date and also retrieves the ID of each reservation.
     /// </summary>
     /// <seealso cref="UserDTO"/>
     /// <param name="date">The date of the reservations to retrieve users for.</param>
-    /// <returns>Returns a list of UserDTO objects if users have a reservations on given data, a null if they don't have.</returns>
-    public async Task<List<UserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
+    /// <returns>Returns a list of reservationUserDTOs objects if users have a reservations on given data, a null if they don't have.</returns>
+    public async Task<List<ReservationUserDTO>> GetAllUsersFromReservationsByDate(DateOnly date)
     {
 
-        List<User> users = await context.Reservations.Where(x => x.Date == date).Join(context.Users,  reservation => reservation.UserId, user => user.Id, ( reseevation,user) => user ).ToListAsync();
-        if (users.Count == 0 || users== null)
+        List<Reservation> reservations = await context.Reservations.Where(x => x.Date == date).Include(r => r.User).ToListAsync();
+        if (reservations.Count == 0 || reservations == null)
         {
             return null;
         }
-        List<UserDTO> userDTOs = users.Select(x => new UserDTO(x)).ToList();
+        List<ReservationUserDTO> reservationUserDTOs = reservations.Select(x => new ReservationUserDTO(x)).ToList();
 
-        return userDTOs;
+        return reservationUserDTOs;
     }
     /// <summary>
     /// This task retrieves reservations on given desk by Desk id.
