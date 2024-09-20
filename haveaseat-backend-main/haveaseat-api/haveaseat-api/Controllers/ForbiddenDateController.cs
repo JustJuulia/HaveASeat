@@ -21,7 +21,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     /// <param name="newForbiddenDate">The NewForbiddenDateDTO object containing the details of the forbidden date to be added.</param>
     /// <returns>
     /// Returns a Created status if forbidden date was added to database,
-    /// a BadRequest status if NewForbiddenDateDTO wasn't send,
+    /// a BadRequest status if NewForbiddenDateDTO wasn't sent,
     /// a BadRequest status if forbidden date already exist,
     /// or an InternalServerError status if the record wasn't added to the database despite all requirements being met.
     /// </returns>
@@ -32,7 +32,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     public async Task<IActionResult> AddForbiddenDate(NewForbiddenDateDTO newForbiddenDate)
     {   if(newForbiddenDate == null)
         {
-            return BadRequest(new { error = "Not send!" });
+            return BadRequest(new { error = "Not sent!" });
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) != null)
         {
@@ -52,7 +52,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     /// <param name="date">The date to be deleted.</param>
     /// <returns>
     /// Returns status Accepted and true if forbidden date was deleted,
-    /// a BadRequest if date wasn't send,
+    /// a BadRequest if date wasn't sent,
     /// a BadRequest if date isn't forbidden,
     /// or an InternalServerError if the forbidden date wasn't delete despites all requirements being met. 
     /// </returns>
@@ -63,7 +63,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     public async Task<IActionResult> DeleteForbiddenDateByDate(DateOnly date)
     {
         if(date == null){
-            return BadRequest(new { error = "Not send!" });
+            return BadRequest(new { error = "Not sent!" });
 
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(date) == null)
@@ -142,7 +142,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     /// <param name="newForbiddenDate">The date to be edited.</param>
     /// <returns>
     /// Returns status Ok and true if all forbidden date was deleted,
-    /// a BadRequest if NewForbiddenDateDTO object wasn't send,
+    /// a BadRequest if NewForbiddenDateDTO object wasn't sent,
     /// a BadRequest if date isn't forbidden,
     /// or an InternalServerError if the forbidden date wasn't edited despites all requirements being met. 
     /// </returns>
@@ -154,7 +154,7 @@ public class ForbiddenDateController(IForbiddenDateRepository forbiddenDateRepos
     {
         if (newForbiddenDate == null)
         {
-            return BadRequest(new { error = "Not send!" });
+            return BadRequest(new { error = "Not sent!" });
         }
         if (await forbiddenDateRepository.GetForbiddenDateByDate(newForbiddenDate.Date) == null)
         {

@@ -79,13 +79,13 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
         if (cell == null)
         {
 
-            return BadRequest("This position doesn't exist");
+            return BadRequest(new { error = "This position doesn't exist" });
         }
         
         Boolean result = await mapRepository.AddNewDesk(newDeskDTO,cell);
         if (result == false)
         {
-            return BadRequest("This position is already occupied");
+            return BadRequest(new { error = "This position is already occupied" });
         }
         return Created("Desk has been succesfully added",result);
     }
@@ -98,7 +98,7 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
     /// <param name="chairPosition">The new chair position.</param>
     /// <returns>
     /// Returns an OK status and true if the chair position was updated,
-    /// or a BadRequest status if the operation failed.
+    /// or an InternalServerError if the operation failed..
     /// </returns>
     [HttpPost("EditChairPositionByDeskPosition")]
     [ProducesResponseType(typeof(Boolean), 200)]
@@ -111,7 +111,7 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
         {
             return Ok(result);
         }
-        return BadRequest("Something went wrong!");
+        return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong!" });
     }
     /// <summary>
     /// This task deletes a desk and reservations on that desk based on the provided details from the HTTP DELETE request.
@@ -121,21 +121,22 @@ public class MapController(IMapRepository mapRepository) : ControllerBase
     /// <returns>
     /// Returns an OK status and true if the desk was deleted,
     /// a BadRequest status if the NewDeskDTO wasn't sent,
-    /// or a BadRequest status if the operation failed.
+    /// or an InternalServerError if the operation failed.
     /// </returns>
     [HttpDelete("DeleteDesk")]
     [ProducesResponseType(typeof(Boolean), 200)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteDesk(NewDeskDTO deskDTO)
     {
         if(deskDTO == null)
         {
-            return BadRequest("not send!");
+            return BadRequest(new { error = "Not sent!" });
         }
         Boolean result= await mapRepository.DeleteDesk(deskDTO);
         if(result == false)
         {
-            return BadRequest("something went wrong");
+            return StatusCode(StatusCodes.Status500InternalServerError, new { error = "something went wrong" });
         }
         return Ok(result);
     }

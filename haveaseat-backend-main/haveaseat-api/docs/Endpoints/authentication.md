@@ -169,7 +169,7 @@ Content-Type: application/json
 
 ```
 {
-  "error": "Not send!"
+  "error": "Not sent!"
 }
 ```
 

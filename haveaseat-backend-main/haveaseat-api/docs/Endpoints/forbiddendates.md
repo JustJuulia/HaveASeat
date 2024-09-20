@@ -123,7 +123,7 @@ Adds a new forbidden date.
 **Request example**:
 
 ```
-http POST https://localhost:7023/api/Authentication/AddForbiddenDate
+http POST https://localhost:7023/api/ForbiddenDate/AddForbiddenDate
 Host: localhost:7023
 Content-Type: application/json
 
@@ -135,7 +135,7 @@ Content-Type: application/json
 
 **Method**: POST
 
-**URL**: /api/Authentication/AddForbiddenDate
+**URL**: /api/ForbiddenDate/AddForbiddenDate
 
 **Responses**:
 
@@ -152,7 +152,7 @@ Content-Type: application/json
 
 ```
 {
-  "error": "Not send!"
+  "error": "Not sent!"
 }
 ```
 
@@ -179,7 +179,7 @@ Edits forbidden date.
 **Request example**:
 
 ```
-http POST https://localhost:7023/api/Authentication/EditForbiddenDate
+http POST https://localhost:7023/api/ForbiddenDate/EditForbiddenDate
 Host: localhost:7023
 Content-Type: application/json
 
@@ -191,7 +191,7 @@ Content-Type: application/json
 
 **Method**: POST
 
-**URL**: /api/Authentication/EditForbiddenDate
+**URL**: /api/ForbiddenDate/EditForbiddenDate
 
 **Responses**:
 
@@ -205,7 +205,7 @@ Content-Type: application/json
 
 ```
 {
-  "error": "Not send!"
+  "error": "Not sent!"
 }
 ```
 
@@ -238,7 +238,7 @@ Host: localhost:7023
 
 **Method**: DELETE
 
-**URL**: /api/Authentication/delete
+**URL**: /api/ForbiddenDate/delete
 
 **Responses**:
 
@@ -252,7 +252,7 @@ Host: localhost:7023
 
 ```
 {
-  "error": "Not send!"
+  "error": "Not sent!"
 }
 ```
 

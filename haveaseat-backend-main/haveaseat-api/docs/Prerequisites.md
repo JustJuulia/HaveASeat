@@ -22,7 +22,7 @@ You will need following software instaled on your machine:
 
 Ensure your development environment is set up as follows:
 - **Operating System**: Windows 10 or later
-- **IDe**: Visual Studio 2022 or later
+- **IDE**: Visual Studio 2022 or later
 -  **.NET Core SDK**: Version 8.0 or later
 ## Dependencies
 

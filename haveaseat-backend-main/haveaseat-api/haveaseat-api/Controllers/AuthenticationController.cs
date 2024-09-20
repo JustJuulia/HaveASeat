@@ -96,6 +96,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     /// <param name="user">The NewUserLoginDTO object containing the user's login details.</param>
     /// <returns>
     /// Returns a Accepted status and true if user is successfully logged in,
+    /// a BadRequest status if NewUserLoginDTO wasn't sent,
     /// a BadRequest status if the user already exists or the credentials are incorrect,
     /// or an InternalServerError status if the record wasn't added to the database despite all requirements being met.
     /// </returns>
@@ -107,7 +108,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     {
         if (user == null)
         {
-            return BadRequest(new { error = "Not send!" });
+            return BadRequest(new { error = "Not sent!" });
         }
       
         

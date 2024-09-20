@@ -72,7 +72,7 @@ public class ReservationController(IReservationRepository _reservationRepository
     {
         if (reservation == null)
         {
-            return BadRequest("Not send!");
+            return BadRequest("Not sent!");
         }
         if(await _reservationRepository.CheckIfReservationExistByDateAnDeskId(reservation.Date, reservation.DeskId)==true)
         {
@@ -97,7 +97,7 @@ public class ReservationController(IReservationRepository _reservationRepository
     {
         if (date == null)
         {
-            return BadRequest("Not send!");
+            return BadRequest("Not sent!");
         }
         List<ReservationUserDTO> reservationUserDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
         return Ok(reservationUserDTOs);
@@ -108,7 +108,7 @@ public class ReservationController(IReservationRepository _reservationRepository
     /// <seealso cref="LongTimeReservationToCheckDTO"/>
     /// <param name="id">The ID of the desk to retrieve reservations for.</param>
     /// <returns>
-    /// Returns an OK status and a list of LongTimeReservationToCheckDTQ objects.
+    /// Returns an OK status and a list of LongTimeReservationToCheckDTO objects.
     /// </returns>
     [HttpGet("getAllReservationsByDeskId/{id}")]
     [ProducesResponseType(typeof(List<LongTimeReservationToCheckDTO>), 200)]

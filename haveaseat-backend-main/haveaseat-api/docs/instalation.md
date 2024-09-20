@@ -1,7 +1,5 @@
 # Instalation
 
-
-
 ## Step-by-Step Instalation Guide
 
 This guide provides a comprehensive walkthrough for setting up and installing **Have a Seat** backend. 

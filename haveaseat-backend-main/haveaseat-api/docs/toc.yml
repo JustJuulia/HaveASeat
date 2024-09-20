@@ -16,3 +16,5 @@
       href: Endpoints/authentication.md
     - name: Forbidden dates
       href: Endpoints/forbiddendates.md
+    - name: Map
+      href: Endpoints/map.md
