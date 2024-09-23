@@ -22,7 +22,8 @@ public class ReservationRepository(DataContext context) : IReservationRepository
     public async Task<List<ReservationDTO>> GetReservationsByUserEmail(string email)
     {
         List<Reservation> reservationsOfUser = await context.Reservations
-            .Include(r => r.Desk) 
+            .Include(r => r.Desk)
+            .Include(r=> r.User)
             .Where(reservation => reservation.User.Email.ToLower() == email.ToLower())
             .ToListAsync();
         
@@ -126,13 +127,14 @@ public class ReservationRepository(DataContext context) : IReservationRepository
     /// <returns>Returns a list of LongTimeReservationToCheckDTO objects if Desk is booked by someone, a null if by nobody.</returns>
     public async Task<List<LongTimeReservationToCheckDTO>> longTimeReservationToCheckDTQByDeskId(long id)
     {
-        List<Reservation> reservations = await context.Reservations.Where(x => x.DeskId ==id).ToListAsync();
+        List<Reservation> reservations = await context.Reservations.Include(r => r.User).Where(x => x.DeskId ==id).ToListAsync();
         if (reservations.Count == 0 || reservations == null)
         {
             return null;
 
         }
-        List<LongTimeReservationToCheckDTO> longTimeReservationToCheckDTQs = reservations.Select(x=> new LongTimeReservationToCheckDTO(x)).ToList();
-        return longTimeReservationToCheckDTQs;
+        List<LongTimeReservationToCheckDTO> longTimeReservationToCheckDTOs = reservations.Select(x=> new LongTimeReservationToCheckDTO(x)).ToList();
+        return longTimeReservationToCheckDTOs;
+      
     }
 }
