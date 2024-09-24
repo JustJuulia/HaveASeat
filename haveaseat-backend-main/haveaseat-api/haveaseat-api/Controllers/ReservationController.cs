@@ -33,7 +33,7 @@ public class ReservationController(IReservationRepository _reservationRepository
         List<ReservationDTO> result = await _reservationRepository.GetReservationsByUserEmail(email);
         if (!result.Any())
         {
-            return NotFound(new { Message = "No reservations for given user", User = email });
+            return NotFound(new { Message = "No reservations for given user", UserEmail = email });
         }
         return Ok(result);
     }
@@ -72,11 +72,11 @@ public class ReservationController(IReservationRepository _reservationRepository
     {
         if (reservation == null)
         {
-            return BadRequest("Not sent!");
+            return BadRequest(new { error = "Not sent!" });
         }
         if(await _reservationRepository.CheckIfReservationExistByDateAnDeskId(reservation.Date, reservation.DeskId)==true)
         {
-            return BadRequest("Reservation already exist!");
+            return BadRequest(new { error = "Reservation already exist!" });
         }
         NewReservationDTO result = await _reservationRepository.InsertReservations(reservation);
         return Created("Reservation added", result);
@@ -97,16 +97,16 @@ public class ReservationController(IReservationRepository _reservationRepository
     {
         if (date == null)
         {
-            return BadRequest("Not sent!");
+            return BadRequest(new { error = "Not sent!" });
         }
         List<ReservationUserDTO> reservationUserDTOs = await _reservationRepository.GetAllUsersFromReservationsByDate(date);
         return Ok(reservationUserDTOs);
     }
     /// <summary>
-    /// This task retrieves all reservations by desk ID via an HTTP GET request.
+    /// This task retrieves all users with reservation on given desk by desk ID via an HTTP GET request.
     /// </summary>
     /// <seealso cref="LongTimeReservationToCheckDTO"/>
-    /// <param name="id">The ID of the desk to retrieve reservations for.</param>
+    /// <param name="id">The ID of the desk to retrieve users for.</param>
     /// <returns>
     /// Returns an OK status and a list of LongTimeReservationToCheckDTO objects.
     /// </returns>
@@ -125,17 +125,17 @@ public class ReservationController(IReservationRepository _reservationRepository
     /// <param name="id">The ID of the reservation to delete.</param>
     /// <returns>
     /// Returns an Accepted status if the reservation was deleted,
-    /// or a BadRequest status if the operation failed.
+    /// or a InternalServerError if the operation failed.
     /// </returns>
     [HttpDelete("delete/{id}")]
     [ProducesResponseType(typeof(Boolean), 202)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> DeleteReservation(long id)
     {
         Boolean result = await _reservationRepository.DeleteReservationById(id);
         if (!result)
         {
-            return BadRequest("Something went wrong");
+            return StatusCode(StatusCodes.Status500InternalServerError, new { error = "Something went wrong" });
         }
         return Accepted(result);
     }

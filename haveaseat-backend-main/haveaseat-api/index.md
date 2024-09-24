@@ -4,6 +4,7 @@ _layout: landing
 
 # The **Have a Seat** api documentation
 
+
 ## Overview 
 
 ### Purpose of the whole **Have a Seat** project

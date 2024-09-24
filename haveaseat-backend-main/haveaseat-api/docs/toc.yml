@@ -18,3 +18,21 @@
       href: Endpoints/forbiddendates.md
     - name: Map
       href: Endpoints/map.md
+    - name: Reservation
+      href: Endpoints/reservation.md
+- name: Data models
+  items:
+    - name: Area
+      href: DataModels/area.md
+    - name: Cell
+      href: DataModels/cell.md
+    - name: Desk
+      href: DataModels/desk.md
+    - name: Forbidden date
+      href: DataModels/forbiddenDate.md
+    - name: Reservation
+      href: DataModels/reservation.md
+    - name: Room
+      href: DataModels/room.md
+    - name: User
+      href: DataModels/user.md
